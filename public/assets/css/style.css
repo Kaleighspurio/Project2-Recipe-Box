@@ -1,0 +1,41 @@
+.rock-font {
+    font-family: 'Rock Salt', cursive;
+}
+
+.recipe-card {
+    margin-right: 30px;
+}
+
+.container {
+    margin: 40px;
+    padding: 30px;
+    border: 1px solid black;
+    font-family: 'Raleway', sans-serif;
+}
+
+#author-name {
+    width: 45%
+}
+
+.footer {
+    border-top: 1px solid black;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.footer-heading {
+    font-size: 14px;
+}
+
+.footer-text {
+    font-size: 10px;
+}
+
+.footer-links {
+    color: black;
+    text-decoration: none;
+}
+
+.hover:hover {
+    color: burlywood;
+}
