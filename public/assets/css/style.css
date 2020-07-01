@@ -1,7 +1,14 @@
+.body-background {
+    background-color: #E2ED9B;
+}
+
 .rock-font {
     font-family: 'Rock Salt', cursive;
 }
 
+nav {
+    background-color: #FEF8EE;
+}
 .recipe-card {
     margin-right: 30px;
 }
@@ -11,6 +18,7 @@
     padding: 30px;
     border: 1px solid black;
     font-family: 'Raleway', sans-serif;
+    background-color: #FEF8EE;
 }
 
 #author-name {
