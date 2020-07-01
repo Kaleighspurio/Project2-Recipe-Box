@@ -27,15 +27,9 @@ module.exports = (sequelize, Datatypes) => {
     Recipe.hasMany(models.Ingredient, {
       onDelete: 'cascade',
     });
-  };
-
-  Recipe.associate = (models) => {
     Recipe.hasMany(models.Comment, {
       onDelete: 'cascade',
     });
-  };
-
-  Recipe.associate = (models) => {
     Recipe.belongsTo(models.Author, {
       foreignKey: {
         allowNull: false,
