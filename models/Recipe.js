@@ -20,6 +20,7 @@ module.exports = (sequelize, Datatypes) => {
     favorite_count: Datatypes.INTEGER,
     special_notes: Datatypes.TEXT,
     image: Datatypes.STRING,
+    url_source: Datatypes.STRING,
   });
 
   Recipe.associate = (models) => {
