@@ -20,21 +20,16 @@ module.exports = (sequelize, Datatypes) => {
     favorite_count: Datatypes.INTEGER,
     special_notes: Datatypes.TEXT,
     image: Datatypes.STRING,
+    url_source: Datatypes.STRING,
   });
 
   Recipe.associate = (models) => {
     Recipe.hasMany(models.Ingredient, {
       onDelete: 'cascade',
     });
-  };
-
-  Recipe.associate = (models) => {
     Recipe.hasMany(models.Comment, {
       onDelete: 'cascade',
     });
-  };
-
-  Recipe.associate = (models) => {
     Recipe.belongsTo(models.Author, {
       foreignKey: {
         allowNull: false,
