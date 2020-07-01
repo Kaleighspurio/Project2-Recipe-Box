@@ -1,3 +1,7 @@
+.center {
+    text-align: center;
+}
+
 .body-background {
     background-color: #E2ED9B;
 }
@@ -19,6 +23,19 @@ nav {
     border: 1px solid black;
     font-family: 'Raleway', sans-serif;
     background-color: #FEF8EE;
+}
+
+.favorite-container {
+    height: fit-content;
+}
+
+.kitchen-tools {
+    height: 300px;
+}
+
+.jumbo-padding {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .footer {
