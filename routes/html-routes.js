@@ -5,8 +5,18 @@ router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Place this route below all others to send he index.html file
-// to any request that is not explicitly defined above
+router.get('/new', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/create.html'));
+});
+
+router.get('/recipe', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/view.html'));
+});
+
+router.get('/favorites', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/favorites.html'));
+});
+
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
