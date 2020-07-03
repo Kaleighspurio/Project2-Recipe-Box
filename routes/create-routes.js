@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
           RecipeId: recipeCreate.id,
           ingredient_name: ingredient,
         });
-      },
+      }
     );
   };
   //   Call the functions: checkAuthor, then run the post recipe function
