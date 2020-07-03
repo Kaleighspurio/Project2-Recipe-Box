@@ -23,8 +23,11 @@ $(document).ready(() => {
       console.log('posted createObject');
       console.log(response);
       window.location.href = `/view/${response.id}`;
+
     });
   };
+
+
 
   $('#file').change((event) => {
     const image = $('<img>', {
@@ -49,7 +52,6 @@ $(document).ready(() => {
       ingredient_name: ingredients.val().trim().split('\n'),
       instructions: instructions.val(),
     };
-    console.log(createObject);
     postRecipe(createObject);
   });
 });
