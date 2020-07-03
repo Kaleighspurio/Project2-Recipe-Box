@@ -19,18 +19,33 @@ nav {
 }
 
 .container {
-    margin: 40px;
+    margin: 40px auto;
     padding: 30px;
     border: 1px solid black;
     font-family: 'Raleway', sans-serif;
     background-color: #FEF8EE;
+    
 }
 
 .toast-header {
     background-color: #E2ED9B;
+    width: 357px;
+}
+
+.toast-body {
+    text-align: center;
+    font-size: 30px;
+}
+
+.toast-head-text {
+    font-size: 24px;
 }
 .toast-top {
-    z-index: 10000;
+    top: 0;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0px);
+    z-index: 9999;
 }
 
 .red-border {
@@ -50,6 +65,7 @@ nav {
 }
 
 .footer {
+    bottom: 0;
     border-top: 1px solid black;
     padding-top: 10px;
     text-align: center;
