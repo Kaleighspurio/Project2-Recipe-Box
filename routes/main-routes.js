@@ -1,32 +1,43 @@
 const router = require('express').Router();
 const db = require('../models');
 
+const Op = db.Sequelize;
 // const { Op } = Sequelize;
 //     The index.html '/' will only have a GET and a PUT (:id) for voting/favoriting
 //     *****  GET
-router.get('/', async (req, res) => {
-console.log(req.body, "as;ldkfja;lskdjf");
+router.get('/', (req, res) => {
+  console.log(req.body, 'as;ldkfja;lskdjf');
   if (req.body.category) {
-    await db.Recipe.findAll({ where: { category: req.body.category } }).then(
+    db.Recipe.findAll({ where: { category: req.body.category } }).then(
       (data) => {
         res.json(data);
       },
     );
+    // *** This part doesn't work
   } else if (req.body.ingredient_name) {
-    await db.Ingredient.findAll({
-    //   include: [
-        // {
-        //   model: db.Ingredient,
+    db.Recipe.findAll({
+      include: [
+        {
+          model: db.Ingredient,
           where: {
-            ingredient_name: { [db.like]: `%${req.body.ingredient_name}%` },
+            ingredient_name: {
+              [Op.like]: req.body.ingredient_name,
+            },
           },
-        // },
-    //   ],
-    }).then((data) => {
-      res.json(data);
-    });
+        },
+      ],
+    })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    //   ***** end of the part that doesn't work
   } else if (req.body.name) {
-    await db.Recipe.findAll({
+    db.Recipe.findAll({
       include: [
         {
           model: db.Author,
@@ -38,19 +49,23 @@ console.log(req.body, "as;ldkfja;lskdjf");
     });
   }
 });
-//     Something like this, but we will need to add some things depending on what the user searches
-//     (add some 'WHERE's):
-//     router.get("/", (req, res) => {
-//   db.Recipe.findAll({ include: [db.Ingredient, db.Author] }).then(
-//     (dbRecipe) => {
-//       res.json(dbRecipe);
-//     }
-//   );
-// });
+
+// TODO:  Make it able to handle multiple queries at once?  USE: [Op.and]: [{a: 5}, {b: 6}] // (a = 5) AND (b = 6)
 
 // **** PUT
-// router.put('/:id', (req, res) => {
-//     db.Recipe.update({}, {})
-// });
+router.put('/:id', (req, res) => {
+  db.Recipe.update(
+    {
+      favorite_count: req.body.favorite_count,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    },
+  ).then((dbRecipe) => {
+    res.json(dbRecipe);
+  });
+});
 
 module.exports = router;
