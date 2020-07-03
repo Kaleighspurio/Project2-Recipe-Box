@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     });
   });
 
-  // This handles the creating of the recipe in the Recipe table and the 
+  // This handles the creating of the recipe in the Recipe table and the
   //   ingredients in the Ingredient table
   const postRecipe = async () => {
     const recipeCreate = await db.Recipe.create({
