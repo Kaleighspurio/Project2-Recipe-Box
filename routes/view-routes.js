@@ -1,34 +1,34 @@
 const router = require('express').Router();
 const db = require('../models');
 
-// const recipe = require("../models/Recipe");"
-// const comment = require("../models/Comment");
-
-// View will have a create/POST to comment, it will also have a get to view recipe and comments,
+// View will have a create/POST to comment, 
+// it will also have a get to view recipe and comments,
 // it will also have a PUT/update to edit the special notes
 
-router.get("/", (req, res) => {
-db.Recipe.selectAll(function (data) {
+// /api/view/:id
+router.get("/:id", (req, res) => {
+db.Recipe.findOne({where: {id: req.params.id}, include: {model: db.Comment, as: 'Comments'}}).then(function (data) {
     console.log(data);
-    res.render("index", { recipe: data });
+    res.json(data)
   });
 });
 
-router.post("/api/comment", function (req, res) {
-  comment.insertOneComment(
-    ["comment", "commenter_name"],
-    [req.body.comment, req.body.commenter_name],
-    function (result) {
+// /api/view/comment
+router.post("/comment", function (req, res) {
+  db.Comment.create({
+    comment: req.body.comment,
+    commenter_name: req.body.commenter_name,
+    // recipe_id: req.body.recipe_id
+  }).then(function (result) {
       // Send back the ID of the recipe
       res.json({ id: result.insertId });
     }
   );
 });
 
-router.put("/api/recipe/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
-
-  recipe.updateOne({ edit: req.body.recipe }, condition, function (
+// /api/view/id
+router.put("/:id", function (req, res) {
+  db.Recipe.updateOne({ special_notes: req.body.notes },{where: {id: req.params.id}}).then(function (
     result
   ) {
     if (result.changedRows == 0) {
