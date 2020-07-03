@@ -1,31 +1,25 @@
 const router = require('express').Router();
 const db = require('../models');
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   let authorID;
   //   Check if an author already exists with the name the user put in.
   // eslint-disable-next-line no-unused-vars
-  const checkAuthor = new Promise((resolve, reject) => {
-    db.Author.findOne({ where: { name: req.body.name } }).then((dbAuthor) => {
-      console.log(dbAuthor);
-      //   if the author already exists, set the authorID to that author's database id
-      if (dbAuthor !== null) {
-        console.log(dbAuthor.dataValues.id);
-        authorID = dbAuthor.dataValues.id;
-        console.log(authorID, 'This is the authorID for existing author');
-        resolve(authorID);
-        //  if that author does not exist, then create the new author in the author table and
-        // set the authorID variable to the new author's ID
-      } else {
-        // eslint-disable-next-line no-shadow
-        db.Author.create({ name: req.body.name }).then((dbAuthor) => {
-          authorID = dbAuthor.dataValues.id;
-          console.log(authorID, 'This should be the id for a new author');
-          resolve(authorID);
-        });
-      }
-    });
-  });
+  let dbAuthor = await db.Author.findOne({ where: { name: req.body.name } });
+  console.log(dbAuthor);
+  //   if the author already exists, set the authorID to that author's database id
+  if (dbAuthor !== null) {
+    console.log(dbAuthor.dataValues.id);
+    authorID = dbAuthor.dataValues.id;
+    console.log(authorID, 'This is the authorID for existing author');
+    //  if that author does not exist, then create the new author in the author table and
+    // set the authorID variable to the new author's ID
+  } else {
+    // eslint-disable-next-line no-shadow
+    dbAuthor = await db.Author.create({ name: req.body.name });
+    authorID = dbAuthor.dataValues.id;
+    console.log(authorID, 'This should be the id for a new author');
+  }
 
   // This handles the creating of the recipe in the Recipe table and the
   //   ingredients in the Ingredient table

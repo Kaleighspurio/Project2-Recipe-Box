@@ -19,11 +19,15 @@ $(document).ready(() => {
       method: 'POST',
       url: 'api/create',
       data: recipe,
-    }).then(() => {
+    }).then((response) => {
       console.log('posted createObject');
-      window.location.href = '/new';
+      console.log(response);
+      window.location.href = `/view/${response.id}`;
+
     });
   };
+
+
 
   $('#file').change((event) => {
     const image = $('<img>', {
@@ -48,7 +52,6 @@ $(document).ready(() => {
       ingredient_name: ingredients.val().trim().split('\n'),
       instructions: instructions.val(),
     };
-    console.log(createObject);
     postRecipe(createObject);
   });
 });
