@@ -22,7 +22,8 @@ $(document).ready(() => {
     }).then((response) => {
       console.log('posted createObject');
       console.log(response);
-      window.location.href = `/view/${response.id}`;
+
+      window.location.href = `/recipe?id=${response.id}`;
     });
   };
 
