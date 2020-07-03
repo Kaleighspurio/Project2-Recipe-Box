@@ -23,10 +23,8 @@ $(document).ready(() => {
       console.log('posted createObject');
       console.log(response);
       window.location.href = `/view/${response.id}`;
-
     });
   };
-
 
 
   $('#file').change((event) => {
