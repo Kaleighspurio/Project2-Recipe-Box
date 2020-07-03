@@ -72,7 +72,7 @@
             <div class="input-group mb-3">
           <select
             class="custom-select"
-            id="category"
+            id="search-category"
             aria-label="Example select with button addon"
           >
             <option selected>Select a category</option>
@@ -96,21 +96,21 @@
           </div>
 
           <div class="input-group mt-3 mb-3">
-            <input type="text" class="form-control" placeholder="Includes this ingredient:" aria-label="Ingredient" aria-describedby="button-addon2">
+            <input type="text" class="form-control" id = "search-ingredient" placeholder="Includes this ingredient:" aria-label="Ingredient" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
             </div>
           </div>
 
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter an author" aria-label="Author" aria-describedby="button-addon2">
+            <input type="text" class="form-control" id = "search-author" placeholder="Enter an author" aria-label="Author" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
             </div>
           </div>
           
 
-        </div>
+        </div id = "match-list">
         <h2>Search Results:</h2>
 
         
@@ -167,6 +167,6 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/js/create.js"></script>
+    <script src="assets/js/index.js"></script>
   </body>
 </html>
