@@ -35,32 +35,41 @@ $(document).ready(() => {
     $('image-div').append(image);
   });
 
+  $('.close').on('click', () => {
+    $('.toast').toast('hide');
+  });
+
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
-
-    if (
-      author.val() === ''
-      || recipeName.val().trim() === ''
-      || instructions.val().trim() === ''
-      || ingredients.val().trim() === ''
-      || category.val() === ''
-    ) {
-      $('.toast-body').text('Author, Recipe, Cateogry, Ingredients and Instructions are required fields');
-      $('.toast').toast('show');
-      console.log('recipe failed to create');
-      return;
-    }
 
     createObject = {
       name: author.val().trim(),
       recipe_name: recipeName.val().trim(),
       category: category.val(),
+      instructions: instructions.val(),
+      ingredient_name: ingredients.val().trim().split('\n'),
       dietary_restriction: restrictions.val(),
       serving_size: size.val().trim(),
       url_source: url.val(),
-      ingredient_name: ingredients.val().trim().split('\n'),
-      instructions: instructions.val(),
     };
+
+    const values = Object.values(createObject);
+    const requiredValues = values.slice(0, 4);
+    requiredValues.push(ingredients.val().trim());
+    console.log(requiredValues);
+
+    if (requiredValues.includes('')) {
+      $('.toast-body').text('Missing required fields');
+      $('.toast').toast('show');
+      console.log('recipe failed to create');
+      author.addClass('red-border');
+      recipeName.addClass('red-border');
+      instructions.addClass('red-border');
+      ingredients.addClass('red-border');
+      category.addClass('red-border');
+      return;
+    }
+
     postRecipe(createObject);
     console.log('recipe created');
   });
