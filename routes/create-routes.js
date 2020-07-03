@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
       url_source: req.body.url_source,
     }).then((dbRecipe) => dbRecipe);
     // eslint-disable-next-line no-unused-vars
-    const ingredientCreate = await req.body.ingredients.forEach((ingredient) => {
+    const ingredientCreate = await req.body.ingredient_name.forEach((ingredient) => {
       db.Ingredient.create({
         RecipeId: recipeCreate.id,
         ingredient_name: ingredient,
