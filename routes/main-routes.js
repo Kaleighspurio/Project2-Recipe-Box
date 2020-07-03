@@ -2,7 +2,20 @@ const router = require('express').Router();
 const { Op } = require('sequelize');
 const db = require('../models');
 
-router.get('/', (req, res) => {
+// This gets the 25 most recent recipes and orders them newest to oldest.
+// Can be populated on the page when the page loads?
+router.get('/recent', (req, res) => {
+  db.Recipe.findAll({
+    order: [['createdAt', 'DESC']],
+    limit: 25,
+  }).then((data) => {
+    res.json(data);
+  });
+});
+
+
+//  This manages the search one search filter at a time
+router.get('/search', (req, res) => {
   if (req.body.category) {
     db.Recipe.findAll({ where: { category: req.body.category } }).then(
       (data) => {
@@ -35,7 +48,11 @@ router.get('/', (req, res) => {
       include: [
         {
           model: db.Author,
-          where: { name: req.body.name },
+          where: {
+            name: {
+              [Op.like]: `%${req.body.name}%`,
+            },
+          },
         },
       ],
     }).then((data) => {
