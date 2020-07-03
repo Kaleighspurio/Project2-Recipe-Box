@@ -13,6 +13,7 @@
 nav {
     background-color: #FEF8EE;
 }
+
 .recipe-card {
     margin-right: 30px;
 }
@@ -25,6 +26,12 @@ nav {
     background-color: #FEF8EE;
 }
 
+.toast-header {
+    background-color: #E2ED9B;
+}
+.toast-top {
+    z-index: 10000;
+}
 .favorite-container {
     height: fit-content;
 }

@@ -19,12 +19,12 @@ $(document).ready(() => {
       method: 'POST',
       url: 'api/create',
       data: recipe,
-    }).then(() => {
+    }).then((response) => {
       console.log('posted createObject');
-      window.location.href = '/view';
+      console.log(response);
+      window.location.href = `/view/${response.id}`;
     });
   };
-
 
   $('#file').change((event) => {
     const image = $('<img>', {
@@ -36,9 +36,21 @@ $(document).ready(() => {
   });
 
   $('#submit-btn').on('click', (event) => {
-    // if(author.val() === ''){
-    // }
     event.preventDefault();
+
+    if (
+      author.val() === ''
+      || recipeName.val().trim() === ''
+      || instructions.val().trim() === ''
+      || ingredients.val().trim() === ''
+      || category.val() === ''
+    ) {
+      $('.toast-body').text('Author, Recipe, Cateogry, Ingredients and Instructions are required fields');
+      $('.toast').toast('show');
+      console.log('recipe failed to create');
+      return;
+    }
+
     createObject = {
       name: author.val().trim(),
       recipe_name: recipeName.val().trim(),
@@ -50,5 +62,6 @@ $(document).ready(() => {
       instructions: instructions.val(),
     };
     postRecipe(createObject);
+    console.log('recipe created');
   });
 });
