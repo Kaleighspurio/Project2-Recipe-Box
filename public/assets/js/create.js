@@ -19,9 +19,10 @@ $(document).ready(() => {
       method: 'POST',
       url: 'api/create',
       data: recipe,
-    }).then(() => {
+    }).then((response) => {
       console.log('posted createObject');
-      window.location.href = '/new';
+      console.log(response);
+      window.location.href = `/view/${response.id}`;
     });
   };
 
