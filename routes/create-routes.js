@@ -41,18 +41,23 @@ router.post('/', (req, res) => {
       url_source: req.body.url_source,
     }).then((dbRecipe) => dbRecipe);
     // eslint-disable-next-line no-unused-vars
-    const ingredientCreate = await req.body.ingredient_name.forEach((ingredient) => {
-      db.Ingredient.create({
-        RecipeId: recipeCreate.id,
-        ingredient_name: ingredient,
-      });
-    });
+    const ingredientCreate = await req.body.ingredient_name.forEach(
+      (ingredient) => {
+        db.Ingredient.create({
+          RecipeId: recipeCreate.id,
+          ingredient_name: ingredient,
+        });
+      },
+    );
   };
   //   Call the functions: checkAuthor, then run the post recipe function
-  checkAuthor.then(() => { postRecipe(); }).then((recipeCreate) => {
-    res.json(recipeCreate);
-  });
+  checkAuthor
+    .then(() => {
+      postRecipe();
+    })
+    .then((recipeCreate) => {
+      res.json(recipeCreate);
+    });
 });
-
 
 module.exports = router;
