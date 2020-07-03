@@ -21,9 +21,11 @@ $(document).ready(() => {
       data: recipe,
     }).then(() => {
       console.log('posted createObject');
-      window.location.href = '/new';
+      window.location.href = '/';
     });
   };
+
+
 
   $('#file').change((event) => {
     const image = $('<img>', {
@@ -48,7 +50,6 @@ $(document).ready(() => {
       ingredient_name: ingredients.val().trim().split('\n'),
       instructions: instructions.val(),
     };
-    console.log(createObject);
     postRecipe(createObject);
   });
 });
