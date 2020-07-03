@@ -21,10 +21,9 @@ $(document).ready(() => {
       data: recipe,
     }).then(() => {
       console.log('posted createObject');
-      window.location.href = '/';
+      window.location.href = '/view';
     });
   };
-
 
 
   $('#file').change((event) => {
