@@ -37,8 +37,8 @@ nav {
     font-size: 30px;
 }
 
-.toast-head-text {
-    font-size: 24px;
+.toast-height {
+    height: 200px;
 }
 .toast-top {
     top: 0;

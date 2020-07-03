@@ -32,6 +32,7 @@ $(document).ready(() => {
   });
 
   $('.close').on('click', () => {
+    $('.toast-top').addClass('toast-height')
     $('.toast').toast('hide');
   });
 
