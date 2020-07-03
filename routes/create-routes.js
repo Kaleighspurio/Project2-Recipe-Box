@@ -3,15 +3,19 @@ const db = require('../models');
 
 router.post('/', (req, res) => {
   let authorID;
+  //   Check if an author already exists with the name the user put in.
   // eslint-disable-next-line no-unused-vars
   const checkAuthor = new Promise((resolve, reject) => {
     db.Author.findOne({ where: { name: req.body.name } }).then((dbAuthor) => {
       console.log(dbAuthor);
+      //   if the author already exists, set the authorID to that author's database id
       if (dbAuthor !== null) {
         console.log(dbAuthor.dataValues.id);
         authorID = dbAuthor.dataValues.id;
         console.log(authorID, 'This is the authorID for existing author');
         resolve(authorID);
+        //  if that author does not exist, then create the new author in the author table and
+        // set the authorID variable to the new author's ID
       } else {
         // eslint-disable-next-line no-shadow
         db.Author.create({ name: req.body.name }).then((dbAuthor) => {
@@ -23,6 +27,8 @@ router.post('/', (req, res) => {
     });
   });
 
+  // This handles the creating of the recipe in the Recipe table and the 
+  //   ingredients in the Ingredient table
   const postRecipe = async () => {
     const recipeCreate = await db.Recipe.create({
       AuthorId: authorID,
@@ -42,6 +48,7 @@ router.post('/', (req, res) => {
       });
     });
   };
+  //   Call the functions: checkAuthor, then run the post recipe function
   checkAuthor.then(() => { postRecipe(); }).then((recipeCreate) => {
     res.json(recipeCreate);
   });
