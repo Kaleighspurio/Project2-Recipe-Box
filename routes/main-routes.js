@@ -6,6 +6,7 @@ const db = require('../models');
 // Can be populated on the page when the page loads?
 router.get('/recent', (req, res) => {
   db.Recipe.findAll({
+    include: [db.Author],
     order: [['createdAt', 'DESC']],
     limit: 25,
   }).then((data) => {
@@ -17,14 +18,17 @@ router.get('/recent', (req, res) => {
 //  This manages the search one search filter at a time
 router.get('/search', (req, res) => {
   if (req.body.category) {
-    db.Recipe.findAll({ where: { category: req.body.category } }).then(
+    db.Recipe.findAll({
+      include: [db.Author],
+      where: { category: req.body.category },
+}).then(
       (data) => {
         res.json(data);
       },
     );
   } else if (req.body.ingredient_name) {
     db.Recipe.findAll({
-      include: [
+      include: [db.Author,
         {
           model: db.Ingredient,
           where: {
