@@ -7,8 +7,24 @@ $(document).ready(() => {
   const url = $('#url');
   const ingredients = $('#ingredients');
   const instructions = $('#instructions');
-  //   const file = $('#file');
+  const file = $('#file');
+  //   const filePreview = $('.file');
+  //   const imgPreview = $('.image-preview');
   let createObject;
+
+  //   filePreview.on('change', function () {
+  //     const uploadedFile = this.files[0];
+  //     console.log(uploadedFile);
+  //     if (uploadedFile) {
+  //       const reader = new FileReader();
+  //       imgPreview.addClass('image-display');
+  //       reader.addEventListener('load', function () {
+  //         imgPreview.setAttribute('src', this.result);
+  //         console.log(this);
+  //       });
+  //       reader.readAsDataURL(uploadedFile);
+  //     }
+  //   });
 
   const postRecipe = (recipe) => {
     $.ajax({
@@ -22,17 +38,26 @@ $(document).ready(() => {
     });
   };
 
-  $('#file').change((event) => {
-    const image = $('<img>', {
-      src: URL.createObjectURL(event.target.files[0]),
-      id: 'output',
-      width: '200',
-    });
-    $('image-div').append(image);
+  //   const postImage = (file) => {
+  //     $.ajax({
+  //       method: 'POST',
+  //       url: 'api/create',
+  //       data: file,
+  //     }).then((response) => {
+  //       console.log('posted image');
+  //       console.log(response);
+  //     });
+  //   };
+
+  $('.upload-btn').on('click', (event) => {
+    event.preventDefault();
+    console.log(file.val());
+
+    // postImage(file);
   });
 
   $('.close').on('click', () => {
-    $('.toast-top').addClass('toast-height')
+    $('.toast-top').addClass('toast-height');
     $('.toast').toast('hide');
   });
 
