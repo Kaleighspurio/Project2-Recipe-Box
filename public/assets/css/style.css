@@ -44,7 +44,11 @@ nav {
   left: 50%;
   position: fixed;
   transform: translate(-50%, 0px);
-  z-index: 9999;
+  z-index: 0;
+}
+
+.toast-on-top {
+    z-index: 9999;
 }
 
 .red-border {
