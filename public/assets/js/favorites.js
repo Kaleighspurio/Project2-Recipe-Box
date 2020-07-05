@@ -8,10 +8,10 @@ const getFavorites = () => {
   }).then((response) => {
     console.log(response);
     response.forEach((recipe) => {
-      const recipeName = recipe.name;
+      const recipeName = recipe.recipe_name;
       const imageFilePath = recipe.image;
       const recipeID = recipe.id;
-      const recipeAuthor = recipe.author;
+      const recipeAuthor = recipe.Author.name;
 
       // creates an image for each of the recipes
       const recipeImgElement = $('<img>', {
