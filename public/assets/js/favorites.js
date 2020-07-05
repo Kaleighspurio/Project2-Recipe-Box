@@ -4,7 +4,7 @@ const getFavorites = () => {
   // gets the favorite recipes
   $.ajax({
     method: 'GET',
-    url: '/api/',
+    url: '/api/favorites',
   }).then((response) => {
     console.log(response);
     response.forEach((recipe) => {
