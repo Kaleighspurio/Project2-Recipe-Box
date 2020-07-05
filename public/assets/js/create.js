@@ -50,7 +50,7 @@ $(document).ready(() => {
 
     // if the required fields are empty there will be not posting of data
     if (requiredValues.includes('')) {
-      $('.toast-body').text('Missing required fields');
+      $('.toast-body').text('Missing required fields').addClass('toast-on-top');
       $('.toast').toast('show');
       console.log('recipe failed to create');
       author.addClass('red-border');
@@ -69,7 +69,7 @@ $(document).ready(() => {
 
   // click the close 'x' to close the toast
   $('.close').on('click', () => {
-    $('.toast-top').addClass('toast-height');
+    $('.toast-top').addClass('toast-height').removeClass('toast-on-top');
     $('.toast').toast('hide');
   });
 });
