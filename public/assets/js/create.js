@@ -7,26 +7,11 @@ $(document).ready(() => {
   const url = $('#url');
   const ingredients = $('#ingredients');
   const instructions = $('#instructions');
-  const file = $('#file');
-  //   const filePreview = $('.file');
-  //   const imgPreview = $('.image-preview');
+  const files = $('#file');
   let createObject;
 
-  //   filePreview.on('change', function () {
-  //     const uploadedFile = this.files[0];
-  //     console.log(uploadedFile);
-  //     if (uploadedFile) {
-  //       const reader = new FileReader();
-  //       imgPreview.addClass('image-display');
-  //       reader.addEventListener('load', function () {
-  //         imgPreview.setAttribute('src', this.result);
-  //         console.log(this);
-  //       });
-  //       reader.readAsDataURL(uploadedFile);
-  //     }
-  //   });
-
   const postRecipe = (recipe) => {
+    // post reqest to the backend to store the recipe in the db
     $.ajax({
       method: 'POST',
       url: 'api/create',
@@ -38,32 +23,11 @@ $(document).ready(() => {
     });
   };
 
-  //   const postImage = (file) => {
-  //     $.ajax({
-  //       method: 'POST',
-  //       url: 'api/create',
-  //       data: file,
-  //     }).then((response) => {
-  //       console.log('posted image');
-  //       console.log(response);
-  //     });
-  //   };
-
-  $('.upload-btn').on('click', (event) => {
-    event.preventDefault();
-    console.log(file.val());
-
-    // postImage(file);
-  });
-
-  $('.close').on('click', () => {
-    $('.toast-top').addClass('toast-height');
-    $('.toast').toast('hide');
-  });
 
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
 
+    // creates an object of the values to be stored in the db
     createObject = {
       name: author.val().trim(),
       recipe_name: recipeName.val().trim(),
@@ -73,13 +37,17 @@ $(document).ready(() => {
       dietary_restriction: restrictions.val(),
       serving_size: size.val().trim(),
       url_source: url.val(),
+      image: files,
     };
 
+
+    // creates a seperate array of the values that are required
     const values = Object.values(createObject);
     const requiredValues = values.slice(0, 4);
     requiredValues.push(ingredients.val().trim());
     console.log(requiredValues);
 
+    // if the required fields are empty there will be not posting of data
     if (requiredValues.includes('')) {
       $('.toast-body').text('Missing required fields');
       $('.toast').toast('show');
@@ -89,10 +57,18 @@ $(document).ready(() => {
       instructions.addClass('red-border');
       ingredients.addClass('red-border');
       category.addClass('red-border');
+      console.log(createObject);
       return;
     }
 
+    // posts the recipe
     postRecipe(createObject);
     console.log('recipe created');
+  });
+
+  // click the close 'x' to close the toast
+  $('.close').on('click', () => {
+    $('.toast-top').addClass('toast-height');
+    $('.toast').toast('hide');
   });
 });
