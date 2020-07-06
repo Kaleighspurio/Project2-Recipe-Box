@@ -48,14 +48,22 @@ nav {
 }
 
 .toast-on-top {
-    z-index: 9999;
+  z-index: 9999;
+}
+
+.recipe-div {
+  border: 1px solid black;
+  margin:  30px auto;
+
 }
 
 .red-border {
   border: 1px solid red;
 }
+
 .favorite-container {
   height: fit-content;
+
 }
 
 .kitchen-tools {
@@ -73,13 +81,13 @@ nav {
 
 .image-preview {
   width: 300px;
-  min-height: 100px; 
+  min-height: 100px;
   margin-top: 15px;
   display: none;
 }
 
 .image-display {
-    display: block;
+  display: block;
 }
 .footer {
   position: sticky;
