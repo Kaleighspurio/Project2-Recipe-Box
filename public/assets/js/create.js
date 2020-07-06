@@ -19,11 +19,9 @@ $(document).ready(() => {
     }).then((response) => {
       console.log('posted createObject');
       console.log(response);
-
-      window.location.href = `/recipe?id=${response.id}`;
+      window.location.href = `/view/${response.id}`;
     });
   };
-
 
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
@@ -41,7 +39,6 @@ $(document).ready(() => {
       image: files,
     };
 
-
     // creates a seperate array of the values that are required
     const values = Object.values(createObject);
     const requiredValues = values.slice(0, 4);
@@ -50,7 +47,8 @@ $(document).ready(() => {
 
     // if the required fields are empty there will be not posting of data
     if (requiredValues.includes('')) {
-      $('.toast-body').text('Missing required fields').addClass('toast-on-top');
+      $('.toast-body').text('Missing required fields');
+      $('.toast-top').removeClass('toast-no-height');
       $('.toast').toast('show');
       console.log('recipe failed to create');
       author.addClass('red-border');
@@ -69,7 +67,7 @@ $(document).ready(() => {
 
   // click the close 'x' to close the toast
   $('.close').on('click', () => {
-    $('.toast-top').addClass('toast-height').removeClass('toast-on-top');
+    $('.toast-top').addClass('toast-height');
     $('.toast').toast('hide');
   });
 });
