@@ -36,15 +36,20 @@ nav {
   font-size: 30px;
 }
 
-.toast-height {
+/* .toast-height {
   height: 200px;
+} */
+
+.toast-no-height {
+    height: 0;
+    width: 0;
 }
 .toast-top {
   top: 0;
   left: 50%;
   position: fixed;
   transform: translate(-50%, 0px);
-  z-index: 0;
+  z-index: 9999;
 }
 
 .toast-on-top {
