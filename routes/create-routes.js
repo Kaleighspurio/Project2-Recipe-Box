@@ -21,6 +21,26 @@ router.post('/', async (req, res) => {
     console.log(authorID, 'This should be the id for a new author');
   }
 
+  let filepath;
+  //   *** this will handle the image:
+  if (req.files) {
+    const saveAndMoveImg = () => {
+      console.log(req.body.image[0].files[0].name);
+      // eslint-disable-next-line prefer-destructuring
+      const file = req.body.image[0].files[0];
+      const filename = file.name;
+      console.log(filename);
+
+      file.mv(`../uploads/${filename}`, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+      filepath = `../uploads/${filename}`;
+    };
+    await saveAndMoveImg();
+  }
+
   // This handles the creating of the recipe in the Recipe table and the
   //   ingredients in the Ingredient table
   const recipeCreate = await db.Recipe.create({
@@ -30,7 +50,7 @@ router.post('/', async (req, res) => {
     serving_size: req.body.serving_size,
     category: req.body.category,
     dietary_restriction: req.body.dietary_restriction,
-    image: req.body.image,
+    image: filepath,
     url_source: req.body.url_source,
   });
   // eslint-disable-next-line no-unused-vars
@@ -45,6 +65,5 @@ router.post('/', async (req, res) => {
   res.json(recipeCreate.dataValues);
   //   Call the functions: checkAuthor, then run the post recipe function
 });
-
 
 module.exports = router;
