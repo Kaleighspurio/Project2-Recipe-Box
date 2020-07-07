@@ -32,7 +32,7 @@ $(document).ready(() => {
     data.append('recipe_name', recipeName.val().trim());
     data.append('category', category.val());
     data.append('instructions', recipeName.val());
-    data.appaned('ingredient_name', ingredients.val().trim().split('\n'));
+    data.append('ingredient_name', ingredients.val().trim().split('\n'));
     data.append('dietary_restrictions', restrictions.val());
     data.append('serving_size', size.val().trim());
     data.append('url_source', url.val());
