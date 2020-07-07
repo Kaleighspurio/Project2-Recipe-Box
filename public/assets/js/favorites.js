@@ -12,7 +12,14 @@ const getFavorites = () => {
       const imageFilePath = recipe.image;
       const recipeID = recipe.id;
       const recipeAuthor = recipe.Author.name;
+      const recipieCat = recipe.category;
+      const favoriteCount = recipe.favorite_count;
 
+      // creates a div for each reciepe to go in
+      const recipeDiv = $('<div>', {
+        class: 'recipe-div rounded center',
+        width: '200px',
+      });
       // creates an image for each of the recipes
       const recipeImgElement = $('<img>', {
         src: imageFilePath,
@@ -20,17 +27,36 @@ const getFavorites = () => {
         width: '150px',
         class: 'recipe-fav',
       });
-
+      const lineBreak = $('<br>');
       // creates a p for the recipe name for each of the recipes
-      const recipeNameLabel = $('<p>', {
-        class: 'center',
+      const recipeNameLabel = $('<a>', {
+        href: `/recipe?id=${response.id}`,
+        'data-id': recipeID,
       }).text(recipeName);
+
+      // creates a p for the category name for each of the recipes
+      const categoryLabel = $('<p>', {
+        class: 'center label-margin',
+      }).text(recipieCat);
       // creates a p for the author name for each of the recipes
       const recipeAuthorLabel = $('<p>', {
-        class: 'center',
-      }).text(recipeAuthor);
+        class: 'center label-margin',
+        'data-id': recipeID,
+      }).text(`Author: ${recipeAuthor}`);
+      // creates a p for the favorite count for each of the recipes
+      const favCount = $('<p>', {
+        class: 'center label-margin',
+      }).text(`Favorite Count: ${favoriteCount}`);
       // appends the image, recipe name and author name to the recipe div for each of the recipes
-      recipeDivEl.append(recipeImgElement, recipeNameLabel, recipeAuthorLabel);
+      recipeDiv.append(
+        recipeImgElement,
+        lineBreak,
+        recipeNameLabel,
+        categoryLabel,
+        recipeAuthorLabel,
+        favCount,
+      );
+      recipeDivEl.append(recipeDiv);
     });
   });
 };

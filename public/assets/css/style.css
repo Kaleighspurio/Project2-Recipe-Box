@@ -36,26 +36,35 @@ nav {
   font-size: 30px;
 }
 
-.toast-height {
-  height: 200px;
+.toast-no-height {
+    height: 0;
+    width: 0;
 }
 .toast-top {
   top: 0;
   left: 50%;
   position: fixed;
   transform: translate(-50%, 0px);
-  z-index: 0;
+  z-index: 9999;
 }
 
 .toast-on-top {
-    z-index: 9999;
+  z-index: 9999;
+}
+
+.recipe-div {
+  border: 1px solid black;
+  margin:  30px auto;
+
 }
 
 .red-border {
   border: 1px solid red;
 }
+
 .favorite-container {
   height: fit-content;
+
 }
 
 .kitchen-tools {
@@ -67,19 +76,30 @@ nav {
   padding-bottom: 0;
 }
 
+.search-header {
+  margin: 15px;
+}
+
+.hide {
+  display: none;
+}
+
+.label-margin {
+  margin: 0;
+}
 .upload {
   width: 500px;
 }
 
 .image-preview {
   width: 300px;
-  min-height: 100px; 
+  min-height: 100px;
   margin-top: 15px;
   display: none;
 }
 
 .image-display {
-    display: block;
+  display: block;
 }
 .footer {
   position: sticky;
