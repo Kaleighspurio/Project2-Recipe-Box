@@ -16,6 +16,8 @@ $(document).ready(() => {
       method: 'POST',
       url: 'api/create',
       data: recipe,
+      processData: false,
+      contentType: false,
     }).then((response) => {
       console.log('posted createObject');
       console.log(response);
@@ -27,7 +29,6 @@ $(document).ready(() => {
     event.preventDefault();
 
     const data = new FormData();
-
     data.append('image', files[0].files[0]);
     data.append('recipe_name', recipeName.val().trim());
     data.append('category', category.val());
@@ -39,18 +40,19 @@ $(document).ready(() => {
     data.append('name', author.val().trim());
 
     console.log(files[0].files[0]);
+    console.log(data.entries());
 
     // creates an object of the values to be stored in the db
     createObject = {
       name: author.val().trim(),
-      // recipe_name: recipeName.val().trim(),
-      // category: category.val(),
-      // instructions: instructions.val(),
-      // ingredient_name: ingredients.val().trim().split('\n'),
-      // dietary_restriction: restrictions.val(),
-      // serving_size: size.val().trim(),
-      // url_source: url.val(),
-      // image: files,
+      recipe_name: recipeName.val().trim(),
+      category: category.val(),
+      instructions: instructions.val(),
+      ingredient_name: ingredients.val().trim().split('\n'),
+      dietary_restriction: restrictions.val(),
+      serving_size: size.val().trim(),
+      url_source: url.val(),
+      image: files,
     };
 
     // creates a seperate array of the values that are required
