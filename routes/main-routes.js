@@ -19,7 +19,11 @@ router.get('/recent', (req, res) => {
 router.get('/category/:category', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
-    where: { category: req.params.category },
+    where: {
+      category: {
+        [Op.like]: `%${req.params.category}%`,
+      },
+    },
   }).then((data) => {
     res.json(data);
   });
@@ -128,7 +132,11 @@ router.get('/:ingredient/:author/:category', (req, res) => {
       },
       {
         model: db.Author,
-        where: { name: req.params.author },
+        where: {
+          name: {
+            [Op.like]: `%${req.params.author}%`,
+          },
+        },
       },
     ],
     where: {
