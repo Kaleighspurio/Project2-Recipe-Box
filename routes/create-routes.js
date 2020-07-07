@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     authorID = dbAuthor.dataValues.id;
     console.log(authorID, 'This should be the id for a new author');
   }
-
+console.log(req.files);
   let filepath;
   //   *** this will handle the image:
   if (req.files) {
