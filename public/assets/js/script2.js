@@ -1,7 +1,12 @@
+const startRecipes = $('.on-load-recipes');
+// $('.category-input').addClass('hide');
+// $('.ingredient-input').addClass('hide');
+// $('.author-input').addClass('hide');
+
 const pageLoad = () => {
   $.ajax({
     method: 'GET',
-    url: '/api/??',
+    url: '/api/recent',
   }).then((response) => {
     console.log(response);
     response.forEach((recipe) => {
@@ -40,7 +45,31 @@ const pageLoad = () => {
         recipeNameLabel,
         recipeAuthorLabel
       );
-      recipeDivEl.append(recipeDiv);
+      startRecipes.append(recipeDiv);
     });
   });
 };
+
+const categorySearch = () => {
+  $.ajax({
+    method: 'GET',
+    url: '/api/search',
+  }).then((response) => {
+    console.log('after category search', response);
+  });
+};
+
+pageLoad();
+
+$('.cat-search').on('click', (event) => {
+  event.preventDefault();
+  categorySearch();
+});
+
+$('.ingred-search').on('click', (event) => {
+  event.preventDefault();
+});
+
+$('.author-search').on('click', (event) => {
+  event.preventDefault();
+});
