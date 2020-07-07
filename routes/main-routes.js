@@ -149,7 +149,7 @@ router.put('/:id', (req, res) => {
       where: {
         id: req.params.id,
       },
-    }
+    },
   ).then((dbRecipe) => {
     res.json(dbRecipe);
   });
