@@ -9,6 +9,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Rock+Salt&display=swap"
       rel="stylesheet"
@@ -72,7 +73,7 @@
             <div class="input-group mb-3">
           <select
             class="custom-select"
-            id="category"
+            id="search-category"
             aria-label="Example select with button addon"
           >
             <option selected>Select a category</option>
@@ -96,23 +97,23 @@
           </div>
 
           <div class="input-group mt-3 mb-3">
-            <input type="text" class="form-control" placeholder="Includes this ingredient:" aria-label="Ingredient" aria-describedby="button-addon2">
+            <input type="text" class="form-control" id = "search-ingredient" placeholder="Includes this ingredient:" aria-label="Ingredient" aria-describedby="button-addon2">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+              <button class="btn btn-outline-secondary ingredient-button" type="button" id="button-addon2">Search</button>
             </div>
           </div>
 
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter an author" aria-label="Author" aria-describedby="button-addon2">
+            <input type="text" class="form-control" id = "search-author" placeholder="Enter an author" aria-label="Author" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
             </div>
           </div>
           
 
-        </div>
-        <h2>Search Results:</h2>
-
+        </div id = "match-list">
+        <h2>Search Results <button id = "clear-all" style = "float: right;" type="button" class="btn btn-outline-secondary" ><i class="fa fa-trash"></i> Clear Search Results</button></h2>
+        
         
     </div>
     <footer class="footer rock-font">
@@ -167,6 +168,10 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+<<<<<<< HEAD
+    <script src="assets/js/index.js"></script>
+=======
     <script src="assets/js/script2.js"></script>
+>>>>>>> b048bf60b3a9a03bf2132ce25b2a091e75788084
   </body>
 </html>
