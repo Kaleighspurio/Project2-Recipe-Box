@@ -55,6 +55,7 @@
         </ul>
       </div>
     </nav>
+
     <div class="jumbotron jumbotron-fluid body-background jumbo-padding">
       <div class="container center">
         <h1 class="display-4">Search for a Recipe</h1>
@@ -67,7 +68,7 @@
     </div>
 
     <div class="container rounded form-group">
-        <div class="input-group mb-3 search-input">
+        <!-- <div class="input-group mb-3 search-input">
             <h3>What would you like to search for?</h3>
 
             <select
@@ -87,36 +88,41 @@
                 Search
               </button>
             </div>
-          </div>
-        <div class="form-group">
+          </div> -->
+        <!-- <div class="form-group">
             <label for="exampleFormControlSelect1">What would you like to search?</label>
             <select class="form-control" id="what-search">
               <option value="category">Category</option>
               <option value = "ingredient">Ingredient</option>
               <option value = "author">Author</option>
             </select>
-          </div>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary search" type="button">
+                  Search
+                </button>
+              </div>
+          </div> -->
 
       <form class="form">
         <div class="input-group mb-3 category-input">
           <select
             class="custom-select"
-            id="category"
+            id="category-select"
             aria-label="Example select with button addon"
           >
-            <option selected>Select a category</option>
+            <option>Select a category</option>
             <option value="null">Category</option>
             <option value="breakfast">Breakfast</option>
             <option value="entree">Entree</option>
             <option value="app">Appetizer</option>
             <option value="side">Side Dish</option>
-            <option value="soup">Soup</option>
+            <option value="soups">Soup</option>
             <option value="salad">Salad</option>
             <option value="bread">Bread</option>
-            <option value="dessert">Dessert</option>
-            <option value="vegan">Vegan</option>
+            <option value="desserts">Dessert</option>
+            <!-- <option value="vegan">Vegan</option>
             <option value="vegetarian">Vegetarian</option>
-            <option value="gluten-free">Gluten Free</option>
+            <option value="gluten-free">Gluten Free</option> -->
           </select>
 
           <div class="input-group-append">
@@ -129,7 +135,7 @@
         <div class="input-group mt-3 mb-3 ingredient-input">
           <input
             type="text"
-            class="form-control"
+            class="form-control ingred-input"
             placeholder="Includes this ingredient:"
             aria-label="Ingredient"
             aria-describedby="button-addon2"
@@ -148,7 +154,7 @@
         <div class="input-group mb-3 author-input">
           <input
             type="text"
-            class="form-control"
+            class="form-control auth-input"
             placeholder="Enter an author"
             aria-label="Author"
             aria-describedby="button-addon2"
@@ -166,7 +172,7 @@
       </form>
 
       <div class="center">
-        <h2 class="search-header">Recently Added Recipes:</h2>
+        <h2 class="search-header"></h2>
 
         <div class="rounded on-load-recipes"></div>
       </div>
