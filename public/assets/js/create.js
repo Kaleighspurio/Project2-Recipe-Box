@@ -26,17 +26,31 @@ $(document).ready(() => {
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
 
+    const data = new FormData();
+
+    data.append('image', files[0].files[0]);
+    data.append('recipe_name', recipeName.val().trim());
+    data.append('category', category.val());
+    data.append('instructions', recipeName.val());
+    data.appaned('ingredient_name', ingredients.val().trim().split('\n'));
+    data.append('dietary_restrictions', restrictions.val());
+    data.append('serving_size', size.val().trim());
+    data.append('url_source', url.val());
+    data.append('name', author.val().trim());
+
+    console.log(files[0].files[0]);
+
     // creates an object of the values to be stored in the db
     createObject = {
       name: author.val().trim(),
-      recipe_name: recipeName.val().trim(),
-      category: category.val(),
-      instructions: instructions.val(),
-      ingredient_name: ingredients.val().trim().split('\n'),
-      dietary_restriction: restrictions.val(),
-      serving_size: size.val().trim(),
-      url_source: url.val(),
-      image: files,
+      // recipe_name: recipeName.val().trim(),
+      // category: category.val(),
+      // instructions: instructions.val(),
+      // ingredient_name: ingredients.val().trim().split('\n'),
+      // dietary_restriction: restrictions.val(),
+      // serving_size: size.val().trim(),
+      // url_source: url.val(),
+      // image: files,
     };
 
     // creates a seperate array of the values that are required
@@ -61,7 +75,7 @@ $(document).ready(() => {
     }
 
     // posts the recipe
-    postRecipe(createObject);
+    postRecipe(data);
     console.log('recipe created');
   });
 
