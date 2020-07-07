@@ -9,6 +9,7 @@ $(document).ready(() => {
   const instructions = $('#instructions');
   const files = $('#file');
   let createObject;
+  let recipeID;
 
   const postRecipe = (recipe) => {
     // post reqest to the backend to store the recipe in the db
@@ -21,19 +22,20 @@ $(document).ready(() => {
     }).then((response) => {
       console.log('posted createObject');
       console.log(response);
-      window.location.href = `/view/${response.id}`;
+      recipeID = response.id;
+      window.location.href = `/recipe?id=${response.id}`;
     });
   };
 
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
-
+    const ingredientsArray = ingredients.val().trim().split('\n');
     const data = new FormData();
     data.append('image', files[0].files[0]);
     data.append('recipe_name', recipeName.val().trim());
     data.append('category', category.val());
     data.append('instructions', recipeName.val());
-    data.append('ingredient_name', ingredients.val().trim().split('\n'));
+    data.append('ingredient_name', ingredientsArray);
     data.append('dietary_restrictions', restrictions.val());
     data.append('serving_size', size.val().trim());
     data.append('url_source', url.val());
@@ -79,6 +81,8 @@ $(document).ready(() => {
     // posts the recipe
     postRecipe(data);
     console.log('recipe created');
+    // window.location.href = `/recipe?id=${response.id}`;
+    window.location.href(`/recipe?id=${recipeID}`);
   });
 
   // click the close 'x' to close the toast
