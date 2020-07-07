@@ -36,10 +36,6 @@ nav {
   font-size: 30px;
 }
 
-/* .toast-height {
-  height: 200px;
-} */
-
 .toast-no-height {
     height: 0;
     width: 0;
@@ -78,6 +74,14 @@ nav {
 .jumbo-padding {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.search-header {
+  margin: 15px;
+}
+
+.hide {
+  display: none;
 }
 
 .upload {

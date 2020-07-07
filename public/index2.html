@@ -9,14 +9,13 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Rock+Salt&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="icon" href="./assets/images/icon.png" />
-    <title>Home</title>
+    <title>Recipe Box Home</title>
   </head>
   <body class="body-background">
     <nav class="navbar navbar-expand-lg navbar-light rock-font">
@@ -51,7 +50,7 @@
             <a class="nav-link" href="./view.html">Searched Recipes</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="./favorites.html">Favorites</a>
+            <a class="nav-link" href="./favorites.html">Favorites</a>
           </li>
         </ul>
       </div>
@@ -66,14 +65,43 @@
         />
       </div>
     </div>
-    <div class="container rounded">
-      <form>
-        
-          
-            <div class="input-group mb-3">
+
+    <div class="container rounded form-group">
+        <div class="input-group mb-3 search-input">
+            <h3>What would you like to search for?</h3>
+
+            <select
+              class="custom-select search-select"
+              id="serch-select"
+              aria-label="Example select with button addon"
+            >
+              <option selected></option>
+              <option value="Category">Category</option>
+              <option value="ingredient">Ingredient</option>
+              <option value="author">Author</option>
+
+            </select>
+  
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary search" type="button">
+                Search
+              </button>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">What would you like to search?</label>
+            <select class="form-control" id="what-search">
+              <option value="category">Category</option>
+              <option value = "ingredient">Ingredient</option>
+              <option value = "author">Author</option>
+            </select>
+          </div>
+
+      <form class="form">
+        <div class="input-group mb-3 category-input">
           <select
             class="custom-select"
-            id="search-category"
+            id="category"
             aria-label="Example select with button addon"
           >
             <option selected>Select a category</option>
@@ -90,31 +118,58 @@
             <option value="vegetarian">Vegetarian</option>
             <option value="gluten-free">Gluten Free</option>
           </select>
+
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">
+            <button class="btn btn-outline-secondary cat-search" type="button">
               Search
             </button>
           </div>
+        </div>
 
-          <div class="input-group mt-3 mb-3">
-            <input type="text" class="form-control" id = "search-ingredient" placeholder="Includes this ingredient:" aria-label="Ingredient" aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary ingredient-button" type="button" id="button-addon2">Search</button>
-            </div>
+        <div class="input-group mt-3 mb-3 ingredient-input">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Includes this ingredient:"
+            aria-label="Ingredient"
+            aria-describedby="button-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary ingred-search"
+              type="button"
+              id="button-addon2"
+            >
+              Search
+            </button>
           </div>
+        </div>
 
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id = "search-author" placeholder="Enter an author" aria-label="Author" aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-            </div>
+        <div class="input-group mb-3 author-input">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter an author"
+            aria-label="Author"
+            aria-describedby="button-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary author-search"
+              type="button"
+              id="button-addon2"
+            >
+              Search
+            </button>
           </div>
-          
+        </div>
+      </form>
 
-        </div id = "match-list">
-        <h2>Search Results <button id = "clear-all" style = "float: right;" type="button" class="btn btn-outline-secondary" ><i class="fa fa-trash"></i> Clear Search Results</button></h2>
-        
-        
+      <div class="center">
+        <h2 class="search-header">Recently Added Recipes:</h2>
+
+        <div class="rounded on-load-recipes"></div>
+      </div>
     </div>
     <footer class="footer rock-font">
       <h2 class="footer-heading">Recipe Box</h2>
@@ -168,10 +223,6 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
-<<<<<<< HEAD
-    <script src="assets/js/index.js"></script>
-=======
     <script src="assets/js/script2.js"></script>
->>>>>>> b048bf60b3a9a03bf2132ce25b2a091e75788084
   </body>
 </html>
