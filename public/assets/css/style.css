@@ -84,6 +84,9 @@ nav {
   display: none;
 }
 
+.label-margin {
+  margin: 0;
+}
 .upload {
   width: 500px;
 }
