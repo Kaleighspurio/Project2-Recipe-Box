@@ -52,8 +52,41 @@ nav {
   z-index: 9999;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
+
+.image-font {
+  font-size: 30px;
+}
+
+.label-font {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.label-font-fav {
+  margin-left: 30px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 24px;
+
+}
+.label-font-smaller {
+  margin-left: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.image-margin {
+  margin-bottom: 20px;
+}
 .recipe-div {
-  border: 1px solid black;
+ 
   margin:  30px auto;
 
 }
