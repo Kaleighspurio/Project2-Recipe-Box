@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
     await saveAndMoveImg();
   }
 
-  const ingredientArray = req.body.ingredient_name.split(',')
+  const ingredientArray = req.body.ingredient_name.split(',');
   // This handles the creating of the recipe in the Recipe table and the
   //   ingredients in the Ingredient table
   const recipeCreate = await db.Recipe.create({

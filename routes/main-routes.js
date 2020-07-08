@@ -6,6 +6,7 @@ const db = require('../models');
 
 // This gets the 25 most recent recipes and orders them newest to oldest.
 // Can be populated on the page when the page loads?
+// /api/recent
 router.get('/recent', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
@@ -16,6 +17,7 @@ router.get('/recent', (req, res) => {
   });
 });
 
+// /api/category/cate
 router.get('/category/:category', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
@@ -149,9 +151,10 @@ router.get('/:ingredient/:author/:category', (req, res) => {
 
 // **** PUT to update the favorite_count
 router.put('/:id', (req, res) => {
+  const newFavoriteCount = req.body.favorite_count + 1;
   db.Recipe.update(
     {
-      favorite_count: req.body.favorite_count,
+      favorite_count: newFavoriteCount,
     },
     {
       where: {
