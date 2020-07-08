@@ -21,7 +21,7 @@ router.post('/comment', (req, res) => {
   db.Comment.create({
     comment: req.body.comment,
     commenter_name: req.body.commenter_name,
-    // recipe_id: req.body.recipe_id
+    recipe_id: req.body.recipe_id,
   }).then((result) => {
     // Send back the ID of the recipe
     res.json({ id: result.insertId });
@@ -36,7 +36,7 @@ router.put('/:id', (req, res) => {
   ).then((result) => {
     if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
+      res.status(404).end();
     }
     res.status(200).end();
   });
