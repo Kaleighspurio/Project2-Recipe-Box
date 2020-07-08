@@ -1,4 +1,4 @@
-const startRecipes = $('.on-load-recipes');
+const startRecipes = $(".on-load-recipes");
 let category;
 let ingredient;
 let author;
@@ -9,8 +9,8 @@ let author;
 
 const pageLoad = () => {
   $.ajax({
-    method: 'GET',
-    url: '/api/recent',
+    method: "GET",
+    url: "/api/recent",
   }).then((response) => {
     console.log(response);
     response.forEach((recipe) => {
@@ -19,29 +19,29 @@ const pageLoad = () => {
       const recipeID = recipe.id;
       const recipeAuthor = recipe.Author.name;
 
-      $('.search-header').text('Recently Added Recipies:');
+      $(".search-header").text("Recently Added Recipies:");
       // creates a div for each reciepe to go in
-      const recipeDiv = $('<div>', {
-        class: 'recipe-div rounded center',
-        width: '200px',
+      const recipeDiv = $("<div>", {
+        class: "recipe-div rounded center",
+        width: "200px",
       });
       // creates an image for each of the recipes
-      const recipeImgElement = $('<img>', {
+      const recipeImgElement = $("<img>", {
         src: imageFilePath,
-        'data-id': recipeID,
-        width: '150px',
-        class: 'recipe-fav',
+        "data-id": recipeID,
+        width: "150px",
+        class: "recipe-fav",
       });
-      const lineBreak = $('<br>');
+      const lineBreak = $("<br>");
       // creates a p for the recipe name for each of the recipes
-      const recipeNameLabel = $('<a>', {
+      const recipeNameLabel = $("<a>", {
         href: `/recipe?id=${response.id}`,
-        'data-id': recipeID,
+        "data-id": recipeID,
       }).text(recipeName);
       // creates a p for the author name for each of the recipes
-      const recipeAuthorLabel = $('<p>', {
-        class: 'center',
-        'data-id': recipeID,
+      const recipeAuthorLabel = $("<p>", {
+        class: "center",
+        "data-id": recipeID,
       }).text(`Author: ${recipeAuthor}`);
       // appends the image, recipe name and author name to the recipe div for each of the recipes
       recipeDiv.append(
@@ -57,10 +57,10 @@ const pageLoad = () => {
 
 const categorySearch = (searchedCategory) => {
   $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/category/${searchedCategory}`,
   }).then((response) => {
-    console.log('after category search', response);
+    console.log("after category search", response);
     startRecipes.empty();
     response.forEach((recipe) => {
       const recipeName = recipe.recipe_name;
@@ -68,36 +68,36 @@ const categorySearch = (searchedCategory) => {
       const recipeID = recipe.id;
       const recipeAuthor = recipe.Author.name;
 
-      $('.search-header').text(`${category} recipies`);
+      $(".search-header").text(`${category} recipies`);
       // creates a div for each reciepe to go in
-      const recipeDiv = $('<div>', {
-        class: 'recipe-div rounded center',
-        width: '200px',
+      const recipeDiv = $("<div>", {
+        class: "recipe-div rounded center",
+        width: "200px",
       });
       // creates an image for each of the recipes
-      const recipeImgElement = $('<img>', {
+      const recipeImgElement = $("<img>", {
         src: imageFilePath,
-        'data-id': recipeID,
-        width: '150px',
-        class: 'recipe-fav',
+        "data-id": recipeID,
+        width: "150px",
+        class: "recipe-fav",
       });
-      const lineBreak = $('<br>');
+      const lineBreak = $("<br>");
       // creates a p for the recipe name for each of the recipes
-      const recipeNameLabel = $('<a>', {
+      const recipeNameLabel = $("<a>", {
         href: `/recipe?id=${response.id}`,
-        'data-id': recipeID,
+        "data-id": recipeID,
       }).text(recipeName);
       // creates a p for the author name for each of the recipes
-      const recipeAuthorLabel = $('<p>', {
-        class: 'center',
-        'data-id': recipeID,
+      const recipeAuthorLabel = $("<p>", {
+        class: "center",
+        "data-id": recipeID,
       }).text(`Author: ${recipeAuthor}`);
       // appends the image, recipe name and author name to the recipe div for each of the recipes
       recipeDiv.append(
         recipeImgElement,
         lineBreak,
         recipeNameLabel,
-        recipeAuthorLabel,
+        recipeAuthorLabel
       );
       startRecipes.append(recipeDiv);
     });
@@ -106,10 +106,10 @@ const categorySearch = (searchedCategory) => {
 
 const ingredientSearch = (searchedIngredient) => {
   $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/ingredient/${searchedIngredient}`,
   }).then((response) => {
-    console.log('ingredient search', response);
+    console.log("ingredient search", response);
     startRecipes.empty();
     response.forEach((recipe) => {
       const recipeName = recipe.recipe_name;
@@ -117,36 +117,36 @@ const ingredientSearch = (searchedIngredient) => {
       const recipeID = recipe.id;
       const recipeAuthor = recipe.Author.name;
 
-      $('.search-header').text(`Recipies that include ${ingredient}`);
+      $(".search-header").text(`Recipies that include ${ingredient}`);
       // creates a div for each reciepe to go in
-      const recipeDiv = $('<div>', {
-        class: 'recipe-div rounded center',
-        width: '200px',
+      const recipeDiv = $("<div>", {
+        class: "recipe-div rounded center",
+        width: "200px",
       });
       // creates an image for each of the recipes
-      const recipeImgElement = $('<img>', {
+      const recipeImgElement = $("<img>", {
         src: imageFilePath,
-        'data-id': recipeID,
-        width: '150px',
-        class: 'recipe-fav',
+        "data-id": recipeID,
+        width: "150px",
+        class: "recipe-fav",
       });
-      const lineBreak = $('<br>');
+      const lineBreak = $("<br>");
       // creates a p for the recipe name for each of the recipes
-      const recipeNameLabel = $('<a>', {
+      const recipeNameLabel = $("<a>", {
         href: `/recipe?id=${response.id}`,
-        'data-id': recipeID,
+        "data-id": recipeID,
       }).text(recipeName);
       // creates a p for the author name for each of the recipes
-      const recipeAuthorLabel = $('<p>', {
-        class: 'center',
-        'data-id': recipeID,
+      const recipeAuthorLabel = $("<p>", {
+        class: "center",
+        "data-id": recipeID,
       }).text(`Author: ${recipeAuthor}`);
       // appends the image, recipe name and author name to the recipe div for each of the recipes
       recipeDiv.append(
         recipeImgElement,
         lineBreak,
         recipeNameLabel,
-        recipeAuthorLabel,
+        recipeAuthorLabel
       );
       startRecipes.append(recipeDiv);
     });
@@ -155,10 +155,10 @@ const ingredientSearch = (searchedIngredient) => {
 
 const authorSearch = (searchedAuthor) => {
   $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/author/${searchedAuthor}`,
   }).then((response) => {
-    console.log('ingredient search', response);
+    console.log("ingredient search", response);
     startRecipes.empty();
     response.forEach((recipe) => {
       const recipeName = recipe.recipe_name;
@@ -166,59 +166,59 @@ const authorSearch = (searchedAuthor) => {
       const recipeID = recipe.id;
       const recipeAuthor = recipe.Author.name;
 
-      $('.search-header').text(`Recipies submitted by ${author}`);
+      $(".search-header").text(`Recipies submitted by ${author}`);
       // creates a div for each reciepe to go in
-      const recipeDiv = $('<div>', {
-        class: 'recipe-div rounded center',
-        width: '200px',
+      const recipeDiv = $("<div>", {
+        class: "recipe-div rounded center",
+        width: "200px",
       });
       // creates an image for each of the recipes
-      const recipeImgElement = $('<img>', {
+      const recipeImgElement = $("<img>", {
         src: imageFilePath,
-        'data-id': recipeID,
-        width: '150px',
-        class: 'recipe-fav',
+        "data-id": recipeID,
+        width: "150px",
+        class: "recipe-fav",
       });
-      const lineBreak = $('<br>');
+      const lineBreak = $("<br>");
       // creates a p for the recipe name for each of the recipes
-      const recipeNameLabel = $('<a>', {
+      const recipeNameLabel = $("<a>", {
         href: `/recipe?id=${response.id}`,
-        'data-id': recipeID,
+        "data-id": recipeID,
       }).text(recipeName);
       // creates a p for the author name for each of the recipes
-      const recipeAuthorLabel = $('<p>', {
-        class: 'center',
-        'data-id': recipeID,
+      const recipeAuthorLabel = $("<p>", {
+        class: "center",
+        "data-id": recipeID,
       }).text(`Author: ${recipeAuthor}`);
       // appends the image, recipe name and author name to the recipe div for each of the recipes
       recipeDiv.append(
         recipeImgElement,
         lineBreak,
         recipeNameLabel,
-        recipeAuthorLabel,
+        recipeAuthorLabel
       );
       startRecipes.append(recipeDiv);
     });
   });
 };
 
-$('.cat-search').on('click', (event) => {
+$(".cat-search").on("click", (event) => {
   event.preventDefault();
-  category = $('#category-select').val();
+  category = $("#category-select").val();
   console.log(category);
   categorySearch(category);
 });
 
-$('.ingred-search').on('click', (event) => {
+$(".ingred-search").on("click", (event) => {
   event.preventDefault();
-  ingredient = $('.ingred-input').val();
+  ingredient = $(".ingred-input").val();
   console.log(ingredient);
   ingredientSearch(ingredient);
 });
 
-$('.author-search').on('click', (event) => {
+$(".author-search").on("click", (event) => {
   event.preventDefault();
-  author = $('.auth-input').val();
+  author = $(".auth-input").val();
   console.log(author);
   authorSearch(author);
 });
