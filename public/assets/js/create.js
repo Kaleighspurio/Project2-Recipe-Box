@@ -43,7 +43,7 @@ $(document).ready(() => {
 
     console.log(files[0].files[0]);
     console.log(data.entries());
-
+    console.log(ingredientsArray);
     // creates an object of the values to be stored in the db
     createObject = {
       name: author.val().trim(),

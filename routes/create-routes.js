@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const path = require('path');
 const db = require('../models');
 
 router.post('/', async (req, res) => {
@@ -20,27 +21,27 @@ router.post('/', async (req, res) => {
     authorID = dbAuthor.dataValues.id;
     console.log(authorID, 'This should be the id for a new author');
   }
-
-  let filepath;
+  console.log(req.files);
   //   *** this will handle the image:
+  let dbPath;
   if (req.files) {
     const saveAndMoveImg = () => {
-      console.log(req.body.image[0].files[0].name);
       // eslint-disable-next-line prefer-destructuring
-      const file = req.body.image[0].files[0];
+      const file = req.files.image;
       const filename = file.name;
+      dbPath = `/assets/images/uploads/${filename}`;
       console.log(filename);
-
-      file.mv(`../uploads/${filename}`, (err) => {
+      const filepath = path.join(__dirname, '..', 'public', 'assets', 'images', 'uploads', filename);
+      file.mv(filepath, (err) => {
         if (err) {
           console.log(err);
         }
       });
-      filepath = `../uploads/${filename}`;
     };
     await saveAndMoveImg();
   }
 
+  const ingredientArray = req.body.ingredient_name.split(',');
   // This handles the creating of the recipe in the Recipe table and the
   //   ingredients in the Ingredient table
   const recipeCreate = await db.Recipe.create({
@@ -50,11 +51,12 @@ router.post('/', async (req, res) => {
     serving_size: req.body.serving_size,
     category: req.body.category,
     dietary_restriction: req.body.dietary_restriction,
-    image: filepath,
+    // save the relative file path
+    image: dbPath,
     url_source: req.body.url_source,
   });
   // eslint-disable-next-line no-unused-vars
-  await req.body.ingredient_name.forEach((ingredient) => {
+  await ingredientArray.forEach((ingredient) => {
     db.Ingredient.create({
       RecipeId: recipeCreate.id,
       ingredient_name: ingredient,
