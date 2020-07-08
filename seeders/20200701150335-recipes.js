@@ -9,7 +9,7 @@ module.exports = {
     dietary_restriction: null,
     favorite_count: null,
     special_notes: 'Make sure you use Dutch Process Cocoa!',
-    image: null,
+    image: '/assets/images/uploads/Dutch-Cocoa-Cookies.jpg',
     url_source: null,
     createdAt: new Date(),
     updatedAt: new Date(),

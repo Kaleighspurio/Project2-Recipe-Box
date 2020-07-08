@@ -40,7 +40,8 @@ router.post('/', async (req, res) => {
     };
     await saveAndMoveImg();
   }
-// /assets/images/
+
+  const ingredientArray = req.body.ingredient_name.split(',')
   // This handles the creating of the recipe in the Recipe table and the
   //   ingredients in the Ingredient table
   const recipeCreate = await db.Recipe.create({
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
     url_source: req.body.url_source,
   });
   // eslint-disable-next-line no-unused-vars
-  await req.body.ingredient_name.forEach((ingredient) => {
+  await ingredientArray.forEach((ingredient) => {
     db.Ingredient.create({
       RecipeId: recipeCreate.id,
       ingredient_name: ingredient,
