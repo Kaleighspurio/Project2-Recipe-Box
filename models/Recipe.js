@@ -17,7 +17,11 @@ module.exports = (sequelize, Datatypes) => {
       allowNull: false,
     },
     dietary_restriction: Datatypes.STRING,
-    favorite_count: Datatypes.INTEGER,
+    favorite_count: {
+      type: Datatypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
     special_notes: Datatypes.TEXT,
     image: Datatypes.STRING,
     url_source: Datatypes.STRING,

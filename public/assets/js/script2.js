@@ -48,7 +48,7 @@ const pageLoad = () => {
         recipeImgElement,
         lineBreak,
         recipeNameLabel,
-        recipeAuthorLabel
+        recipeAuthorLabel,
       );
       startRecipes.append(recipeDiv);
     });

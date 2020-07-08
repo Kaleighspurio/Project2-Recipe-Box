@@ -8,6 +8,7 @@ if (id) {
     url: `api/view/${id}`,
   }).then((response) => {
     console.log(response);
+
     // update placeholder text in recipe card //
     $(".recipe-name").text("Recipe Title", `${recipe.recipe_name}`);
     $(".recipe-author").text("Recipe Author", `${recipe.Author.name}`);
@@ -16,6 +17,8 @@ if (id) {
       `${recipe.instructions}`
     );
     $(".recipe-link").text("Recipe link", `${recipe.link}`);
+
+
   });
 }
 

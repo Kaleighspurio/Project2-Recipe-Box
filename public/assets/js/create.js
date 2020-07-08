@@ -16,16 +16,34 @@ $(document).ready(() => {
       method: 'POST',
       url: 'api/create',
       data: recipe,
+      processData: false,
+      contentType: false,
     }).then((response) => {
       console.log('posted createObject');
       console.log(response);
-      window.location.href = `/view/${response.id}`;
+      window.location.href = `/recipe?id=${response.id}`;
     });
   };
 
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
+    const ingredientsArray = ingredients.val().trim().split('\n');
+    console.log(ingredientsArray);
 
+    const data = new FormData();
+    data.append('image', files[0].files[0]);
+    data.append('recipe_name', recipeName.val().trim());
+    data.append('category', category.val());
+    data.append('instructions', recipeName.val());
+    data.append('ingredient_name', ingredientsArray);
+    data.append('dietary_restrictions', restrictions.val());
+    data.append('serving_size', size.val().trim());
+    data.append('url_source', url.val());
+    data.append('name', author.val().trim());
+
+    console.log(files[0].files[0]);
+    console.log(data.entries());
+    console.log(ingredientsArray);
     // creates an object of the values to be stored in the db
     createObject = {
       name: author.val().trim(),
@@ -61,7 +79,7 @@ $(document).ready(() => {
     }
 
     // posts the recipe
-    postRecipe(createObject);
+    postRecipe(data);
     console.log('recipe created');
   });
 

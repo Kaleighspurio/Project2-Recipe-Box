@@ -9,7 +9,7 @@ const getFavorites = () => {
     console.log(response);
     response.forEach((recipe) => {
       const recipeName = recipe.recipe_name;
-      const imageFilePath = recipe.image;
+      // const imageFilePath = recipe.image;
       const recipeID = recipe.id;
       const recipeAuthor = recipe.Author.name;
       const recipieCat = recipe.category;
@@ -22,15 +22,16 @@ const getFavorites = () => {
       });
       // creates an image for each of the recipes
       const recipeImgElement = $('<img>', {
-        src: imageFilePath,
+        src: `../images/uploads/${recipeID}`,
         'data-id': recipeID,
         width: '150px',
         class: 'recipe-fav',
       });
+
       const lineBreak = $('<br>');
       // creates a p for the recipe name for each of the recipes
       const recipeNameLabel = $('<a>', {
-        href: `/recipe?id=${response.id}`,
+        href: `/recipe?id=${recipeID}`,
         'data-id': recipeID,
       }).text(recipeName);
 
@@ -46,7 +47,7 @@ const getFavorites = () => {
       // creates a p for the favorite count for each of the recipes
       const favCount = $('<p>', {
         class: 'center label-margin',
-      }).text(`Favorite Count: ${favoriteCount}`);
+      }).text(`Number of Likes: ${favoriteCount}`);
       // appends the image, recipe name and author name to the recipe div for each of the recipes
       recipeDiv.append(
         recipeImgElement,

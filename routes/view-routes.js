@@ -10,38 +10,63 @@ router.get('/:id', (req, res) => {
   db.Recipe.findOne({
     where: { id: req.params.id },
     include: { model: db.Comment, as: 'Comments' },
-  }).then(function (data) {
+  }).then((data) => {
     console.log(data);
     res.json(data);
   });
 });
 
 // /api/view/comment
-router.post('/comment', function (req, res) {
+router.post('/comment', (req, res) => {
   db.Comment.create({
     comment: req.body.comment,
     commenter_name: req.body.commenter_name,
-    // recipe_id: req.body.recipe_id
-  }).then(function (result) {
+    recipe_id: req.body.recipe_id,
+  }).then((result) => {
     // Send back the ID of the recipe
     res.json({ id: result.insertId });
   });
 });
 
 // /api/view/id
-router.put('/:id', function (req, res) {
+router.put('/:id', (req, res) => {
   db.Recipe.updateOne(
     { special_notes: req.body.notes },
-    { where: { id: req.params.id } }
-  ).then(function (result) {
-    if (result.changedRows == 0) {
+    { where: { id: req.params.id } },
+  ).then((result) => {
+    if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
+      res.status(404).end();
     }
+    res.status(200).end();
   });
 });
 
-//Export so it can be used by other files
+// PUT to update the favorites count
+
+router.put('/favorites/:id', (req, res) => {
+  const newFavoriteCount = req.body.favorites + 1;
+  db.Recipe.updateOne(
+    { favorites_count: newFavoriteCount },
+    { where: { id: req.params.id } },
+  ).then((result) => {
+    if (result.changedRows === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      res.status(404).end();
+    }
+    res.status(200).end();
+  });
+});
+
+// router.get('/', (req, res) => {
+//   db.Recipe.findAll({
+//     order: [['favorite_count', 'DESC']],
+//     limit: 10,
+//     include: [db.Author],
+//   }).then((dbSort) => {
+//     res.json(dbSort);
+//   });
+// });
+
+// Export so it can be used by other files
 module.exports = router;
