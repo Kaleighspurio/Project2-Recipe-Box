@@ -21,7 +21,7 @@ router.post('/comment', (req, res) => {
   db.Comment.create({
     comment: req.body.comment,
     commenter_name: req.body.commenter_name,
-    // recipe_id: req.body.recipe_id
+    recipe_id: req.body.recipe_id,
   }).then((result) => {
     // Send back the ID of the recipe
     res.json({ id: result.insertId });
@@ -36,11 +36,37 @@ router.put('/:id', (req, res) => {
   ).then((result) => {
     if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
+      res.status(404).end();
     }
     res.status(200).end();
   });
 });
+
+// PUT to update the favorites count
+
+router.put('/favorites/:id', (req, res) => {
+  const newFavoriteCount = req.body.favorites + 1;
+  db.Recipe.updateOne(
+    { favorites_count: newFavoriteCount },
+    { where: { id: req.params.id } },
+  ).then((result) => {
+    if (result.changedRows === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      res.status(404).end();
+    }
+    res.status(200).end();
+  });
+});
+
+// router.get('/', (req, res) => {
+//   db.Recipe.findAll({
+//     order: [['favorite_count', 'DESC']],
+//     limit: 10,
+//     include: [db.Author],
+//   }).then((dbSort) => {
+//     res.json(dbSort);
+//   });
+// });
 
 // Export so it can be used by other files
 module.exports = router;
