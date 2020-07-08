@@ -7,15 +7,15 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 
 // eslint-disable-next-line import/no-dynamic-require
-const config = require(path.join(__dirname, '/../config/config.js'))[env];
+// const config = require(path.join(__dirname, '/../config/config.js'))[env];
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const sequelize = new Sequelize('mysql://zybizgezppble8s0:q5scuzv5sd6yjhfy@alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/s1wq6f8jv3wlq294');
+// if (config.use_env_variable) {
+//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+//   sequelize = new Sequelize(config.database, config.username, config.password, config);
+// }
 
 fs
   .readdirSync(__dirname)
