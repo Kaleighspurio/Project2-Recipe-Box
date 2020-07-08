@@ -30,6 +30,8 @@ $(document).ready(() => {
   $('#submit-btn').on('click', (event) => {
     event.preventDefault();
     const ingredientsArray = ingredients.val().trim().split('\n');
+    console.log(ingredientsArray);
+
     const data = new FormData();
     data.append('image', files[0].files[0]);
     data.append('recipe_name', recipeName.val().trim());
@@ -82,7 +84,7 @@ $(document).ready(() => {
     postRecipe(data);
     console.log('recipe created');
     // window.location.href = `/recipe?id=${response.id}`;
-    window.location.href(`/recipe?id=${recipeID}`);
+    // window.location.href(`/recipe?id=${recipeID}`);
   });
 
   // click the close 'x' to close the toast
