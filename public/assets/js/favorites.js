@@ -55,7 +55,7 @@ const getFavorites = () => {
         recipeNameLabel,
         categoryLabel,
         recipeAuthorLabel,
-        favCount
+        favCount,
       );
       recipeDivEl.append(recipeDiv);
     });

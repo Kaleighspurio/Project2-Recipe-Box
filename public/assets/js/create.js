@@ -9,7 +9,6 @@ $(document).ready(() => {
   const instructions = $('#instructions');
   const files = $('#file');
   let createObject;
-  let recipeID;
 
   const postRecipe = (recipe) => {
     // post reqest to the backend to store the recipe in the db
@@ -22,7 +21,6 @@ $(document).ready(() => {
     }).then((response) => {
       console.log('posted createObject');
       console.log(response);
-      recipeID = response.id;
       window.location.href = `/recipe?id=${response.id}`;
     });
   };
@@ -83,8 +81,6 @@ $(document).ready(() => {
     // posts the recipe
     postRecipe(data);
     console.log('recipe created');
-    // window.location.href = `/recipe?id=${response.id}`;
-    // window.location.href(`/recipe?id=${recipeID}`);
   });
 
   // click the close 'x' to close the toast
