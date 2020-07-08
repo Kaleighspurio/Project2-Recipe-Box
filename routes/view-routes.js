@@ -42,5 +42,31 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// PUT to update the favorites count
+
+router.put('/favorites/:id', (req, res) => {
+  const newFavoriteCount = req.body.favorites + 1;
+  db.Recipe.updateOne(
+    { favorites_count: newFavoriteCount },
+    { where: { id: req.params.id } },
+  ).then((result) => {
+    if (result.changedRows === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      res.status(404).end();
+    }
+    res.status(200).end();
+  });
+});
+
+// router.get('/', (req, res) => {
+//   db.Recipe.findAll({
+//     order: [['favorite_count', 'DESC']],
+//     limit: 10,
+//     include: [db.Author],
+//   }).then((dbSort) => {
+//     res.json(dbSort);
+//   });
+// });
+
 // Export so it can be used by other files
 module.exports = router;
