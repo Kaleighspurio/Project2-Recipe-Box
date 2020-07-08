@@ -30,8 +30,20 @@ $(document).ready(() => {
     const ingredientsArray = ingredients.val().trim().split('\n');
     console.log(ingredientsArray);
 
+    console.log(files);
+
+    // if(files.val()===""){
+    //   files.val() = './assets/images/uploads/plate.png';
+    // }
+
     const data = new FormData();
-    data.append('image', files[0].files[0]);
+    console.log('before files', files[0].files[0]);
+
+    if (files[0].files[0] === undefined) {
+      data.append('image', './assets/public/images/uploads/plate.png');
+    } else {
+      data.append('image', files[0].files[0]);
+    }
     data.append('recipe_name', recipeName.val().trim());
     data.append('category', category.val());
     data.append('instructions', recipeName.val());

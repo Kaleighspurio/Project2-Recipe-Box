@@ -14,7 +14,11 @@ const getFavorites = () => {
       const recipeAuthor = recipe.Author.name;
       const recipieCat = recipe.category;
       const favoriteCount = recipe.favorite_count;
+      let recipeImage = recipe.image;
 
+      if (recipeImage === null) {
+        recipeImage = './assets/images/uploads/plate.png';
+      }
       // creates a div for each reciepe to go in
       const recipeDiv = $('<div>', {
         class: 'recipe-div rounded center',
@@ -22,7 +26,7 @@ const getFavorites = () => {
       });
       // creates an image for each of the recipes
       const recipeImgElement = $('<img>', {
-        src: `../images/uploads/${recipeID}`,
+        src: recipeImage,
         'data-id': recipeID,
         width: '150px',
         class: 'recipe-fav',
@@ -55,7 +59,7 @@ const getFavorites = () => {
         recipeNameLabel,
         categoryLabel,
         recipeAuthorLabel,
-        favCount,
+        favCount
       );
       recipeDivEl.append(recipeDiv);
     });
