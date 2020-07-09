@@ -24,10 +24,10 @@ router.post('/comment/:id', (req, res) => {
   db.Comment.create({
     comment: req.body.comment,
     commenter_name: req.body.commenter_name,
-    RecipeId: req.body.recipe_id,
+    RecipeId: req.params.id,
   }).then((result) => {
     // Send back the ID of the recipe
-    res.json({ id: result.insertId });
+    res.json(result);
   });
 });
 
@@ -60,16 +60,6 @@ router.put('/favorites/:id', (req, res) => {
     res.status(200).end();
   });
 });
-
-// router.get('/', (req, res) => {
-//   db.Recipe.findAll({
-//     order: [['favorite_count', 'DESC']],
-//     limit: 10,
-//     include: [db.Author],
-//   }).then((dbSort) => {
-//     res.json(dbSort);
-//   });
-// });
 
 // Export so it can be used by other files
 module.exports = router;
