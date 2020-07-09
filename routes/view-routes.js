@@ -61,15 +61,5 @@ router.put('/favorites/:id', (req, res) => {
   });
 });
 
-// router.get('/', (req, res) => {
-//   db.Recipe.findAll({
-//     order: [['favorite_count', 'DESC']],
-//     limit: 10,
-//     include: [db.Author],
-//   }).then((dbSort) => {
-//     res.json(dbSort);
-//   });
-// });
-
 // Export so it can be used by other files
 module.exports = router;
