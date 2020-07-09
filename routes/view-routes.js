@@ -9,7 +9,10 @@ const db = require('../models');
 router.get('/:id', (req, res) => {
   db.Recipe.findOne({
     where: { id: req.params.id },
-    include: { model: db.Comment, as: 'Comments' },
+    include: [
+      { model: db.Comment, as: 'Comments' },
+      { model: db.Ingredient, as: 'Ingredients' },
+      { model: db.Author, as: 'Author' }],
   }).then((data) => {
     console.log(data);
     res.json(data);
@@ -17,11 +20,11 @@ router.get('/:id', (req, res) => {
 });
 
 // /api/view/comment
-router.post('/comment', (req, res) => {
+router.post('/comment/:id', (req, res) => {
   db.Comment.create({
     comment: req.body.comment,
     commenter_name: req.body.commenter_name,
-    recipe_id: req.body.recipe_id,
+    RecipeId: req.body.recipe_id,
   }).then((result) => {
     // Send back the ID of the recipe
     res.json({ id: result.insertId });
