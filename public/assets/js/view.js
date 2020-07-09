@@ -5,7 +5,7 @@ if (id) {
   // search for the recipe
   $.ajax({
     method: "GET",
-    url: `api/view/${id}`,
+    url: `/recipe?id=${recipeID}`,
   }).then((response) => {
     console.log(response);
 
@@ -17,14 +17,34 @@ if (id) {
       `${recipe.instructions}`
     );
     $(".recipe-link").text("Recipe link", `${recipe.link}`);
-
+    let recipeImage = recipe.image;
+    if (recipeImage === null) {
+      recipeImage = './assets/images/uploads/plate.png';
+    }
 
   });
-}
+};
+
+
 
 // create click event for add to favorites button
 $(".add-favorite").on("click", (event) => {
-  addFavorite(recipe);}
+  const addFavorite = () => {
+  $.ajax({
+    method: "POST",
+    url: /api/favorites,
+  }).then((response) => {
+    console.log(response);}
+// add JQyery here to appened Favorites page or copy Karen's function from Fav page?
+
+
+
 // creat click event for email button
 $(".email-recipe").on("click", (event) => {
-  emailRecipe(recipe);}
+  Const emailRecipe = () => {
+//node mailer function call?
+  }
+};
+
+addFavorite();
+emailRecipe();
