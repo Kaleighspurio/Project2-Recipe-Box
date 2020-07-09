@@ -16,7 +16,10 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.STRING,
       allowNull: false,
     },
-    dietary_restriction: Datatypes.STRING,
+    dietary_restriction: {
+      type: Datatypes.STRING,
+      defaultValue: 'None',
+    },
     favorite_count: {
       type: Datatypes.INTEGER,
       allowNull: false,
