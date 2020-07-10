@@ -57,7 +57,7 @@ $(document).ready(() => {
           class: 'recipe-fav image-margin',
         });
 
-        // creates a p for the recipe name for each of the recipes
+        // creates an a for the recipe name for each of the recipes
         const recipeNameLabel = $('<a>', {
           href: `/recipe?id=${recipeID}`,
           'data-id': recipeID,
