@@ -70,8 +70,8 @@ const createRecipes = (response) => {
     }
     // creates a div for each reciepe to go in
     const recipeDiv = $('<div>', {
-      class: 'recipe-div rounded center',
-      width: '200px',
+      class: 'recipe-div rounded center row',
+      width: '500px',
     });
     // creates a like button for each of the recipes
     const likeButton = $('<button>', {
@@ -86,17 +86,18 @@ const createRecipes = (response) => {
       src: imageFilePath,
       'data-id': recipeID,
       width: '150px',
-      class: 'recipe-fav',
+      class: 'recipe-fav col',
     });
     const lineBreak = $('<br>');
     // creates a p for the recipe name for each of the recipes
     const recipeNameLabel = $('<a>', {
       href: `/recipe?id=${recipeID}`,
       'data-id': recipeID,
+      class: 'recipe-name-label col',
     }).text(recipeName);
     // creates a p for the author name for each of the recipes
     const recipeAuthorLabel = $('<p>', {
-      class: 'center',
+      class: 'center col author-label',
       'data-id': recipeID,
     }).text(`Author: ${recipeAuthor}`);
     // appends the image, recipe name and author name to the recipe div for each of the recipes
