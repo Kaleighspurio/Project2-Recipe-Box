@@ -20,6 +20,14 @@ const createRecipes = (response) => {
       class: 'recipe-div rounded center',
       width: '200px',
     });
+    // creates a like button for each of the recipes
+    const likeButton = $('<button>', {
+      class: 'btn btn-outline-secondary like-btn',
+    });
+    const icon = $('<i>', {
+      class: 'fa fa-thumbs-up',
+    });
+    likeButton.append(icon);
     // creates an image for each of the recipes
     const recipeImgElement = $('<img>', {
       src: imageFilePath,
@@ -44,6 +52,7 @@ const createRecipes = (response) => {
       lineBreak,
       recipeNameLabel,
       recipeAuthorLabel,
+      likeButton,
     );
     startRecipes.append(recipeDiv);
   });
