@@ -2,10 +2,62 @@ const startRecipes = $('.on-load-recipes');
 let category;
 let ingredient;
 let author;
+let searchChoice;
+let selection;
+let restriction;
 
-// $('.category-input').addClass('hide');
-// $('.ingredient-input').addClass('hide');
-// $('.author-input').addClass('hide');
+$('.category-input').addClass('hide');
+$('.ingredient-input').addClass('hide');
+$('.author-input').addClass('hide');
+$('.diet-input').addClass('hide');
+$('.search-btn').addClass('hide');
+
+$('.search').on('change', () => {
+  searchChoice = $('.search').val();
+  if (searchChoice === 'category') {
+    selection = 'category';
+    $('.category-input').removeClass('hide');
+    $('.ingredient-input').addClass('hide');
+    $('.author-input').addClass('hide');
+    $('.diet-input').addClass('hide');
+    $('.search-btn').removeClass('hide');
+  } else if (searchChoice === 'ingredient') {
+    selection = 'ingredient';
+    $('.ingredient-input').removeClass('hide');
+    $('.category-input').addClass('hide');
+    $('.author-input').addClass('hide');
+    $('.diet-input').addClass('hide');
+    $('.search-btn').removeClass('hide');
+  } else if (searchChoice === 'author') {
+    selection = 'author';
+    $('.author-input').removeClass('hide');
+    $('.category-input').addClass('hide');
+    $('.ingredient-input').addClass('hide');
+    $('.diet-input').addClass('hide');
+    $('.search-btn').removeClass('hide');
+  } else if (searchChoice === 'restriction') {
+    selection = 'restriction';
+    $('.diet-input').removeClass('hide');
+    $('.category-input').addClass('hide');
+    $('.ingredient-input').addClass('hide');
+    $('.author-input').addClass('hide');
+    $('.search-btn').removeClass('hide');
+  } else if (searchChoice === 'cat-ing') {
+    selection = 'cat-ing';
+    $('.category-input').removeClass('hide');
+    $('.ingredient-input').removeClass('hide');
+    $('.author-input').addClass('hide');
+    $('.diet-input').addClass('hide');
+    $('.search-btn').removeClass('hide');
+  } else if (searchChoice === 'cat-res') {
+    selection = 'cat-res';
+    $('.category-input').removeClass('hide');
+    $('.ingredient-input').addClass('hide');
+    $('.author-input').addClass('hide');
+    $('.diet-input').removeClass('hide');
+    $('.search-btn').removeClass('hide');
+  }
+});
 
 const createRecipes = (response) => {
   response.forEach((recipe) => {
@@ -81,12 +133,44 @@ const categorySearch = (searchedCategory) => {
   });
 };
 
+const restrictionSearch = (searchedRestriction) => {
+  $.ajax({
+    method: 'GET',
+    url: `/api/restriction/${searchedRestriction}`,
+  }).then((response) => {
+    console.log('restriction search', response);
+    startRecipes.empty();
+    createRecipes(response);
+  });
+};
 const ingredientSearch = (searchedIngredient) => {
   $.ajax({
     method: 'GET',
     url: `/api/ingredient/${searchedIngredient}`,
   }).then((response) => {
     console.log('ingredient search', response);
+    startRecipes.empty();
+    createRecipes(response);
+  });
+};
+
+const categoryIngredient = (cat, ingred) => {
+  $.ajax({
+    method: 'GET',
+    url: `/api/category/${cat}/ingredient/${ingred}`,
+  }).then((response) => {
+    console.log('category ingredient', response);
+    startRecipes.empty();
+    createRecipes(response);
+  });
+};
+
+const categoryRestriction = (cate, rest) => {
+  $.ajax({
+    method: 'GET',
+    url: `/api/category/${cate}/restriction/${rest}`,
+  }).then((response) => {
+    console.log('category restriction', response);
     startRecipes.empty();
     createRecipes(response);
   });
@@ -103,25 +187,54 @@ const authorSearch = (searchedAuthor) => {
   });
 };
 
-$('.cat-search').on('click', (event) => {
+$('.search-btn').on('click', (event) => {
   event.preventDefault();
-  category = $('#category-select').val();
-  console.log(category);
-  categorySearch(category);
+  if (selection === 'category') {
+    category = $('#category-select').val();
+    console.log(category);
+    categorySearch(category);
+  } else if (selection === 'author') {
+    author = $('.auth-input').val();
+    console.log(author);
+    authorSearch(author);
+  } else if (selection === 'ingredient') {
+    ingredient = $('.ingred-input').val();
+    console.log(ingredient);
+    ingredientSearch(ingredient);
+  } else if (selection === 'restriction') {
+    restriction = $('.diet-input').val();
+    console.log(restriction);
+    restrictionSearch(restriction);
+  } else if (selection === 'cat-ing') {
+    category = $('#category-select').val();
+    ingredient = $('.ingred-input').val();
+    categoryIngredient(category, ingredient);
+  } else if (selection === 'cat-res') {
+    category = $('#category-select').val();
+    restriction = $('.diet-input').val();
+    categoryRestriction(category, restriction);
+  }
 });
 
-$('.ingred-search').on('click', (event) => {
-  event.preventDefault();
-  ingredient = $('.ingred-input').val();
-  console.log(ingredient);
-  ingredientSearch(ingredient);
-});
+// $('.cat-search').on('click', (event) => {
+//   event.preventDefault();
+//   category = $('#category-select').val();
+//   console.log(category);
+//   categorySearch(category);
+// });
 
-$('.author-search').on('click', (event) => {
-  event.preventDefault();
-  author = $('.auth-input').val();
-  console.log(author);
-  authorSearch(author);
-});
+// $('.ingred-search').on('click', (event) => {
+//   event.preventDefault();
+//   ingredient = $('.ingred-input').val();
+//   console.log(ingredient);
+//   ingredientSearch(ingredient);
+// });
+
+// $('.author-search').on('click', (event) => {
+//   event.preventDefault();
+//   author = $('.auth-input').val();
+//   console.log(author);
+//   authorSearch(author);
+// });
 
 pageLoad();
