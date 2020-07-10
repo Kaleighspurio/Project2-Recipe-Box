@@ -9,7 +9,10 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Rock+Salt&display=swap"
       rel="stylesheet"
@@ -22,11 +25,11 @@
     <nav class="navbar navbar-expand-lg navbar-light rock-font">
       <a href="index.html">
         <img
-       src="./assets/images/recipe-card.png"
-       height="40px"
-       alt="recipe-card"
-       class="recipe-card"
-     /></a>
+          src="./assets/images/recipe-card.png"
+          height="40px"
+          alt="recipe-card"
+          class="recipe-card"
+      /></a>
       <span class="navbar-brand mb-0 h1">Search</span>
 
       <button
@@ -48,7 +51,7 @@
           <li class="nav-item">
             <a class="nav-link" href="./create.html">Create a Recipe</a>
           </li>
-        
+
           <li class="nav-item">
             <a class="nav-link" href="./favorites.html">Favorites</a>
           </li>
@@ -68,50 +71,28 @@
     </div>
 
     <div class="container rounded form-group">
-      <!-- <div class="input-group mb-3 search-input">
-            <h3>What would you like to search for?</h3>
-
-            <select
-              class="custom-select search-select"
-              id="serch-select"
-              aria-label="Example select with button addon"
-            >
-              <option selected></option>
-              <option value="Category">Category</option>
-              <option value="ingredient">Ingredient</option>
-              <option value="author">Author</option>
-
-            </select>
-  
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary search" type="button">
-                Search
-              </button>
-            </div>
-          </div> -->
-      <!-- <div class="form-group">
-            <label for="exampleFormControlSelect1">What would you like to search?</label>
-            <select class="form-control" id="what-search">
-              <option value="category">Category</option>
-              <option value = "ingredient">Ingredient</option>
-              <option value = "author">Author</option>
-            </select>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary search" type="button">
-                  Search
-                </button>
-              </div>
-          </div> -->
-
-      <form class="form">
+      <form class="form recipe-form">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1"
+            >What would you like to search?</label
+          >
+          <select class="form-control search" id="what-search">
+            <option value=""></option>
+            <option value="category">Category</option>
+            <option value="ingredient">Ingredient</option>
+            <option value="author">Author</option>
+            <option value="restriction">Dietary Restriction</option>
+            <option value="cat-ing">Category & Ingredient</option>
+            <option value="cat-res">Category & Dietary Restriction</option>
+          </select>
+        </div>
         <div class="input-group mb-3 category-input">
           <select
             class="custom-select"
             id="category-select"
             aria-label="Example select with button addon"
           >
-            <option>Select a category</option>
-            <option value="Null">Category</option>
+            <option value="select">Select a category</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Entree">Entree</option>
             <option value="App">Appetizer</option>
@@ -119,38 +100,27 @@
             <option value="Soups">Soup</option>
             <option value="Salad">Salad</option>
             <option value="Bread">Bread</option>
-            <option value="Desserts">Dessert</option>
+            <option value="Dessert">Dessert</option>
             <option value="Other">Other</option>
-            <!-- <option value="vegan">Vegan</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="gluten-free">Gluten Free</option> -->
           </select>
 
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary cat-search" type="button">
-              Search
-            </button>
-          </div>
+
         </div>
 
-        <div class="input-group mb-3 diet-input">
-            <select
-              class="custom-select"
-              id="diet-select"
-              aria-label="Example select with button addon"
-            >
-              <option>Select a Dietary Restriction</option>
-              <option value="vegan">Vegan</option>
-              <option value="vegetarian">Vegetarian</option>
-              <option value="gluten-free">Gluten Free</option>
-            </select>
-  
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary cat-search" type="button">
-                Search
-              </button>
-            </div>
-          </div>
+        <div class="input-group mb-3">
+          <select
+            class="custom-select diet-input"
+            id="diet-select"
+            aria-label="Example select with button addon"
+          >
+            <option value="select">Select a Dietary Restriction</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Gluten-Free">Gluten Free</option>
+          </select>
+
+ 
+        </div>
 
         <div class="input-group mt-3 mb-3 ingredient-input">
           <input
@@ -160,15 +130,7 @@
             aria-label="Ingredient"
             aria-describedby="button-addon2"
           />
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-secondary ingred-search"
-              type="button"
-              id="button-addon2"
-            >
-              Search
-            </button>
-          </div>
+ 
         </div>
 
         <div class="input-group mb-3 author-input">
@@ -179,16 +141,15 @@
             aria-label="Author"
             aria-describedby="button-addon2"
           />
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-secondary author-search"
-              type="button"
-              id="button-addon2"
-            >
-              Search
-            </button>
-          </div>
+  
         </div>
+        <button
+          class="btn btn-outline-secondary btn-lg btn-block search-btn"
+          type="button"
+          id="button-addon2"
+        >
+          Search
+        </button>
       </form>
 
       <div class="center">
