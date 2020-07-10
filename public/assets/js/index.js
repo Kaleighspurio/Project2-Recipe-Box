@@ -10,10 +10,12 @@ let author;
 const createRecipes = (response) => {
   response.forEach((recipe) => {
     const recipeName = recipe.recipe_name;
-    const imageFilePath = recipe.image;
+    let imageFilePath = recipe.image;
     const recipeID = recipe.id;
     const recipeAuthor = recipe.Author.name;
-
+    if (imageFilePath === null) {
+      imageFilePath = './assets/images/uploads/plate.png';
+    }
     $('.search-header').text('Recently Submitted Recipes');
     // creates a div for each reciepe to go in
     const recipeDiv = $('<div>', {
@@ -52,7 +54,7 @@ const createRecipes = (response) => {
       lineBreak,
       recipeNameLabel,
       recipeAuthorLabel,
-      likeButton,
+      likeButton
     );
     startRecipes.append(recipeDiv);
   });
