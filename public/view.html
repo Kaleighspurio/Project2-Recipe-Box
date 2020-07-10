@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Rock+Salt&display=swap"
       rel="stylesheet"
@@ -19,12 +21,15 @@
   </head>
   <body class="body-background">
     <nav class="navbar navbar-expand-lg navbar-light rock-font">
-      <img
+      <a href="index.html">
+         <img
         src="./assets/images/recipe-card.png"
         height="40px"
         alt="recipe-card"
         class="recipe-card"
       />
+      </a>
+     
       <span class="navbar-brand mb-0 h1">View Your Recipe</span>
 
       <button
@@ -64,14 +69,7 @@
     </div>
 
     <div class="container recipe">
-      <button
-        class="btn btn-outline-secondary like-btn"
-        type="button"
-    
-        id="button-addon2"
-      >
-        Like This Recipe
-      </button>
+      <button class="btn btn-outline-secondary like-btn"> <i class="fa fa-thumbs-up"></i></button>
       <button
         class="btn btn-outline-secondary email-btn"
         type="button"
