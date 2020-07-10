@@ -79,7 +79,6 @@ router.get('/author/:author', (req, res) => {
   });
 });
 
-
 // Search for both category and ingredient
 router.get('/category/:category/ingredient/:ingredient', (req, res) => {
   db.Recipe.findAll({
@@ -115,16 +114,18 @@ router.get('/category/:category/restriction/:restriction', (req, res) => {
       },
     ],
     where: {
-        [Op.and]: [
-            {category: {
-                [Op.like]: `%${req.params.category}%`,
-              },}, 
-            {dietary_restriction: {
-                [Op.like]: `%${req.params.restriction}%`,
-              },}
-        ]
-      
-      
+      [Op.and]: [
+        {
+          category: {
+            [Op.like]: `%${req.params.category}%`,
+          },
+        },
+        {
+          dietary_restriction: {
+            [Op.like]: `%${req.params.restriction}%`,
+          },
+        },
+      ],
     },
   }).then((data) => {
     res.json(data);
@@ -142,7 +143,7 @@ router.put('/:id', (req, res) => {
       where: {
         id: req.params.id,
       },
-    }
+    },
   ).then((dbRecipe) => {
     res.json(dbRecipe);
   });
