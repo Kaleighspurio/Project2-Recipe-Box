@@ -17,7 +17,7 @@ router.get('/recent', (req, res) => {
   });
 });
 
-// /api/category/cate
+// to search just by category
 router.get('/category/:category', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
@@ -31,6 +31,7 @@ router.get('/category/:category', (req, res) => {
   });
 });
 
+// to search just by dietary restriction
 router.get('/restriction/:restriction', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
@@ -44,6 +45,7 @@ router.get('/restriction/:restriction', (req, res) => {
   });
 });
 
+// to search by ingredient
 router.get('/ingredient/:ingredient', (req, res) => {
   db.Recipe.findAll({
     include: [
@@ -62,6 +64,7 @@ router.get('/ingredient/:ingredient', (req, res) => {
   });
 });
 
+// to search by author
 router.get('/author/:author', (req, res) => {
   db.Recipe.findAll({
     include: [
