@@ -5,6 +5,9 @@ let author;
 let searchChoice;
 let selection;
 let restriction;
+let favorites;
+let favObj = {};
+let recipeID;
 
 $('.category-input').addClass('hide');
 $('.ingredient-input').addClass('hide');
@@ -63,7 +66,7 @@ const createRecipes = (response) => {
   response.forEach((recipe) => {
     const recipeName = recipe.recipe_name;
     let imageFilePath = recipe.image;
-    const recipeID = recipe.id;
+    recipeID = recipe.id;
     const recipeAuthor = recipe.Author.name;
     if (imageFilePath === null) {
       imageFilePath = './assets/images/uploads/plate.png';
@@ -233,5 +236,23 @@ $('.search-btn').on('click', (event) => {
   }
 });
 
+$('.like-btn').on('click', (event) => {
+  event.preventDefault();
+  favorites += 1;
+  $('.like-btn').data('like', favorites);
+  console.log(favorites);
+  favObj = {
+    favorites,
+  };
+  console.log(favObj);
+
+  $.ajax({
+    method: 'PUT',
+    url: `/api/view/favorites/${recipeID}`,
+    data: favObj,
+  }).then(() => {
+    window.location.reload();
+  });
+});
 
 pageLoad();
