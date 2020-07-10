@@ -37,8 +37,8 @@ nav {
 }
 
 .toast-no-height {
-    height: 0;
-    width: 0;
+  height: 0;
+  width: 0;
 }
 .toast-top {
   top: 0;
@@ -60,7 +60,7 @@ nav {
   margin: 20px;
 }
 
-.comment-btn{
+.comment-btn {
   margin-top: 10px;
 }
 .image-font {
@@ -78,7 +78,6 @@ nav {
   margin-top: 15px;
   font-weight: bold;
   font-size: 24px;
-
 }
 .label-font-smaller {
   margin-left: 10px;
@@ -92,18 +91,26 @@ nav {
   margin-bottom: 20px;
 }
 .recipe-div {
- 
-  margin:  30px auto;
+  border: 1px solid black;
+  margin: 30px auto;
+}
+
+.recipe-name-label {
+  font-size: 24px;
+  margin: 15px;
 
 }
 
+.author-label {
+  font-size: 20px;
+  margin: 15px;
+}
 .red-border {
   border: 1px solid red;
 }
 
 .favorite-container {
   height: fit-content;
-
 }
 
 .kitchen-tools {
