@@ -105,8 +105,7 @@ const createRecipes = (response) => {
       lineBreak,
       recipeNameLabel,
       recipeAuthorLabel,
-      likeButton
-
+      likeButton,
     );
     startRecipes.append(recipeDiv);
   });
@@ -182,7 +181,7 @@ const authorSearch = (searchedAuthor) => {
     method: 'GET',
     url: `/api/author/${searchedAuthor}`,
   }).then((response) => {
-    console.log('ingredient search', response);
+    console.log('author search', response);
     startRecipes.empty();
     createRecipes(response);
   });
@@ -195,54 +194,43 @@ $('.search-btn').on('click', (event) => {
     console.log(category);
     $('.search-header').text(`${category} Recipes`);
     categorySearch(category);
+    $('#category-select').val('select');
   } else if (selection === 'author') {
     author = $('.auth-input').val();
     console.log(author);
     $('.search-header').text(`Recipes By ${author}`);
     authorSearch(author);
+    $('.auth-input').val('');
+    console.log(author, 'after search');
   } else if (selection === 'ingredient') {
     ingredient = $('.ingred-input').val();
     console.log(ingredient);
     $('.search-header').text(`Recipes That Include ${ingredient}`);
     ingredientSearch(ingredient);
+    $('.ingred-input').val('');
   } else if (selection === 'restriction') {
     restriction = $('.diet-input').val();
     console.log(restriction);
     $('.search-header').text(`${restriction} Recipes`);
     restrictionSearch(restriction);
+    $('.diet-input').val('select');
   } else if (selection === 'cat-ing') {
     category = $('#category-select').val();
     ingredient = $('.ingred-input').val();
     $('.search-header').text(`${category} Recipes Containing ${ingredient}`);
     categoryIngredient(category, ingredient);
+    $('#category-select').val('select');
+    $('.ingred-input').val('');
   } else if (selection === 'cat-res') {
     category = $('#category-select').val();
     restriction = $('.diet-input').val();
     console.log('category, restriction', category, restriction);
     $('.search-header').text(`${restriction} ${category} Recipes`);
     categoryRestriction(category, restriction);
+    $('#category-select').val('select');
+    $('.diet-input').val('select');
   }
 });
 
-// $('.cat-search').on('click', (event) => {
-//   event.preventDefault();
-//   category = $('#category-select').val();
-//   console.log(category);
-//   categorySearch(category);
-// });
-
-// $('.ingred-search').on('click', (event) => {
-//   event.preventDefault();
-//   ingredient = $('.ingred-input').val();
-//   console.log(ingredient);
-//   ingredientSearch(ingredient);
-// });
-
-// $('.author-search').on('click', (event) => {
-//   event.preventDefault();
-//   author = $('.auth-input').val();
-//   console.log(author);
-//   authorSearch(author);
-// });
 
 pageLoad();
