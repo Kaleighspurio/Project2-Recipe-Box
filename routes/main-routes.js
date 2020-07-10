@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Op } = require('sequelize');
 const db = require('../models');
 
-// TODO: Do we want a "View all" button to get all the recipes?
 
 // This gets the 25 most recent recipes and orders them newest to oldest.
 // Can be populated on the page when the page loads?
