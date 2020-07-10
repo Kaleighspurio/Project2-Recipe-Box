@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -19,12 +20,15 @@
   </head>
   <body class="body-background">
     <nav class="navbar navbar-expand-lg navbar-light rock-font">
-      <img
+      <a href="index.html">
+         <img
         src="./assets/images/recipe-card.png"
         height="40px"
         alt="recipe-card"
         class="recipe-card"
       />
+      </a>
+     
       <span class="navbar-brand mb-0 h1">View Your Recipe</span>
 
       <button
@@ -71,6 +75,9 @@
         id="button-addon2"
       >
         Like This Recipe
+      </button>
+      <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-thumbs-up"></span> Like
       </button>
       <button
         class="btn btn-outline-secondary email-btn"

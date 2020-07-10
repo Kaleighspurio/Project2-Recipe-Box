@@ -14,7 +14,7 @@ const createRecipes = (response) => {
     const recipeID = recipe.id;
     const recipeAuthor = recipe.Author.name;
 
-    $('.search-header').text(`Recipes submitted by ${author}`);
+    $('.search-header').text('Recently Submitted Recipes');
     // creates a div for each reciepe to go in
     const recipeDiv = $('<div>', {
       class: 'recipe-div rounded center',
