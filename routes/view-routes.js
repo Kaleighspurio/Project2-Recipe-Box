@@ -1,5 +1,14 @@
 const router = require('express').Router();
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const path = require('path');
+const nodemailer = require('nodemailer');
 const db = require('../models');
+require('dotenv').config();
+
+const app = express();
 
 // View will have a create/POST to comment,
 // it will also have a get to view recipe and comments,
@@ -36,7 +45,7 @@ router.post('/comment/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   db.Recipe.updateOne(
     { special_notes: req.body.notes },
-    { where: { id: req.params.id } }
+    { where: { id: req.params.id } },
   ).then((result) => {
     if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
@@ -59,6 +68,65 @@ router.put('/favorites/:id', (req, res) => {
       res.status(404).end();
     }
     res.status(200).end();
+  });
+});
+
+// To be able to send emails on request we're using nodemailer
+
+// Engine setup
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
+// static folder
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.render('contact');
+});
+
+app.post('/send', (req, res) => {
+  console.log(req.body);
+  const output = `
+   <p>You have a new request for a recipe</p>
+   <h3>Recipe details</h3>
+   <ul>
+    <li>Name: ${req.body.name}</li>
+    <li>Email: ${req.body.email}</li>
+   </ul>
+   <h3>Message</h3>
+   <p>${req.body.message}</p>
+  `;
+
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.mailtrap.io',
+    port: 2525,
+    auth: {
+      user: 'ab4d5badf5923e',
+      pass: 'c94ab9f6b80d78',
+    },
+  });
+
+  // send mail with defined transport object
+  const mailOptions = {
+    from: '"Recipe Box" < RecipeBox@recipebox.com>', // sender address
+    to: `${req.body.email}`, // list of receivers
+    subject: 'Your Recipe', // Subject line
+    text: 'Here you go', // plain text body
+    html: output, // html body
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+    res.render('contact', { msg: 'Email has been sent' });
   });
 });
 
