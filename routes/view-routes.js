@@ -12,7 +12,8 @@ router.get('/:id', (req, res) => {
     include: [
       { model: db.Comment, as: 'Comments' },
       { model: db.Ingredient, as: 'Ingredients' },
-      { model: db.Author, as: 'Author' }],
+      { model: db.Author, as: 'Author' },
+    ],
   }).then((data) => {
     console.log(data);
     res.json(data);
@@ -35,7 +36,7 @@ router.post('/comment/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   db.Recipe.updateOne(
     { special_notes: req.body.notes },
-    { where: { id: req.params.id } },
+    { where: { id: req.params.id } }
   ).then((result) => {
     if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
@@ -48,9 +49,9 @@ router.put('/:id', (req, res) => {
 // PUT to update the favorites count
 
 router.put('/favorites/:id', (req, res) => {
-  const newFavoriteCount = req.body.favorites + 1;
-  db.Recipe.updateOne(
-    { favorites_count: newFavoriteCount },
+  // const newFavoriteCount = parseInt(req.body.favorites) + 1;
+  db.Recipe.update(
+    { favorite_count: req.body.favorites },
     { where: { id: req.params.id } },
   ).then((result) => {
     if (result.changedRows === 0) {

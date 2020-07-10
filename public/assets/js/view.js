@@ -1,45 +1,155 @@
-const url = new URL(window.location);
-const id = url.searchParams.get('id');
+$(document).ready(() => {
+  const url = new URL(window.location);
+  const id = url.searchParams.get('id');
+  console.log(id);
 
-if (id) {
-  // search for the recipe
-  $.ajax({
-    method: 'GET',
-    url: `/api/view/${id}`,
-  }).then((response) => {
-    console.log(response);
+  let commentObj = {};
+  let favorites;
+  let favObj = {};
 
-    // update placeholder text in recipe card //
-    $('.recipe-name').text(`${response.recipe_name}`);
-    $('.recipe-author').text(`Author: ${response.Author.name}`);
-    $('.recipe-instructions').text(
-      'Recipe Instructions...',
-      `${response.instructions}`
-    );
-    $('.recipe-link').text('Recipe link', `${response.link}`);
-    let recipeImage = response.image;
-    if (recipeImage === null) {
-      recipeImage = './assets/images/uploads/plate.png';
-    }
+  if (id) {
+    // search for the recipe
+    $.ajax({
+      method: 'GET',
+      url: `/api/view/${id}`,
+    }).then((response) => {
+      console.log(response);
+      favorites = response.favorite_count;
+      const recipeName = $('<h2>', {
+        class: 'recipe-name',
+      }).text(`${response.recipe_name}`);
+
+      const authorName = $('<h3>', {
+        class: 'author-name',
+      }).text(`Author: ${response.Author.name}`);
+
+      const instructions = $('<p>', {
+        class: 'instructions',
+      }).text(`Instructions: ${response.instructions}`);
+
+      // const ingredientList = reponse.ingredients
+      const ingredientTitle = $('<ul>').text('Ingredients:');
+
+      response.Ingredients.forEach((ingredient) => {
+        const ingredients = $('<li>', {
+          class: 'ingredient',
+        }).text(`${ingredient.ingredient_name}`);
+        ingredientTitle.append(ingredients);
+      });
+
+      let recipeImage = response.image;
+      if (recipeImage === null) {
+        recipeImage = './assets/images/uploads/plate.png';
+      }
+
+      const servingSize = $('<p>', {
+        class: 'serving-size',
+      }).text(`Serving Size: ${response.serving_size}`);
+
+      const recipeImgElement = $('<img>', {
+        src: recipeImage,
+        'data-id': id,
+        width: '150px',
+        class: 'recipe-fav image-margin',
+      });
+
+      const specialNotes = $('<p>', {
+        class: 'special-notes',
+      }).text(`Special Notes: ${response.special_notes}`);
+
+      const category = $('<p>', {
+        class: 'category',
+      }).text(`Category: ${response.category}`);
+
+      const commentEl = $('<div>');
+      response.Comments.forEach((comment) => {
+        const commentName = $('<p>', {
+          class: 'commenter-name',
+        }).text(`${comment.commenter_name}`);
+        const comments = $('<p>', {
+          class: 'comments',
+        }).text(`Comments: ${comment.comment}`);
+        commentEl.append(commentName, comments);
+      });
+
+      const diet = $('<p>', {
+        class: 'diet',
+      }).text(`Dietary Restrictions: ${response.dietary_restrictions}`);
+
+      const favCountEl = $('<p>', {
+        class: 'favCountEl',
+      }).text(`Number of Likes: ${response.favorite_count}`);
+
+      $('.recipe').prepend(
+        recipeImgElement,
+        recipeName,
+        authorName,
+        category,
+        diet,
+        servingSize,
+        ingredientTitle,
+        instructions,
+        specialNotes,
+        favCountEl
+      );
+      $('.comments-made').append(commentEl);
+    });
+  }
+
+  // create click event for add to favorites button
+  $('.comment-btn').on('click', (event) => {
+    event.preventDefault();
+    const commentTxt = $('.comment-text').val();
+    console.log(commentTxt);
+    const commentName = $('.comment-name').val();
+    console.log(commentName);
+    console.log(id);
+
+    commentObj = {
+      commenter_name: commentName,
+      comment: commentTxt,
+      // RecipeId: id,
+    };
+    console.log(commentObj);
+
+    $.ajax({
+      method: 'POST',
+      url: `/api/view/comment/${id}`,
+      data: commentObj,
+    }).then(() => {
+      console.log('Comment Submitted');
+      window.location.reload();
+    });
   });
-}
 
-// // create click event for add to favorites button
-// $('.add-favorite').on('click', (event) => {
-//   const addFavorite = () => {
-//   $.ajax({
-//     method: 'POST',
-//     url: /api/favorites,
-//   }).then((response) => {
-//     console.log(response);}
-// // add JQyery here to appened Favorites page or copy Karen's function from Fav page?
+  $('.like-btn').on('click', (event) => {
+    event.preventDefault();
+    favorites += 1;
+    $('.like-btn').data('like', favorites);
+    console.log(favorites);
+    favObj = {
+      favorites,
+    };
+    console.log(favObj);
 
-// // creat click event for email button
-// $('.email-recipe').on('click', (event) => {
-//   Const emailRecipe = () => {
-// //node mailer function call?
-//   }
-// };
+    $.ajax({
+      method: 'PUT',
+      url: `/api/view/favorites/${id}`,
+      data: favObj,
+    }).then(() => {
+      window.location.reload();
+    });
+  });
 
-// addFavorite();
-// emailRecipe();
+  // add JQyery here to appened Favorites page or copy Karen's function from Fav page?
+
+  // // creat click event for email button
+  // $('.email-recipe').on('click', (event) => {
+  //   Const emailRecipe = () => {
+  // //node mailer function call?
+  //   }
+  // };
+
+  // addFavorite();
+  // emailRecipe();
+});
