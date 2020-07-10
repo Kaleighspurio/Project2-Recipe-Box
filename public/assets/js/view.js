@@ -69,9 +69,15 @@ $(document).ready(() => {
         commentEl.append(commentMade);
       });
 
+<<<<<<< HEAD
       const diet = $("<p>", {
         class: "diet",
       }).text(`Dietary Restrictions: ${response.dietary_restrictions}`);
+=======
+      const diet = $('<p>', {
+        class: 'diet',
+      }).text(`Dietary Restrictions: ${response.dietary_restriction}`);
+>>>>>>> 9bf21e7304022b889a5b3f54430d58379a3c0284
 
       const favCountEl = $("<p>", {
         class: "favCountEl",

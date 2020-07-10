@@ -49,6 +49,15 @@ $(document).ready(() => {
           class: 'notes label-font-smaller',
         }).text(`${recipeNotes}`);
 
+        // creates a like button for each of the recipes
+        const likeButton = $('<button>', {
+          class: 'btn btn-outline-secondary like-btn',
+        });
+        const icon = $('<i>', {
+          class: 'fa fa-thumbs-up',
+        });
+        likeButton.append(icon);
+
         // creates an image for each of the recipes
         const recipeImgElement = $('<img>', {
           src: recipeImage,
@@ -57,7 +66,7 @@ $(document).ready(() => {
           class: 'recipe-fav image-margin',
         });
 
-        // creates a p for the recipe name for each of the recipes
+        // creates an a for the recipe name for each of the recipes
         const recipeNameLabel = $('<a>', {
           href: `/recipe?id=${recipeID}`,
           'data-id': recipeID,
@@ -95,7 +104,7 @@ $(document).ready(() => {
           categoryLabel,
           recipeAuthorLabel,
         );
-        rowDiv.append(recipeDivLeft, recipeDivRight, favDiv, notesDiv);
+        rowDiv.append(recipeDivLeft, recipeDivRight, favDiv, notesDiv, likeButton);
         recipeDivEl.append(rowDiv);
       });
     });
