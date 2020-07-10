@@ -141,6 +141,7 @@ nav {
   display: block;
 }
 .footer {
+  z-index: 9999;
   position: sticky;
   bottom: 0;
   border-top: 1px solid black;
