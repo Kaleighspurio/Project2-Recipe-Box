@@ -71,7 +71,7 @@ $(document).ready(() => {
 
       const diet = $('<p>', {
         class: 'diet',
-      }).text(`Dietary Restrictions: ${response.dietary_restrictions}`);
+      }).text(`Dietary Restrictions: ${response.dietary_restriction}`);
 
       const favCountEl = $('<p>', {
         class: 'favCountEl',

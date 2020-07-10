@@ -48,7 +48,7 @@ $(document).ready(() => {
     data.append('category', category.val());
     data.append('instructions', recipeName.val());
     data.append('ingredient_name', ingredientsArray);
-    data.append('dietary_restrictions', restrictions.val());
+    data.append('dietary_restriction', restrictions.val());
     data.append('serving_size', size.val().trim());
     data.append('url_source', url.val());
     data.append('name', author.val().trim());
