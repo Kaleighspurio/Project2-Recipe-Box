@@ -56,7 +56,13 @@ nav {
   text-decoration: underline;
 }
 
+.comment-div {
+  margin: 20px;
+}
 
+.comment-btn{
+  margin-top: 10px;
+}
 .image-font {
   font-size: 30px;
 }

@@ -63,20 +63,36 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="card" style="width: auto;">
-        <div class="card-body">
-          <h5 class="card-title recipe-name"></h5>
-          <h6 class="card-subtitle mb-2 text-muted recipe-author"></h6>
-          <p class="card-text recipe-instructions"></p>
-          <img
-            src="./assets/images/uploads/plate.png"
-            class="card-img-bottom"
-            alt="Recipe Image"
-          />
+    <div class="container recipe">
+      <button
+        class="btn btn-outline-secondary like-btn"
+        type="button"
+    
+        id="button-addon2"
+      >
+        Like This Recipe
+      </button>
+      <button
+        class="btn btn-outline-secondary email-btn"
+        type="button"
+        id="button-addon2"
+      >
+        Email Recipe
+      </button>
 
-          <a href="#" class="btn btn-primary add-favorite">Like this Recipe</a>
-          <a href="#" class="btn btn-primary email-recipe">Email Recipe</a>
+      <div class="comment-div">
+        <p>Comments:</p>
+        <input type="text" placeholder="Your Name" class="comment-name">
+        <textarea class="form-control comment-text" aria-label="With textarea"></textarea>
+        <button
+          class="btn btn-outline-secondary comment-btn"
+          type="button"
+          id="button-addon2"
+        >
+          Submit Comment
+        </button>
+        <div class="comments-made">
+
         </div>
       </div>
     </div>
