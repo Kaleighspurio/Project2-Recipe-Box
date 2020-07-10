@@ -63,13 +63,10 @@ $(document).ready(() => {
 
       const commentEl = $('<div>');
       response.Comments.forEach((comment) => {
-        const commentName = $('<p>', {
-          class: 'commenter-name',
-        }).text(`${comment.commenter_name}`);
-        const comments = $('<p>', {
-          class: 'comments',
-        }).text(`Comments: ${comment.comment}`);
-        commentEl.append(commentName, comments);
+        const commentMade = $('<p>', {
+          class: 'comment-made',
+        }).text(`${comment.commenter_name} says: ${comment.comment} `);
+        commentEl.append(commentMade);
       });
 
       const diet = $('<p>', {
@@ -90,7 +87,7 @@ $(document).ready(() => {
         ingredientTitle,
         instructions,
         specialNotes,
-        favCountEl
+        favCountEl,
       );
       $('.comments-made').append(commentEl);
     });
@@ -149,7 +146,4 @@ $(document).ready(() => {
   // //node mailer function call?
   //   }
   // };
-
-  // addFavorite();
-  // emailRecipe();
 });
