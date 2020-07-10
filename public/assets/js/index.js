@@ -43,7 +43,7 @@ const createRecipes = (response) => {
       recipeImgElement,
       lineBreak,
       recipeNameLabel,
-      recipeAuthorLabel
+      recipeAuthorLabel,
     );
     startRecipes.append(recipeDiv);
   });
