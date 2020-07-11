@@ -112,7 +112,7 @@ $(document).ready(() => {
         instructions,
         specialNotesTitle,
         specialNotes,
-        favCountEl
+        favCountEl,
       );
       $('.recipe').prepend(recipeDiv);
       $('.recipe').append(commentEl);
@@ -177,8 +177,29 @@ $(document).ready(() => {
   });
 
   // click event to close email modal
-
   document.querySelector('.close').addEventListener('click', () => {
     document.querySelector('.bg-modal').style.display = 'none';
+  });
+});
+
+
+$('.email-submit').on('click', () => {
+  const name = $('#name').val();
+  const email = $('#email').val();
+  const url = window.location.href;
+  console.log(url);
+  const emailInfo = {
+    name: name,
+    email: email,
+    recipe: url,
+  }
+  console.log(name, email)
+  $.ajax({
+    method: 'POST',
+    url: `/api/view/send`,
+    data: emailInfo,
+  }).then(() => {
+    console.log('Email Send');
+    //window.location.reload();
   });
 });
