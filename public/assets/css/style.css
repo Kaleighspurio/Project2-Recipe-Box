@@ -56,8 +56,12 @@ nav {
   text-decoration: underline;
 }
 
+.recipe-div-view {
+  text-align: center;
+}
+
 .comment-div {
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .comment-btn {
@@ -91,17 +95,48 @@ nav {
   padding-top: 15px;
 }
 .recipe-name-label {
-  font-size: 24px;
+  font-size: 20px;
   margin-left: 20px;
 
 }
 
+.comment-label {
+  font-size: 24px;
+}
+.comment-made {
+  border-bottom: 1px solid black;
+}
+.comment-el {
+  margin-top: 50px;
+ 
+}
+.align-left {
+  text-align: left;
+}
+
+.margin-bottom {
+  margin-bottom: 5px;
+}
+
+.ingredient-list-title {
+  font-size: 20px;
+  padding-left: 280px;
+  margin-bottom: 20px;
+
+}
+
+.ingredient-list {
+  font-size: 16px;
+}
 .label {
   font-size: 20px;
   margin-left: 20px;
   padding-left: 0px;
 }
 
+.comment-name {
+  margin-bottom: 15px;
+}
 .margin-auto {
   margin: auto;
 }

@@ -1,4 +1,5 @@
 const startRecipes = $('.on-load-recipes');
+
 let category;
 let ingredient;
 let author;
