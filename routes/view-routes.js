@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const db = require('../models');
+const { Router } = require('express');
 require('dotenv').config();
 
 const app = express();
@@ -74,21 +75,21 @@ router.put('/favorites/:id', (req, res) => {
 // To be able to send emails on request we're using nodemailer
 
 // Engine setup
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+// app.engine('handlebars', exphbs());
+// app.set('view engine', 'handlebars');
 
-// static folder
-app.use('/public', express.static(path.join(__dirname, 'public')));
+// // static folder
+// app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// // body parser middleware
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.render('contact');
-});
+// app.get('/', (req, res) => {
+//   res.render('contact');
+// });
 
-app.post('/send', (req, res) => {
+router.post('/send', (req, res) => {
   console.log(req.body);
   const output = `
    <p>You have a new request for a recipe</p>
