@@ -11,7 +11,6 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       response.forEach((recipe) => {
-        console.log(recipe);
 
         const recipeName = recipe.recipe_name;
         let imageFilePath = recipe.image;
@@ -39,7 +38,6 @@ $(document).ready(() => {
         })
           .attr('data-id', recipeID)
           .attr('data-likes', favoriteCount);
-        console.log(recipeID);
 
         const icon = $('<i>', {
           class: 'fa fa-thumbs-up',
