@@ -7,6 +7,12 @@ View the app deployed to heroku [HERE](https://fast-mountain-43531.herokuapp.com
 
 ## Table of Contents
 
+  - [Description](#description)
+  - [Technologies](#technologies)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+
 ## Technologies
 This application is a full stack application using HTML, CSS, JavaScript, jQuery, Bootstrap, NodeJS, Sequelize and Express.  It also utilizes the following dependencies:
 * dotenv
