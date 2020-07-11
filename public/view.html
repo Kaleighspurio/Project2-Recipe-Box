@@ -83,9 +83,9 @@
       <div class="modal-content">
         <div class="close">+</div>
         <img class="email-icon" src="./assets/images/recipe-card.png" alt="recipe card image" />
-        <form method="POST" action="/api/view/send">
-          <input class="email-input" type="text" placeholder="Name" />
-          <input class="email-input" type="text" placeholder="Email" name="email" />
+        <form>
+          <input id="name" class="email-input" type="text" placeholder="Name" />
+          <input id="email" class="email-input" type="text" placeholder="Email" name="email" />
           <button class="btn btn-outline-secondary email-submit" type="submit">
             Submit
           </button>

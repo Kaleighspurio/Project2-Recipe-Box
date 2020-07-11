@@ -90,7 +90,8 @@ router.put('/favorites/:id', (req, res) => {
 // });
 
 router.post('/send', (req, res) => {
-  console.log(req.body);
+  console.log(req.body, "asdfghjkl;poiuy");
+  console.log(req.params);
   const output = `
    <p>You have a new request for a recipe</p>
    <h3>Recipe details</h3>
@@ -98,9 +99,10 @@ router.post('/send', (req, res) => {
     <li>Name: ${req.body.name}</li>
     <li>Email: ${req.body.email}</li>
    </ul>
-   <h3>Message</h3>
-   <p>${req.body.message}</p>
-  `;
+    <h3>Message</h3>
+    <p>Though you might like this recipe</p>
+    <a href=${req.body.recipe}>${req.body.recipe}</a>
+   `;
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.mailtrap.io',
