@@ -39,7 +39,7 @@ $(document).ready(() => {
         class: 'ingredient-list-title align-left',
       });
       const ingredientTitle = $('<p>', {
-        class: 'ingredient-title title',
+        class: 'ingredient-title left title',
       }).text('Ingredients');
 
       response.Ingredients.forEach((ingredient) => {
@@ -112,7 +112,7 @@ $(document).ready(() => {
         instructions,
         specialNotesTitle,
         specialNotes,
-        favCountEl
+        favCountEl,
       );
       $('.recipe').prepend(recipeDiv);
       $('.recipe').append(commentEl);
