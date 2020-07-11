@@ -1,6 +1,6 @@
 $(document).ready(() => {
   const url = new URL(window.location);
-  const id = url.searchParams.get('id');
+  const id = url.searchParams.get("id");
   console.log(id);
 
   let commentObj = {};
@@ -10,74 +10,74 @@ $(document).ready(() => {
   if (id) {
     // search for the recipe
     $.ajax({
-      method: 'GET',
+      method: "GET",
       url: `/api/view/${id}`,
     }).then((response) => {
       console.log(response);
       favorites = response.favorite_count;
-      const recipeName = $('<h2>', {
-        class: 'recipe-name',
+      const recipeName = $("<h2>", {
+        class: "recipe-name",
       }).text(`${response.recipe_name}`);
 
-      const authorName = $('<h3>', {
-        class: 'author-name',
+      const authorName = $("<h3>", {
+        class: "author-name",
       }).text(`Author: ${response.Author.name}`);
 
-      const instructions = $('<p>', {
-        class: 'instructions',
+      const instructions = $("<p>", {
+        class: "instructions",
       }).text(`Instructions: ${response.instructions}`);
 
       // const ingredientList = reponse.ingredients
-      const ingredientTitle = $('<ul>').text('Ingredients:');
+      const ingredientTitle = $("<ul>").text("Ingredients:");
 
       response.Ingredients.forEach((ingredient) => {
-        const ingredients = $('<li>', {
-          class: 'ingredient',
+        const ingredients = $("<li>", {
+          class: "ingredient",
         }).text(`${ingredient.ingredient_name}`);
         ingredientTitle.append(ingredients);
       });
 
       let recipeImage = response.image;
       if (recipeImage === null) {
-        recipeImage = './assets/images/uploads/plate.png';
+        recipeImage = "./assets/images/uploads/plate.png";
       }
 
-      const servingSize = $('<p>', {
-        class: 'serving-size',
+      const servingSize = $("<p>", {
+        class: "serving-size",
       }).text(`Serving Size: ${response.serving_size}`);
 
-      const recipeImgElement = $('<img>', {
+      const recipeImgElement = $("<img>", {
         src: recipeImage,
-        'data-id': id,
-        width: '150px',
-        class: 'recipe-fav image-margin',
+        "data-id": id,
+        width: "150px",
+        class: "recipe-fav image-margin",
       });
 
-      const specialNotes = $('<p>', {
-        class: 'special-notes',
+      const specialNotes = $("<p>", {
+        class: "special-notes",
       }).text(`Special Notes: ${response.special_notes}`);
 
-      const category = $('<p>', {
-        class: 'category',
+      const category = $("<p>", {
+        class: "category",
       }).text(`Category: ${response.category}`);
 
-      const commentEl = $('<div>');
+      const commentEl = $("<div>");
       response.Comments.forEach((comment) => {
-        const commentMade = $('<p>', {
-          class: 'comment-made',
+        const commentMade = $("<p>", {
+          class: "comment-made",
         }).text(`${comment.commenter_name} says: ${comment.comment} `);
         commentEl.append(commentMade);
       });
 
-      const diet = $('<p>', {
-        class: 'diet',
+      const diet = $("<p>", {
+        class: "diet",
       }).text(`Dietary Restrictions: ${response.dietary_restriction}`);
 
-      const favCountEl = $('<p>', {
-        class: 'favCountEl',
+      const favCountEl = $("<p>", {
+        class: "favCountEl",
       }).text(`Number of Likes: ${response.favorite_count}`);
 
-      $('.recipe').prepend(
+      $(".recipe").prepend(
         recipeImgElement,
         recipeName,
         authorName,
@@ -87,18 +87,18 @@ $(document).ready(() => {
         ingredientTitle,
         instructions,
         specialNotes,
-        favCountEl,
+        favCountEl
       );
-      $('.comments-made').append(commentEl);
+      $(".comments-made").append(commentEl);
     });
   }
 
   // create click event for add to favorites button
-  $('.comment-btn').on('click', (event) => {
+  $(".comment-btn").on("click", (event) => {
     event.preventDefault();
-    const commentTxt = $('.comment-text').val();
+    const commentTxt = $(".comment-text").val();
     console.log(commentTxt);
-    const commentName = $('.comment-name').val();
+    const commentName = $(".comment-name").val();
     console.log(commentName);
     console.log(id);
 
@@ -110,19 +110,19 @@ $(document).ready(() => {
     console.log(commentObj);
 
     $.ajax({
-      method: 'POST',
+      method: "POST",
       url: `/api/view/comment/${id}`,
       data: commentObj,
     }).then(() => {
-      console.log('Comment Submitted');
+      console.log("Comment Submitted");
       window.location.reload();
     });
   });
 
-  $('.like-btn').on('click', (event) => {
+  $(".like-btn").on("click", (event) => {
     event.preventDefault();
     favorites += 1;
-    $('.like-btn').data('like', favorites);
+    $(".like-btn").data("like", favorites);
     console.log(favorites);
     favObj = {
       favorites,
@@ -130,7 +130,7 @@ $(document).ready(() => {
     console.log(favObj);
 
     $.ajax({
-      method: 'PUT',
+      method: "PUT",
       url: `/api/view/favorites/${id}`,
       data: favObj,
     }).then(() => {
@@ -138,12 +138,15 @@ $(document).ready(() => {
     });
   });
 
-  // add JQyery here to appened Favorites page or copy Karen's function from Fav page?
+  // click event for email modal:
 
-  // // creat click event for email button
-  // $('.email-recipe').on('click', (event) => {
-  //   Const emailRecipe = () => {
-  // //node mailer function call?
-  //   }
-  // };
+  document.getElementById("email-btn").addEventListener("click", () => {
+    document.querySelector(".bg-modal").style.display = "flex";
+  });
+
+  // click event to close email modal
+
+  document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".bg-modal").style.display = "none";
+  });
 });
