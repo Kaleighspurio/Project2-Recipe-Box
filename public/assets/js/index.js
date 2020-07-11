@@ -70,7 +70,6 @@ $(document).ready(() => {
   // resuable function to make all the elments and put in the cooresponding recipe information
   const createRecipes = (response) => {
     response.forEach((recipe) => {
-      console.log(recipe);
 
       const recipeName = recipe.recipe_name;
       let imageFilePath = recipe.image;
@@ -98,7 +97,6 @@ $(document).ready(() => {
       })
         .attr('data-id', recipeID)
         .attr('data-likes', favoriteCount);
-      console.log(recipeID);
 
       const icon = $('<i>', {
         class: 'fa fa-thumbs-up',
@@ -250,26 +248,21 @@ $(document).ready(() => {
     // changes the title to show what is being searched
     if (selection === 'category') {
       category = $('#category-select').val();
-      console.log(category);
       $('.search-header').text(`${category} Recipes`);
       categorySearch(category);
       $('#category-select').val('select');
     } else if (selection === 'author') {
       author = $('.auth-input').val();
-      console.log(author);
       $('.search-header').text(`Recipes By ${author}`);
       authorSearch(author);
       $('.auth-input').val('');
-      console.log(author, 'after search');
     } else if (selection === 'ingredient') {
       ingredient = $('.ingred-input').val();
-      console.log(ingredient);
       $('.search-header').text(`Recipes That Include ${ingredient}`);
       ingredientSearch(ingredient);
       $('.ingred-input').val('');
     } else if (selection === 'restriction') {
       restriction = $('.diet-input').val();
-      console.log(restriction);
       $('.search-header').text(`${restriction} Recipes`);
       restrictionSearch(restriction);
       $('.diet-input').val('select');
@@ -283,7 +276,6 @@ $(document).ready(() => {
     } else if (selection === 'cat-res') {
       category = $('#category-select').val();
       restriction = $('.diet-input').val();
-      console.log('category, restriction', category, restriction);
       $('.search-header').text(`${restriction} ${category} Recipes`);
       categoryRestriction(category, restriction);
       $('#category-select').val('select');
