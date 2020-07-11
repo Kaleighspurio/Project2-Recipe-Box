@@ -35,6 +35,7 @@ $(document).ready(() => {
 
     const data = new FormData();
     console.log('before files', files[0].files[0]);
+    console.log(url.val());
 
     if (files[0].files[0] === undefined) {
       data.append('image', './assets/public/images/uploads/plate.png');
@@ -43,7 +44,7 @@ $(document).ready(() => {
     }
     data.append('recipe_name', recipeName.val().trim());
     data.append('category', category.val());
-    data.append('instructions', recipeName.val());
+    data.append('instructions', instructions.val());
     data.append('ingredient_name', ingredientsArray);
     data.append('dietary_restriction', restrictions.val());
     data.append('serving_size', size.val().trim());
@@ -89,7 +90,6 @@ $(document).ready(() => {
       console.log(createObject);
       return;
     }
-
 
     // posts the recipe
     postRecipe(data);
