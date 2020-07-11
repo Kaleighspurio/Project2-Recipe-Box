@@ -112,7 +112,7 @@ $(document).ready(() => {
         instructions,
         specialNotesTitle,
         specialNotes,
-        favCountEl,
+        favCountEl
       );
       $('.recipe').prepend(recipeDiv);
       $('.recipe').append(commentEl);
@@ -124,11 +124,16 @@ $(document).ready(() => {
   $('.comment-btn').on('click', (event) => {
     event.preventDefault();
     const commentTxt = $('.comment-text').val();
+
     console.log(commentTxt);
     const commentName = $('.comment-name').val();
     console.log(commentName);
     console.log(id);
-
+    if (!commentTxt || !commentName) {
+      $('.comment-text').addClass('red-border');
+      $('.comment-name').addClass('red-border');
+      return;
+    }
     commentObj = {
       commenter_name: commentName,
       comment: commentTxt,

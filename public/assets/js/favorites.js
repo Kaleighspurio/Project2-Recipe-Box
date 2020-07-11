@@ -26,35 +26,39 @@ $(document).ready(() => {
 
         const recipeDiv = $('<div>', {
           class: 'recipe-div rounded row',
-          width: '600px',
+          // width: '600px',
         });
         // creates a div for each reciepe to go in
-        const recipeDivRow1 = $('<div>', {
+        const recipeDivRow = $('<div>', {
           class: 'margin-auto row',
-          width: '600px',
+          // width: '600px',
         });
 
-        const recipeDivRow2 = $('<div>', {
-          class: ' margin-auto col',
+        const likeDiv = $('<div>', {
+          class: ' margin-auto col-lg-2 col-md-2 col-sm-2',
         });
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
           class: 'btn btn-outline-secondary like-btn-index',
-        }).attr('data-id', recipeID).attr('data-likes', favoriteCount);
+        })
+          .attr('data-id', recipeID)
+          .attr('data-likes', favoriteCount);
+        console.log(recipeID);
+
         const icon = $('<i>', {
           class: 'fa fa-thumbs-up',
         });
         likeButton.append(icon);
+        likeDiv.append(likeButton);
 
         // creates an image for each of the recipes
         const imageDiv = $('<div>', {
-          class: 'image-div center col-3',
+          class: 'image-div center col-lg-3 col-md-3 col-sm-3',
         });
         const recipeImgElement = $('<img>', {
           src: imageFilePath,
           'data-id': recipeID,
-          height: '150px',
-          class: 'recipe-fav',
+          class: 'recipe-img',
         });
         imageDiv.append(recipeImgElement);
 
@@ -65,7 +69,9 @@ $(document).ready(() => {
         const favCountLabel = $('<p>', {
           class: 'label col',
         }).text(`Number of Likes: ${favoriteCount}`);
-
+        // const favCount = $('<p>', {
+        //   class: 'label-font-fav col',
+        // }).text(`${favoriteCount}`);
         favDiv.append(favCountLabel);
 
         // creates a p for the recipe name for each of the recipes
@@ -80,15 +86,15 @@ $(document).ready(() => {
           'data-id': recipeID,
         }).text(`Author: ${recipeAuthor}`);
         const titleNameDiv = $('<div>', {
-          class: 'title-name-div col-6 left',
+          class: 'title-name-div col-lg-5 col-md-5 col-sm-5 left',
         });
         titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
 
         // appends the image, recipe name and author name to the recipe div for each of the recipes
-        recipeDivRow2.append(likeButton);
-        recipeDivRow1.append(imageDiv, titleNameDiv, recipeDivRow2);
 
-        recipeDiv.append(recipeDivRow1);
+        recipeDivRow.append(imageDiv, titleNameDiv, likeDiv);
+
+        recipeDiv.append(recipeDivRow);
         recipeDivEl.append(recipeDiv);
       });
     });
