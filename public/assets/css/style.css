@@ -7,7 +7,7 @@
 }
 
 .rock-font {
-  font-family: 'Rock Salt', cursive;
+  font-family: "Rock Salt", cursive;
 }
 
 nav {
@@ -22,7 +22,7 @@ nav {
   margin: 40px auto;
   padding: 30px;
   border: 1px solid black;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   background-color: #fef8ee;
 }
 
@@ -56,8 +56,12 @@ nav {
   text-decoration: underline;
 }
 
+.recipe-div-view {
+  text-align: center;
+}
+
 .comment-div {
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .comment-btn {
@@ -67,18 +71,10 @@ nav {
   font-size: 30px;
 }
 
-.label-font {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 24px;
+.left {
+  text-align: left;
 }
 
-.label-font-fav {
-  margin-left: 30px;
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 24px;
-}
 .label-font-smaller {
   margin-left: 10px;
   margin-top: 15px;
@@ -95,22 +91,65 @@ nav {
   margin: 30px auto;
 }
 
+.title-name-div {
+  padding-top: 15px;
+}
 .recipe-name-label {
-  font-size: 24px;
-  margin: 15px;
-
-}
-
-.author-label {
   font-size: 20px;
-  margin: 15px;
+  margin-left: 20px;
+
 }
 
-.like-btn {
-  height: 30px;
-  margin-top: 55px;
-  margin-right: 15px;
+.comment-label {
+  font-size: 24px;
 }
+.comment-made {
+  border-bottom: 1px solid black;
+}
+.comment-el {
+  margin-top: 50px;
+ 
+}
+.align-left {
+  text-align: left;
+}
+
+.margin-bottom {
+  margin-bottom: 5px;
+}
+
+
+.title {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.ingredient-list-title {
+  font-size: 20px;
+  padding-left: 230px;
+  margin-bottom: 20px;
+
+}
+
+.ingredient-list {
+  font-size: 16px;
+}
+.label {
+  font-size: 20px;
+  margin-left: 20px;
+  padding-left: 0px;
+}
+
+.comment-name {
+  margin-bottom: 15px;
+}
+.margin-auto {
+  margin: auto;
+}
+.like-btn-index {
+  height: 50px;
+  width: 100px;
+}
+
 .red-border {
   border: 1px solid red;
 }
@@ -179,4 +218,47 @@ nav {
 
 .hover:hover {
   color: #fef8ee;
+}
+
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-content {
+  width: 500px;
+  height: 300px;
+  background-color: #e2ed9b;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.email-icon {
+  max-width: 75px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.email-input {
+  width: 50%;
+  display: block;
+  margin: 15px auto;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 40px;
+  transform: rotate(45deg);
+  cursor: pointer;
 }
