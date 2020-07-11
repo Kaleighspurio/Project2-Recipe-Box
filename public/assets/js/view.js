@@ -182,24 +182,26 @@ $(document).ready(() => {
   });
 });
 
-
+let url;
 $('.email-submit').on('click', () => {
   const name = $('#name').val();
   const email = $('#email').val();
-  const url = window.location.href;
+  url = window.location.href;
   console.log(url);
   const emailInfo = {
-    name: name,
-    email: email,
+    name,
+    email,
     recipe: url,
-  }
-  console.log(name, email)
+  };
+  console.log(name, email);
   $.ajax({
     method: 'POST',
-    url: `/api/view/send`,
+    url: '/api/view/send',
     data: emailInfo,
   }).then(() => {
     console.log('Email Send');
-    //window.location.reload();
   });
+  document.querySelector('.bg-modal').style.display = 'none';
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
 });
