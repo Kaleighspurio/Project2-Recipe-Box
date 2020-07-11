@@ -5,8 +5,8 @@ let author;
 let searchChoice;
 let selection;
 let restriction;
-let favorites;
-let favObj = {};
+// let favorites;
+// let favObj = {};
 let recipeID;
 
 $('.category-input').addClass('hide');
@@ -64,53 +64,86 @@ $('.search').on('change', () => {
 
 const createRecipes = (response) => {
   response.forEach((recipe) => {
+    console.log(recipe);
+
     const recipeName = recipe.recipe_name;
     let imageFilePath = recipe.image;
     recipeID = recipe.id;
     const recipeAuthor = recipe.Author.name;
+    const favoriteCount = recipe.favorite_count;
+    // const specialNotes = recipe.special_notes;
+
     if (imageFilePath === null) {
       imageFilePath = './assets/images/uploads/plate.png';
     }
-    // creates a div for each reciepe to go in
+
     const recipeDiv = $('<div>', {
-      class: 'recipe-div rounded center row',
-      width: '500px',
+      class: 'recipe-div rounded row',
+      width: '600px',
+    });
+    // creates a div for each reciepe to go in
+    const recipeDivRow1 = $('<div>', {
+      class: 'margin-auto row',
+      width: '600px',
+    });
+
+    const recipeDivRow2 = $('<div>', {
+      class: ' margin-auto',
     });
     // creates a like button for each of the recipes
     const likeButton = $('<button>', {
-      class: 'btn btn-outline-secondary like-btn',
+      class: 'btn btn-outline-secondary like-btn-index col',
     });
     const icon = $('<i>', {
       class: 'fa fa-thumbs-up',
     });
     likeButton.append(icon);
+
     // creates an image for each of the recipes
+    const imageDiv = $('<div>', {
+      class: 'image-div center col-3',
+    });
     const recipeImgElement = $('<img>', {
       src: imageFilePath,
       'data-id': recipeID,
-      width: '150px',
-      class: 'recipe-fav col',
+      height: '150px',
+      class: 'recipe-fav',
     });
-    const lineBreak = $('<br>');
+    imageDiv.append(recipeImgElement);
+
+    // creates a p for the favorite count for each of the recipes
+    const favDiv = $('<div>', {
+      class: 'row favDiv center',
+    });
+    const favCountLabel = $('<p>', {
+      class: 'label col',
+    }).text(`Number of Likes: ${favoriteCount}`);
+    // const favCount = $('<p>', {
+    //   class: 'label-font-fav col',
+    // }).text(`${favoriteCount}`);
+    favDiv.append(favCountLabel);
+
     // creates a p for the recipe name for each of the recipes
     const recipeNameLabel = $('<a>', {
       href: `/recipe?id=${recipeID}`,
       'data-id': recipeID,
-      class: 'recipe-name-label col',
+      class: 'recipe-name-label',
     }).text(recipeName);
     // creates a p for the author name for each of the recipes
     const recipeAuthorLabel = $('<p>', {
-      class: 'center col author-label',
+      class: 'label',
       'data-id': recipeID,
     }).text(`Author: ${recipeAuthor}`);
+    const titleNameDiv = $('<div>', {
+      class: 'title-name-div col-6 left',
+    });
+    titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
+
     // appends the image, recipe name and author name to the recipe div for each of the recipes
-    recipeDiv.append(
-      recipeImgElement,
-      lineBreak,
-      recipeNameLabel,
-      recipeAuthorLabel,
-      likeButton,
-    );
+    recipeDivRow2.append(likeButton);
+    recipeDivRow1.append(imageDiv, titleNameDiv, recipeDivRow2);
+
+    recipeDiv.append(recipeDivRow1);
     startRecipes.append(recipeDiv);
   });
 };
@@ -236,23 +269,24 @@ $('.search-btn').on('click', (event) => {
   }
 });
 
-$('.like-btn').on('click', (event) => {
+$('.like-btn-index').on('click', (event) => {
   event.preventDefault();
-  favorites += 1;
-  $('.like-btn').data('like', favorites);
-  console.log(favorites);
-  favObj = {
-    favorites,
-  };
-  console.log(favObj);
+  // $('.like-btn-index').removeClass('btn-outline-secondary').addClass('btn-secondary');
+  // favorites += 1;
+  // $('.like-btn-index').data('like', favorites);
+  // console.log(favorites);
+  // favObj = {
+  //   favorites,
+  // };
+  // console.log(favObj);
 
-  $.ajax({
-    method: 'PUT',
-    url: `/api/view/favorites/${recipeID}`,
-    data: favObj,
-  }).then(() => {
-    window.location.reload();
-  });
+  // $.ajax({
+  //   method: 'PUT',
+  //   url: `/api/view/favorites/${recipeID}`,
+  //   data: favObj,
+  // }).then(() => {
+  //   window.location.reload();
+  // });
 });
 
 pageLoad();

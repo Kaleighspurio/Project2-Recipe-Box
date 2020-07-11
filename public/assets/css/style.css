@@ -67,18 +67,10 @@ nav {
   font-size: 30px;
 }
 
-.label-font {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 24px;
+.left {
+  text-align: left;
 }
 
-.label-font-fav {
-  margin-left: 30px;
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 24px;
-}
 .label-font-smaller {
   margin-left: 10px;
   margin-top: 15px;
@@ -91,30 +83,33 @@ nav {
   margin-bottom: 20px;
 }
 .recipe-div {
-<<<<<<< HEAD
-  margin: 30px auto;
-=======
   border: 1px solid black;
   margin: 30px auto;
 }
 
+.title-name-div {
+  padding-top: 15px;
+}
 .recipe-name-label {
   font-size: 24px;
-  margin: 15px;
+  margin-left: 20px;
 
->>>>>>> 9bf21e7304022b889a5b3f54430d58379a3c0284
 }
 
-.author-label {
+.label {
   font-size: 20px;
-  margin: 15px;
+  margin-left: 20px;
+  padding-left: 0px;
 }
 
-.like-btn {
-  height: 30px;
-  margin-top: 55px;
-  margin-right: 15px;
+.margin-auto {
+  margin: auto;
 }
+.like-btn-index {
+  height: 50px;
+  width: 100px;
+}
+
 .red-border {
   border: 1px solid red;
 }
