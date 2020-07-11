@@ -103,7 +103,7 @@ module.exports = {
     updatedAt: new Date(),
     AuthorId: 2,
   }, {
-    recipe_name: 'Homemade Teriaki Sauce',
+    recipe_name: 'Homemade Teriyaki Sauce',
     instructions:
       'Combine 1 cup water, soy sauce, brown sugar, honey, ginger, and garlic powder in a saucepan over medium heat. Cook until nearly heated through, about 1 minute.  Mix cornstarch and 1/4 cold water together in a cup; stir until dissolved. Add to the saucepan. Cook and stir sauce until thickened, 5 to 7 minutes.',
     serving_size: '4',

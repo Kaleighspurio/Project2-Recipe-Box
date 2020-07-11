@@ -7,6 +7,12 @@ View the app deployed to heroku [HERE](https://fast-mountain-43531.herokuapp.com
 
 ## Table of Contents
 
+  - [Description](#description)
+  - [Technologies](#technologies)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+
 ## Technologies
 This application is a full stack application using HTML, CSS, JavaScript, jQuery, Bootstrap, NodeJS, Sequelize and Express.  It also utilizes the following dependencies:
 * dotenv
@@ -17,7 +23,14 @@ This application is a full stack application using HTML, CSS, JavaScript, jQuery
 * nodemailer
 
 ## Installation
-
+You'll need to run npm install to install of the dependencies.  Create a .env file to the root with your information for the following to run it locally:
+```
+DB_HOST="localhost"
+DB_PORT=3306
+DB_USER="root"
+DB_PASSWORD="YOURPASSWORDHERE"
+DB_NAME="recipe_box"
+```
 
 ## Usage
 <!-- add some screenshots here? -->
