@@ -9,49 +9,35 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       response.forEach((recipe) => {
+        console.log(recipe);
+
         const recipeName = recipe.recipe_name;
-        // const imageFilePath = recipe.image;
+        let imageFilePath = recipe.image;
         const recipeID = recipe.id;
         const recipeAuthor = recipe.Author.name;
-        const recipeCat = recipe.category;
-        const recipeNotes = recipe.special_notes;
         const favoriteCount = recipe.favorite_count;
-        let recipeImage = recipe.image;
+        const specialNotes = recipe.special_notes;
 
-        if (recipeImage === null) {
-          recipeImage = './assets/images/uploads/plate.png';
+        if (imageFilePath === null) {
+          imageFilePath = './assets/images/uploads/plate.png';
         }
 
-        const rowDiv = $('<div>', {
-          class: 'container rounded favorite-container row rowDiv',
-          width: '500px',
+        const recipeDiv = $('<div>', {
+          class: 'recipe-div rounded row',
+          width: '600px',
         });
         // creates a div for each reciepe to go in
-        const recipeDivRight = $('<div>', {
-          class: 'recipe-div col center rec-div-right rec-right',
-          width: '200px',
+        const recipeDivRow1 = $('<div>', {
+          class: 'margin-auto row',
+          width: '600px',
         });
 
-        const recipeDivLeft = $('<div>', {
-          class: 'recipe-div col rounded center rec-left',
-          width: '200px',
+        const recipeDivRow2 = $('<div>', {
+          class: ' margin-auto',
         });
-
-        const notesDiv = $('<div>', {
-          class: 'row notesDiv',
-          width: '500px',
-        });
-        const notesDivLabel = $('<p>', {
-          class: 'underline label-font notesDivLabel',
-        }).text('Special Notes:');
-
-        const notes = $('<p>', {
-          class: 'notes label-font-smaller',
-        }).text(`${recipeNotes}`);
-
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
-          class: 'btn btn-outline-secondary like-btn',
+          class: 'btn btn-outline-secondary like-btn-index col',
         });
         const icon = $('<i>', {
           class: 'fa fa-thumbs-up',
@@ -59,53 +45,49 @@ $(document).ready(() => {
         likeButton.append(icon);
 
         // creates an image for each of the recipes
-        const recipeImgElement = $('<img>', {
-          src: recipeImage,
-          'data-id': recipeID,
-          width: '150px',
-          class: 'recipe-fav image-margin',
+        const imageDiv = $('<div>', {
+          class: 'image-div center col-3',
         });
+        const recipeImgElement = $('<img>', {
+          src: imageFilePath,
+          'data-id': recipeID,
+          height: '150px',
+          class: 'recipe-fav',
+        });
+        imageDiv.append(recipeImgElement);
 
-        // creates an a for the recipe name for each of the recipes
+        // creates a p for the favorite count for each of the recipes
+        const favDiv = $('<div>', {
+          class: 'row favDiv center',
+        });
+        const favCountLabel = $('<p>', {
+          class: 'label col',
+        }).text(`Number of Likes: ${favoriteCount}`);
+
+        favDiv.append(favCountLabel);
+
+        // creates a p for the recipe name for each of the recipes
         const recipeNameLabel = $('<a>', {
           href: `/recipe?id=${recipeID}`,
           'data-id': recipeID,
-          class: 'image-font',
+          class: 'recipe-name-label',
         }).text(recipeName);
-
-        // creates a p for the category name for each of the recipes
-        const categoryLabel = $('<p>', {
-          class: 'center  label-font',
-        }).text(recipeCat);
         // creates a p for the author name for each of the recipes
         const recipeAuthorLabel = $('<p>', {
-          class: 'center  label-font',
+          class: 'label',
           'data-id': recipeID,
         }).text(`Author: ${recipeAuthor}`);
-        // creates a p for the favorite count for each of the recipes
-        const favDiv = $('<div>', {
-          class: 'row favDiv',
-          width: '500px',
+        const titleNameDiv = $('<div>', {
+          class: 'title-name-div col-6 left',
         });
-        const favCountLabel = $('<p>', {
-          class: 'underline label-font',
-        }).text('Number of Likes:');
+        titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
 
-        const favCount = $('<p>', {
-          class: 'center label-font-fav',
-        }).text(`${favoriteCount}`);
         // appends the image, recipe name and author name to the recipe div for each of the recipes
-        notesDiv.append(notesDivLabel, notes);
-        favDiv.append(favCountLabel, favCount);
-        recipeDivLeft.append(recipeImgElement);
+        recipeDivRow2.append(likeButton);
+        recipeDivRow1.append(imageDiv, titleNameDiv, recipeDivRow2);
 
-        recipeDivRight.append(
-          recipeNameLabel,
-          categoryLabel,
-          recipeAuthorLabel,
-        );
-        rowDiv.append(recipeDivLeft, recipeDivRight, favDiv, notesDiv, likeButton);
-        recipeDivEl.append(rowDiv);
+        recipeDiv.append(recipeDivRow1);
+        recipeDivEl.append(recipeDiv);
       });
     });
   };
