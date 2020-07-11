@@ -88,9 +88,6 @@ $(document).ready(() => {
         class: 'recipe-div rounded row',
       });
 
-      // creates a div for each reciepe to go in
-      // const recipeDivRow = $('<div>');
-
       // creats a div for the like button
       const likeDiv = $('<div>', {
         class: 'like-div col-lg-3 col-md-3 col-sm-3',
@@ -144,8 +141,6 @@ $(document).ready(() => {
 
       // appends the image, recipe name and author name to the recipe div for each of the recipes
       recipeDiv.append(imageDiv, titleNameDiv, likeDiv);
-      // appends it to the full div
-      // recipeDiv.append(recipeDivRow);
       // appends it to the page
       startRecipes.append(recipeDiv);
     });
@@ -321,7 +316,7 @@ $(document).ready(() => {
     }).then(() => {
       console.log('fav count updated');
       // reload page to show changes
-      // window.location.reload();
+      window.location.reload();
     });
   });
 
