@@ -118,9 +118,14 @@ nav {
   margin-bottom: 5px;
 }
 
+
+.title {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 .ingredient-list-title {
   font-size: 20px;
-  padding-left: 280px;
+  padding-left: 230px;
   margin-bottom: 20px;
 
 }

@@ -30,16 +30,23 @@ $(document).ready(() => {
         class: 'instructions align-left',
       }).text(`Instructions: ${response.instructions}`);
 
+      const instructionTitle = $('<p>', {
+        class: 'instructions-title title align-left',
+      }).text('Instructions:');
+
       // const ingredientList = reponse.ingredients
-      const ingredientTitle = $('<ul>', {
+      const ingredientUL = $('<ul>', {
         class: 'ingredient-list-title align-left',
-      }).text('Ingredients:');
+      });
+      const ingredientTitle = $('<p>', {
+        class: 'ingredient-title title'
+      }).text('Ingredients');
 
       response.Ingredients.forEach((ingredient) => {
         const ingredients = $('<li>', {
           class: 'ingredient-list',
         }).text(`${ingredient.ingredient_name}`);
-        ingredientTitle.append(ingredients);
+        ingredientUL.append(ingredients);
       });
 
       let recipeImage = response.image;
@@ -60,14 +67,18 @@ $(document).ready(() => {
 
       const specialNotes = $('<p>', {
         class: 'special-notes align-left',
-      }).text(`Special Notes: ${response.special_notes}`);
+      }).text(`${response.special_notes}`);
+
+      const specialNotesTitle = $('<p>', {
+        class: 'special-notes-title title align-left',
+      }).text('Special Notes:');
 
       const category = $('<p>', {
         class: 'category margin-bottom',
       }).text(`Category: ${response.category}`);
 
       const commentEl = $('<div>', {
-        class: 'comment-el'
+        class: 'comment-el',
       });
       const commentLabel = $('<p>', {
         class: 'comment-label',
@@ -96,7 +107,10 @@ $(document).ready(() => {
         diet,
         servingSize,
         ingredientTitle,
+        ingredientUL,
+        instructionTitle,
         instructions,
+        specialNotesTitle,
         specialNotes,
         favCountEl,
       );
