@@ -70,7 +70,6 @@ $(document).ready(() => {
   // resuable function to make all the elments and put in the cooresponding recipe information
   const createRecipes = (response) => {
     response.forEach((recipe) => {
-
       const recipeName = recipe.recipe_name;
       let imageFilePath = recipe.image;
       recipeID = recipe.id;

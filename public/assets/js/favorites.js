@@ -11,7 +11,6 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       response.forEach((recipe) => {
-
         const recipeName = recipe.recipe_name;
         let imageFilePath = recipe.image;
         const recipeID = recipe.id;

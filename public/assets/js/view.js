@@ -1,7 +1,6 @@
 $(document).ready(() => {
   const url = new URL(window.location);
   const id = url.searchParams.get('id');
-  console.log(id);
 
   let commentObj = {};
   let favorites;
