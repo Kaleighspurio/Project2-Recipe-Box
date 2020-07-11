@@ -2,6 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const db = require('./models');
 const routes = require('./routes');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
