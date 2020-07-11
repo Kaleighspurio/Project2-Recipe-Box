@@ -40,9 +40,7 @@ $(document).ready(() => {
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
           class: 'btn btn-outline-secondary like-btn-index',
-          data: 'likes',
-          favoriteCount,
-        });
+        }).attr('data-id', recipeID).attr('data-likes', favoriteCount);
         const icon = $('<i>', {
           class: 'fa fa-thumbs-up',
         });
