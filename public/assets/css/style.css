@@ -56,12 +56,20 @@ nav {
   text-decoration: underline;
 }
 
+.button-div {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .recipe-div-view {
   text-align: center;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .comment-div {
   margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .comment-btn {
@@ -114,6 +122,8 @@ nav {
 }
 .comment-el {
   margin-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
  
 }
 .align-left {
@@ -131,7 +141,6 @@ nav {
 }
 .ingredient-list-title {
   font-size: 20px;
-  padding-left: 230px;
   margin-bottom: 20px;
 
 }

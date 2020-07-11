@@ -30,7 +30,10 @@ module.exports = (sequelize, Datatypes) => {
       defaultValue: '',
     },
     image: Datatypes.STRING,
-    url_source: Datatypes.STRING,
+    url_source: {
+      type: Datatypes.STRING,
+      defaultValue: '',
+    },
   });
 
   Recipe.associate = (models) => {
