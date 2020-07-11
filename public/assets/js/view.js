@@ -28,7 +28,7 @@ $(document).ready(() => {
 
       const instructions = $('<p>', {
         class: 'instructions align-left',
-      }).text(`Instructions: ${response.instructions}`);
+      }).text(`${response.instructions}`);
 
       const instructionTitle = $('<p>', {
         class: 'instructions-title title align-left',
@@ -99,6 +99,16 @@ $(document).ready(() => {
         class: 'favCountEl align-left',
       }).text(`Number of Likes: ${response.favorite_count}`);
 
+      console.log(response);
+
+      let recipeURL;
+      if (response.url_source !== '') {
+        console.log(response.url_source);
+        recipeURL = $('<p>', {
+          class: 'url left',
+        }).text(`URL: ${response.url_source}`);
+      }
+
       recipeDiv.append(
         recipeImgElement,
         recipeName,
@@ -113,6 +123,7 @@ $(document).ready(() => {
         specialNotesTitle,
         specialNotes,
         favCountEl,
+        recipeURL,
       );
       $('.recipe').prepend(recipeDiv);
       $('.recipe').append(commentEl);
