@@ -49,8 +49,7 @@ module.exports = {
     createdAt: new Date(),
     updatedAt: new Date(),
     AuthorId: 5,
-  },
-  {
+  }, {
     recipe_name: 'Grilled Garlic Halibut',
     instructions:
       'Using a charcoal grill, start coals before meal preparation. In a small bowl, mix oil, salt, red pepper, and garlic. Spread on both sides of halibut steaks. Cover and grill on oiled grill 4 inches from medium coals 10 to 15 minutes or until fish flakes easily with a fork.  Sprinkle with cilantro.',
@@ -62,8 +61,7 @@ module.exports = {
     createdAt: new Date(),
     updatedAt: new Date(),
     AuthorId: 5,
-  },
-  {
+  }, {
     recipe_name: 'Grilled Texas Toast',
     instructions:
       'Spread margarine or butter on both sides of bread slices. Sprinkle with seasoned salt. Grill bread 4 inches from medium coals 4 to 6 minutes, turning once, until golden brown.',
@@ -75,8 +73,7 @@ module.exports = {
     createdAt: new Date(),
     updatedAt: new Date(),
     AuthorId: 3,
-  },
-  {
+  }, {
     recipe_name: 'Savory Broiled Cod',
     instructions:
       'Set oven control to broil.  Grease rack in broiler pan.  Place cod on rack.  Broil 4 inches from heat 8 minutes.  Mix remaining ingredients in small bowl.  Spread on both sides fish.  Broil 1 to 2 minutes or until topping is light brown and fish flakes easily with fork.',
@@ -88,21 +85,19 @@ module.exports = {
     createdAt: new Date(),
     updatedAt: new Date(),
     AuthorId: 4,
-  },
-  {
+  }, {
     recipe_name: 'Beef Teriyaki Skillet',
     instructions:
       'In a large skillet preheat 1 teaspoon sesame oil over medium-high heat for about 1 minute. The sesame oil adds great flavor to the dish, but if you don’t have any you can substitute with canola or vegetable oil. \n Add beef, onion, garlic and ginger to the skillet. Cook, breaking up the meat as you stir, until the beef is no longer pink and the onion is tender (about 5-7 minutes). Drain, and return meat to skillet. \n Stir teriyaki sauce into the beef mixture. Bring to a low simmer and cook for an additional 3-5 minutes, just until sauce thickens slightly. \n Serve over rice, in tortillas, or in lettuce wraps.',
     serving_size: '4',
     category: 'entree',
     special_notes: '10-Minute Recipe',
-    image: null,
+    image: '/assets/images/uploads/Beef-Teriyaki-Skillet.jpg',
     url_source: null,
     createdAt: new Date(),
     updatedAt: new Date(),
     AuthorId: 2,
-  },
-  {
+  }, {
     recipe_name: 'Homemade Teriaki Sauce',
     instructions:
       'Combine 1 cup water, soy sauce, brown sugar, honey, ginger, and garlic powder in a saucepan over medium heat. Cook until nearly heated through, about 1 minute.  Mix cornstarch and 1/4 cold water together in a cup; stir until dissolved. Add to the saucepan. Cook and stir sauce until thickened, 5 to 7 minutes.',
