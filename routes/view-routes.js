@@ -1,15 +1,8 @@
 const router = require('express').Router();
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
-const path = require('path');
 const nodemailer = require('nodemailer');
 const db = require('../models');
-const { Router } = require('express');
 require('dotenv').config();
-
-const app = express();
 
 // View will have a create/POST to comment,
 // it will also have a get to view recipe and comments,
@@ -74,24 +67,8 @@ router.put('/favorites/:id', (req, res) => {
 
 // To be able to send emails on request we're using nodemailer
 
-// Engine setup
-// app.engine('handlebars', exphbs());
-// app.set('view engine', 'handlebars');
-
-// // static folder
-// app.use('/public', express.static(path.join(__dirname, 'public')));
-
-// // body parser middleware
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-
-// app.get('/', (req, res) => {
-//   res.render('contact');
-// });
-
+// eslint-disable-next-line no-unused-vars
 router.post('/send', (req, res) => {
-  console.log(req.body, "asdfghjkl;poiuy");
-  console.log(req.params);
   const output = `
    <p>You have a new request for a recipe</p>
    <h3>Recipe details</h3>
@@ -128,8 +105,6 @@ router.post('/send', (req, res) => {
     }
     console.log('Message sent: %s', info.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-    res.render('contact', { msg: 'Email has been sent' });
   });
 });
 
