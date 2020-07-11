@@ -6,8 +6,8 @@ let author;
 let searchChoice;
 let selection;
 let restriction;
-// let favorites;
-// let favObj = {};
+let favoriteCount;
+let favObj = {};
 let recipeID;
 
 $('.category-input').addClass('hide');
@@ -71,7 +71,7 @@ const createRecipes = (response) => {
     let imageFilePath = recipe.image;
     recipeID = recipe.id;
     const recipeAuthor = recipe.Author.name;
-    const favoriteCount = recipe.favorite_count;
+    favoriteCount = recipe.favorite_count;
     // const specialNotes = recipe.special_notes;
 
     if (imageFilePath === null) {
@@ -80,21 +80,23 @@ const createRecipes = (response) => {
 
     const recipeDiv = $('<div>', {
       class: 'recipe-div rounded row',
-      width: '600px',
+      // width: '600px',
     });
     // creates a div for each reciepe to go in
     const recipeDivRow1 = $('<div>', {
       class: 'margin-auto row',
-      width: '600px',
+      // width: '600px',
     });
 
     const recipeDivRow2 = $('<div>', {
-      class: ' margin-auto',
+      class: ' margin-auto col',
     });
     // creates a like button for each of the recipes
     const likeButton = $('<button>', {
-      class: 'btn btn-outline-secondary like-btn-index col',
-    });
+      class: 'btn btn-outline-secondary like-btn-index',
+    }).attr('data-id', recipeID).attr('data-likes', favoriteCount);
+    console.log(recipeID);
+
     const icon = $('<i>', {
       class: 'fa fa-thumbs-up',
     });
@@ -270,24 +272,28 @@ $('.search-btn').on('click', (event) => {
   }
 });
 
-$('.like-btn-index').on('click', (event) => {
-  event.preventDefault();
-  // $('.like-btn-index').removeClass('btn-outline-secondary').addClass('btn-secondary');
-  // favorites += 1;
-  // $('.like-btn-index').data('like', favorites);
-  // console.log(favorites);
-  // favObj = {
-  //   favorites,
-  // };
-  // console.log(favObj);
 
-  // $.ajax({
-  //   method: 'PUT',
-  //   url: `/api/view/favorites/${recipeID}`,
-  //   data: favObj,
-  // }).then(() => {
-  //   window.location.reload();
-  // });
+// not sure why this click isn't working
+$(document).on('click', '.like-btn-index', function (event) {
+  event.preventDefault();
+  const id = $(this).data('id');
+  favoriteCount = $(this).data('likes');
+  favoriteCount += 1;
+  console.log(favoriteCount);
+
+  favObj = {
+    favoriteCount,
+  };
+  console.log(favObj);
+  $.ajax({
+    method: 'PUT',
+    url: `/api/${id}`,
+    data: favObj,
+  }).then(() => {
+    console.log('fav count updated');
+    // window.location.reload();
+  });
 });
+
 
 pageLoad();
