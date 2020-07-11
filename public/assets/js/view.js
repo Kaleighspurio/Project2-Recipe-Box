@@ -138,12 +138,15 @@ $(document).ready(() => {
     });
   });
 
-  // add JQyery here to appened Favorites page or copy Karen's function from Fav page?
+  // click event for email modal:
 
-  // // creat click event for email button
-  // $('.email-recipe').on('click', (event) => {
-  //   Const emailRecipe = () => {
-  // //node mailer function call?
-  //   }
-  // };
+  document.getElementById('email-btn').addEventListener('click', () => {
+    document.querySelector('.bg-modal').style.display = 'flex';
+  });
+
+  // click event to close email modal
+
+  document.querySelector('.close').addEventListener('click', () => {
+    document.querySelector('.bg-modal').style.display = 'none';
+  });
 });

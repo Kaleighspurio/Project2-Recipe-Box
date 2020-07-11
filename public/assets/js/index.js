@@ -71,7 +71,7 @@ const createRecipes = (response) => {
     recipeID = recipe.id;
     const recipeAuthor = recipe.Author.name;
     const favoriteCount = recipe.favorite_count;
-    const specialNotes = recipe.special_notes;
+    // const specialNotes = recipe.special_notes;
 
     if (imageFilePath === null) {
       imageFilePath = './assets/images/uploads/plate.png';
