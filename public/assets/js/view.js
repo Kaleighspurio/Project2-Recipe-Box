@@ -112,7 +112,7 @@ $(document).ready(() => {
         instructions,
         specialNotesTitle,
         specialNotes,
-        favCountEl
+        favCountEl,
       );
       $('.recipe').prepend(recipeDiv);
       $('.recipe').append(commentEl);
