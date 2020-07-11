@@ -39,7 +39,7 @@ $(document).ready(() => {
         class: 'ingredient-list-title align-left',
       });
       const ingredientTitle = $('<p>', {
-        class: 'ingredient-title title'
+        class: 'ingredient-title title',
       }).text('Ingredients');
 
       response.Ingredients.forEach((ingredient) => {

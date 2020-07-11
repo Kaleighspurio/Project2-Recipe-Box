@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Op } = require('sequelize');
 const db = require('../models');
 
-// TODO: Do we want a "View all" button to get all the recipes?
 
 // This gets the 25 most recent recipes and orders them newest to oldest.
 // Can be populated on the page when the page loads?
@@ -17,7 +16,7 @@ router.get('/recent', (req, res) => {
   });
 });
 
-// /api/category/cate
+// to search just by category
 router.get('/category/:category', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
@@ -31,6 +30,7 @@ router.get('/category/:category', (req, res) => {
   });
 });
 
+// to search just by dietary restriction
 router.get('/restriction/:restriction', (req, res) => {
   db.Recipe.findAll({
     include: [db.Author],
@@ -44,6 +44,7 @@ router.get('/restriction/:restriction', (req, res) => {
   });
 });
 
+// to search by ingredient
 router.get('/ingredient/:ingredient', (req, res) => {
   db.Recipe.findAll({
     include: [
@@ -62,6 +63,7 @@ router.get('/ingredient/:ingredient', (req, res) => {
   });
 });
 
+// to search by author
 router.get('/author/:author', (req, res) => {
   db.Recipe.findAll({
     include: [
@@ -134,16 +136,10 @@ router.get('/category/:category/restriction/:restriction', (req, res) => {
 
 // **** PUT to update the favorite_count
 router.put('/:id', (req, res) => {
-  const newFavoriteCount = req.body.favorite_count + 1;
+//   const newFavoriteCount = req.body.favorite_count + 1;
   db.Recipe.update(
-    {
-      favorite_count: newFavoriteCount,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    },
+    { favorite_count: req.body.favoriteCount },
+    { where: { id: req.params.id } },
   ).then((dbRecipe) => {
     res.json(dbRecipe);
   });
