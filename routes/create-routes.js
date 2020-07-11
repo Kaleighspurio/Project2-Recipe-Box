@@ -51,6 +51,7 @@ router.post('/', async (req, res) => {
     serving_size: req.body.serving_size,
     category: req.body.category,
     dietary_restriction: req.body.dietary_restriction,
+    special_notes: req.body.special_notes,
     // save the relative file path
     image: dbPath,
     url_source: req.body.url_source,

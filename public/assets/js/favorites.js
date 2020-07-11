@@ -1,5 +1,7 @@
 $(document).ready(() => {
   const recipeDivEl = $('.favorite-container');
+  let favoriteCount;
+  let favObj;
 
   const getFavorites = () => {
     // gets the favorite recipes
@@ -15,7 +17,7 @@ $(document).ready(() => {
         let imageFilePath = recipe.image;
         const recipeID = recipe.id;
         const recipeAuthor = recipe.Author.name;
-        const favoriteCount = recipe.favorite_count;
+        favoriteCount = recipe.favorite_count;
         // const specialNotes = recipe.special_notes;
 
         if (imageFilePath === null) {
@@ -33,12 +35,12 @@ $(document).ready(() => {
         });
 
         const recipeDivRow2 = $('<div>', {
-          class: ' margin-auto',
+          class: ' margin-auto col',
         });
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
-          class: 'btn btn-outline-secondary like-btn-index col',
-        });
+          class: 'btn btn-outline-secondary like-btn-index',
+        }).attr('data-id', recipeID).attr('data-likes', favoriteCount);
         const icon = $('<i>', {
           class: 'fa fa-thumbs-up',
         });
@@ -91,6 +93,27 @@ $(document).ready(() => {
       });
     });
   };
+
+  $(document).on('click', '.like-btn-index', function (event) {
+    event.preventDefault();
+    const id = $(this).data('id');
+    favoriteCount = $(this).data('likes');
+    favoriteCount += 1;
+    console.log(favoriteCount);
+
+    favObj = {
+      favoriteCount,
+    };
+    console.log(favObj);
+    $.ajax({
+      method: 'PUT',
+      url: `/api/favorites/${id}`,
+      data: favObj,
+    }).then(() => {
+      console.log('fav count updated');
+      window.location.reload();
+    });
+  });
 
   getFavorites();
 });

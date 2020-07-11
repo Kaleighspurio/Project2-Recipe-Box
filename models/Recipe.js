@@ -25,7 +25,10 @@ module.exports = (sequelize, Datatypes) => {
       allowNull: false,
       defaultValue: 0,
     },
-    special_notes: Datatypes.TEXT,
+    special_notes: {
+      type: Datatypes.TEXT,
+      defaultValue: '',
+    },
     image: Datatypes.STRING,
     url_source: Datatypes.STRING,
   });

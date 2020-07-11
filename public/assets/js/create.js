@@ -8,6 +8,7 @@ $(document).ready(() => {
   const ingredients = $('#ingredients');
   const instructions = $('#instructions');
   const files = $('#file');
+  const specialNotes = $('#special-notes');
   let createObject;
 
   const postRecipe = (recipe) => {
@@ -32,10 +33,6 @@ $(document).ready(() => {
 
     console.log(files);
 
-    // if(files.val()===""){
-    //   files.val() = './assets/images/uploads/plate.png';
-    // }
-
     const data = new FormData();
     console.log('before files', files[0].files[0]);
 
@@ -52,10 +49,13 @@ $(document).ready(() => {
     data.append('serving_size', size.val().trim());
     data.append('url_source', url.val());
     data.append('name', author.val().trim());
+    data.append('special_notes', specialNotes.val().trim());
 
     console.log(files[0].files[0]);
     console.log(data.entries());
     console.log(ingredientsArray);
+    console.log(specialNotes.val());
+
     // creates an object of the values to be stored in the db
     createObject = {
       name: author.val().trim(),
@@ -89,6 +89,7 @@ $(document).ready(() => {
       console.log(createObject);
       return;
     }
+
 
     // posts the recipe
     postRecipe(data);
