@@ -23,7 +23,14 @@ This application is a full stack application using HTML, CSS, JavaScript, jQuery
 * nodemailer
 
 ## Installation
-
+You'll need to run npm install to install of the dependencies.  Create a .env file to the root with your information for the following to run it locally:
+```
+DB_HOST="localhost"
+DB_PORT=3306
+DB_USER="root"
+DB_PASSWORD="YOURPASSWORDHERE"
+DB_NAME="recipe_box"
+```
 
 ## Usage
 <!-- add some screenshots here? -->
