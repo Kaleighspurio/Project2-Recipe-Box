@@ -15,26 +15,38 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       favorites = response.favorite_count;
+      const recipeDiv = $('<div>', {
+        class: 'recipe-div-view',
+      });
       const recipeName = $('<h2>', {
         class: 'recipe-name',
       }).text(`${response.recipe_name}`);
 
-      const authorName = $('<h3>', {
-        class: 'author-name',
+      const authorName = $('<p>', {
+        class: 'author-name margin-bottom',
       }).text(`Author: ${response.Author.name}`);
 
       const instructions = $('<p>', {
-        class: 'instructions',
+        class: 'instructions align-left',
       }).text(`Instructions: ${response.instructions}`);
 
+      const instructionTitle = $('<p>', {
+        class: 'instructions-title title align-left',
+      }).text('Instructions:');
+
       // const ingredientList = reponse.ingredients
-      const ingredientTitle = $('<ul>').text('Ingredients:');
+      const ingredientUL = $('<ul>', {
+        class: 'ingredient-list-title align-left',
+      });
+      const ingredientTitle = $('<p>', {
+        class: 'ingredient-title title'
+      }).text('Ingredients');
 
       response.Ingredients.forEach((ingredient) => {
         const ingredients = $('<li>', {
-          class: 'ingredient',
+          class: 'ingredient-list',
         }).text(`${ingredient.ingredient_name}`);
-        ingredientTitle.append(ingredients);
+        ingredientUL.append(ingredients);
       });
 
       let recipeImage = response.image;
@@ -54,14 +66,24 @@ $(document).ready(() => {
       });
 
       const specialNotes = $('<p>', {
-        class: 'special-notes',
-      }).text(`Special Notes: ${response.special_notes}`);
+        class: 'special-notes align-left',
+      }).text(`${response.special_notes}`);
+
+      const specialNotesTitle = $('<p>', {
+        class: 'special-notes-title title align-left',
+      }).text('Special Notes:');
 
       const category = $('<p>', {
-        class: 'category',
+        class: 'category margin-bottom',
       }).text(`Category: ${response.category}`);
 
-      const commentEl = $('<div>');
+      const commentEl = $('<div>', {
+        class: 'comment-el',
+      });
+      const commentLabel = $('<p>', {
+        class: 'comment-label',
+      }).text('Comments:');
+      commentEl.append(commentLabel);
       response.Comments.forEach((comment) => {
         const commentMade = $('<p>', {
           class: 'comment-made',
@@ -70,14 +92,14 @@ $(document).ready(() => {
       });
 
       const diet = $('<p>', {
-        class: 'diet',
+        class: 'diet margin-bottom',
       }).text(`Dietary Restrictions: ${response.dietary_restriction}`);
 
       const favCountEl = $('<p>', {
-        class: 'favCountEl',
+        class: 'favCountEl align-left',
       }).text(`Number of Likes: ${response.favorite_count}`);
 
-      $('.recipe').prepend(
+      recipeDiv.append(
         recipeImgElement,
         recipeName,
         authorName,
@@ -85,11 +107,16 @@ $(document).ready(() => {
         diet,
         servingSize,
         ingredientTitle,
+        ingredientUL,
+        instructionTitle,
         instructions,
+        specialNotesTitle,
         specialNotes,
         favCountEl,
       );
-      $('.comments-made').append(commentEl);
+      $('.recipe').prepend(recipeDiv);
+      $('.recipe').append(commentEl);
+      // $('.comments-made').append(commentEl);
     });
   }
 
