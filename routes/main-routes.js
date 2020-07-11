@@ -136,7 +136,6 @@ router.get('/category/:category/restriction/:restriction', (req, res) => {
 
 // **** PUT to update the favorite_count
 router.put('/:id', (req, res) => {
-//   const newFavoriteCount = req.body.favorite_count + 1;
   db.Recipe.update(
     { favorite_count: req.body.favoriteCount },
     { where: { id: req.params.id } },

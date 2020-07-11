@@ -12,4 +12,13 @@ router.get('/', (req, res) => {
   });
 });
 
+router.put('/:id', (req, res) => {
+  db.Recipe.update(
+    { favorite_count: req.body.favoriteCount },
+    { where: { id: req.params.id } },
+  ).then((dbRecipe) => {
+    res.json(dbRecipe);
+  });
+});
+
 module.exports = router;
