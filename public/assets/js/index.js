@@ -273,7 +273,6 @@ $('.search-btn').on('click', (event) => {
 });
 
 
-// not sure why this click isn't working
 $(document).on('click', '.like-btn-index', function (event) {
   event.preventDefault();
   const id = $(this).data('id');
@@ -291,7 +290,7 @@ $(document).on('click', '.like-btn-index', function (event) {
     data: favObj,
   }).then(() => {
     console.log('fav count updated');
-    // window.location.reload();
+    window.location.reload();
   });
 });
 

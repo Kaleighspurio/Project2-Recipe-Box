@@ -96,22 +96,23 @@ $(document).ready(() => {
     });
   };
 
-  // not sure why this click isn't working
   $(document).on('click', '.like-btn-index', function (event) {
     event.preventDefault();
-    let favorites = $(this).data('likes', favoriteCount);
-    console.log(favorites);
-    favorites += 1;
-    console.log(favorites);
+    const id = $(this).data('id');
+    favoriteCount = $(this).data('likes');
+    favoriteCount += 1;
+    console.log(favoriteCount);
+
     favObj = {
-      favorites,
+      favoriteCount,
     };
     console.log(favObj);
     $.ajax({
       method: 'PUT',
-      url: `/api/view/favorites/${favorites}`,
+      url: `/api/favorites/${id}`,
       data: favObj,
     }).then(() => {
+      console.log('fav count updated');
       window.location.reload();
     });
   });
