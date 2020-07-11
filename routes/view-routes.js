@@ -115,7 +115,7 @@ app.post('/send', (req, res) => {
     from: '"Recipe Box" < RecipeBox@recipebox.com>', // sender address
     to: `${req.body.email}`, // list of receivers
     subject: 'Your Recipe', // Subject line
-    text: 'Here you go', // plain text body
+    text: 'Enjoy your recipe', // plain text body
     html: output, // html body
   };
 
