@@ -73,18 +73,17 @@
 
     <div class="container recipe">
       <div class="button-div">
-         <button class="btn btn-outline-secondary like-btn">
-        <i class="fa fa-thumbs-up"></i>
-      </button>
-      <button
-        class="btn btn-outline-secondary email-btn"
-        type="button"
-        id="email-btn"
-      >
-        Email Recipe
-      </button>
+        <button class="btn btn-outline-secondary like-btn">
+          <i class="fa fa-thumbs-up"></i>
+        </button>
+        <button
+          class="btn btn-outline-secondary email-btn"
+          type="button"
+          id="email-btn"
+        >
+          Email Recipe
+        </button>
       </div>
-     
 
       <div class="comment-div">
         <p>Leave a Comment:</p>
@@ -112,10 +111,10 @@
           src="./assets/images/recipe-card.png"
           alt="recipe card image"
         />
-        <form action="">
+        <form method="POST" action="send">
           <input class="email-input" type="text" placeholder="Name" />
           <input class="email-input" type="text" placeholder="Email" />
-          <button class="btn btn-outline-secondary email-submit" type="button">
+          <button class="btn btn-outline-secondary email-submit" type="submit">
             Submit
           </button>
         </form>
