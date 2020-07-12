@@ -195,7 +195,8 @@ $(document).ready(() => {
 });
 
 let url;
-$('.email-submit').on('click', () => {
+$('.email-submit').on('click', (e) => {
+  e.preventDefault();
   const name = $('#name').val();
   const email = $('#email').val();
   url = window.location.href;
@@ -210,10 +211,15 @@ $('.email-submit').on('click', () => {
     method: 'POST',
     url: '/api/view/send',
     data: emailInfo,
-  }).then(() => {
-    console.log('Email Send');
+  }).then((res) => {
+    if (res.success) {
+      $('#email-form').css('display', 'none');
+      $('#email-result').text('Success!');
+    }
+    console.log('Email Send', res);
+    // document.querySelector('.bg-modal').style.display = 'none';
+    // alert('success')
   });
-  document.querySelector('.bg-modal').style.display = 'none';
   // eslint-disable-next-line no-restricted-globals
-  location.reload();
+  // location.reload();
 });
