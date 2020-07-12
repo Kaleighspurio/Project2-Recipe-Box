@@ -70,8 +70,6 @@ $(document).ready(() => {
   // resuable function to make all the elments and put in the cooresponding recipe information
   const createRecipes = (response) => {
     response.forEach((recipe) => {
-      console.log(recipe);
-
       const recipeName = recipe.recipe_name;
       let imageFilePath = recipe.image;
       recipeID = recipe.id;
@@ -88,14 +86,9 @@ $(document).ready(() => {
         class: 'recipe-div rounded row',
       });
 
-      // creates a div for each reciepe to go in
-      const recipeDivRow = $('<div>', {
-        class: 'margin-auto row',
-      });
-
       // creats a div for the like button
       const likeDiv = $('<div>', {
-        class: ' margin-auto col-lg-2 col-md-2 col-sm-2',
+        class: 'like-div col-lg-3 col-md-3 col-sm-3',
       });
       // creates a like button for each of the recipes
       const likeButton = $('<button>', {
@@ -103,7 +96,6 @@ $(document).ready(() => {
       })
         .attr('data-id', recipeID)
         .attr('data-likes', favoriteCount);
-      console.log(recipeID);
 
       const icon = $('<i>', {
         class: 'fa fa-thumbs-up',
@@ -126,17 +118,6 @@ $(document).ready(() => {
       // appends the image to the div
       imageDiv.append(recipeImgElement);
 
-      // creates a div for the favorite count for each of the recipes
-      const favDiv = $('<div>', {
-        class: 'row favDiv center',
-      });
-      // creats a p for the favorite count for each of the recipes
-      const favCountLabel = $('<p>', {
-        class: 'label col',
-      }).text(`Number of Likes: ${favoriteCount}`);
-      // appends the count to the div
-      favDiv.append(favCountLabel);
-
       // creates an a for the recipe name for each of the recipes
       const recipeNameLabel = $('<a>', {
         href: `/recipe?id=${recipeID}`,
@@ -150,15 +131,13 @@ $(document).ready(() => {
       }).text(`Author: ${recipeAuthor}`);
       // creats a div
       const titleNameDiv = $('<div>', {
-        class: 'title-name-div col-lg-5 col-md-5 col-sm-5 left',
+        class: 'title-name-div col-lg-6 col-md-6 col-sm-6 left',
       });
       // appends the recipe name, author and favorite count to the div
-      titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
+      titleNameDiv.append(recipeNameLabel, recipeAuthorLabel);
 
       // appends the image, recipe name and author name to the recipe div for each of the recipes
-      recipeDivRow.append(imageDiv, titleNameDiv, likeDiv);
-      // appends it to the full div
-      recipeDiv.append(recipeDivRow);
+      recipeDiv.append(imageDiv, titleNameDiv, likeDiv);
       // appends it to the page
       startRecipes.append(recipeDiv);
     });
@@ -268,26 +247,21 @@ $(document).ready(() => {
     // changes the title to show what is being searched
     if (selection === 'category') {
       category = $('#category-select').val();
-      console.log(category);
       $('.search-header').text(`${category} Recipes`);
       categorySearch(category);
       $('#category-select').val('select');
     } else if (selection === 'author') {
       author = $('.auth-input').val();
-      console.log(author);
       $('.search-header').text(`Recipes By ${author}`);
       authorSearch(author);
       $('.auth-input').val('');
-      console.log(author, 'after search');
     } else if (selection === 'ingredient') {
       ingredient = $('.ingred-input').val();
-      console.log(ingredient);
       $('.search-header').text(`Recipes That Include ${ingredient}`);
       ingredientSearch(ingredient);
       $('.ingred-input').val('');
     } else if (selection === 'restriction') {
       restriction = $('.diet-input').val();
-      console.log(restriction);
       $('.search-header').text(`${restriction} Recipes`);
       restrictionSearch(restriction);
       $('.diet-input').val('select');
@@ -301,7 +275,6 @@ $(document).ready(() => {
     } else if (selection === 'cat-res') {
       category = $('#category-select').val();
       restriction = $('.diet-input').val();
-      console.log('category, restriction', category, restriction);
       $('.search-header').text(`${restriction} ${category} Recipes`);
       categoryRestriction(category, restriction);
       $('#category-select').val('select');
@@ -312,6 +285,8 @@ $(document).ready(() => {
   // when the like button is clicked
   $(document).on('click', '.like-btn-index', function (event) {
     event.preventDefault();
+    $(this).removeClass('btn-outline-secondary');
+    $(this).addClass('btn-secondary');
     // find it's recipe id
     const id = $(this).data('id');
     // find it's current like count

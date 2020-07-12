@@ -11,8 +11,6 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       response.forEach((recipe) => {
-        console.log(recipe);
-
         const recipeName = recipe.recipe_name;
         let imageFilePath = recipe.image;
         const recipeID = recipe.id;
@@ -29,14 +27,9 @@ $(document).ready(() => {
           class: 'recipe-div rounded row',
         });
 
-        // creates a div for each reciepe to go in
-        const recipeDivRow = $('<div>', {
-          class: 'margin-auto row',
-        });
-
         // creats a div for the like button
         const likeDiv = $('<div>', {
-          class: ' margin-auto col-lg-2 col-md-2 col-sm-2',
+          class: 'like-div col-lg-3 col-md-3 col-sm-3',
         });
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
@@ -44,7 +37,6 @@ $(document).ready(() => {
         })
           .attr('data-id', recipeID)
           .attr('data-likes', favoriteCount);
-        console.log(recipeID);
 
         const icon = $('<i>', {
           class: 'fa fa-thumbs-up',
@@ -67,16 +59,10 @@ $(document).ready(() => {
         // appends the image to the div
         imageDiv.append(recipeImgElement);
 
-        // creates a div for the favorite count for each of the recipes
-        const favDiv = $('<div>', {
-          class: 'row favDiv center',
-        });
-        // creats a p for the favorite count for each of the recipes
+        // creates a p for the number of likes and the count for each recipe
         const favCountLabel = $('<p>', {
           class: 'label col',
         }).text(`Number of Likes: ${favoriteCount}`);
-        // appends the count to the div
-        favDiv.append(favCountLabel);
 
         // creates an a for the recipe name for each of the recipes
         const recipeNameLabel = $('<a>', {
@@ -91,20 +77,20 @@ $(document).ready(() => {
         }).text(`Author: ${recipeAuthor}`);
         // creats a div
         const titleNameDiv = $('<div>', {
-          class: 'title-name-div col-lg-5 col-md-5 col-sm-5 left',
+          class: 'title-name-div col-lg-6 col-md-6 col-sm-6 left',
         });
         // appends the recipe name, author and favorite count to the div
         titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
 
         // appends the image, recipe name and author name to the recipe div for each of the recipes
-        recipeDivRow.append(imageDiv, titleNameDiv, likeDiv);
-        // appends it to the full div
-        recipeDiv.append(recipeDivRow);
+        recipeDiv.append(imageDiv, titleNameDiv, likeDiv);
         // appends it to the page
         recipeDivEl.append(recipeDiv);
       });
     });
   };
+
+  // creats a p for the favorite count for each of the recipes
 
   // when the like button is clicked
   $(document).on('click', '.like-btn-index', function (event) {

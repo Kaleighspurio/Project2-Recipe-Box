@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .center {
   text-align: center;
 }
@@ -97,17 +101,19 @@ nav {
 .recipe-div {
   border: 1px solid black;
   margin: 30px auto;
+height: 250px;
 }
 
 .recipe-img {
-  width: inherit;
+  max-width: 100%;
+  max-height: 200px;
 }
 
 .title-name-div {
-  padding-top: 15px;
-  padding-left: 40px;
-  margin: 15px;
+  padding-top: 50px;
+  padding-left: 70px;
 }
+
 .recipe-name-label {
   font-size: 20px;
   margin: auto;
@@ -160,9 +166,14 @@ nav {
 .margin-auto {
   margin: auto;
 }
+
+.like-div {
+  padding-top: 100px;
+}
 .like-btn-index {
   height: 50px;
   width: inherit;
+  max-width: 100%;
 }
 
 .red-border {
@@ -199,12 +210,7 @@ nav {
 
 .image-div {
   margin: auto;
-}
-.image-preview {
-  width: 300px;
-  min-height: 100px;
-  margin-top: 15px;
-  display: none;
+  max-height: 100%;
 }
 
 .image-display {
