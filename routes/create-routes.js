@@ -7,21 +7,16 @@ router.post('/', async (req, res) => {
   //   Check if an author already exists with the name the user put in.
   // eslint-disable-next-line no-unused-vars
   let dbAuthor = await db.Author.findOne({ where: { name: req.body.name } });
-  console.log(dbAuthor);
   //   if the author already exists, set the authorID to that author's database id
   if (dbAuthor !== null) {
-    console.log(dbAuthor.dataValues.id);
     authorID = dbAuthor.dataValues.id;
-    console.log(authorID, 'This is the authorID for existing author');
     //  if that author does not exist, then create the new author in the author table and
     // set the authorID variable to the new author's ID
   } else {
     // eslint-disable-next-line no-shadow
     dbAuthor = await db.Author.create({ name: req.body.name });
     authorID = dbAuthor.dataValues.id;
-    console.log(authorID, 'This should be the id for a new author');
   }
-  console.log(req.files);
   //   *** this will handle the image:
   let dbPath;
   if (req.files) {
@@ -64,7 +59,6 @@ router.post('/', async (req, res) => {
     });
   });
 
-  console.log(recipeCreate, 'a;sdljfa;sldkjfa;lskdjf');
   res.json(recipeCreate.dataValues);
   //   Call the functions: checkAuthor, then run the post recipe function
 });
