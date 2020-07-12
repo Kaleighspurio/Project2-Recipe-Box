@@ -102,9 +102,11 @@ router.post('/send', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
+      res.json({ err: error, success: false });
     }
     console.log('Message sent: %s', info.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    res.json({ result: info, success: true });
   });
 });
 
