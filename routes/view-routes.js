@@ -1,14 +1,8 @@
 const router = require('express').Router();
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
-const path = require('path');
 const nodemailer = require('nodemailer');
 const db = require('../models');
 require('dotenv').config();
-
-const app = express();
 
 // View will have a create/POST to comment,
 // it will also have a get to view recipe and comments,
@@ -73,23 +67,8 @@ router.put('/favorites/:id', (req, res) => {
 
 // To be able to send emails on request we're using nodemailer
 
-// Engine setup
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
-
-// static folder
-app.use('/public', express.static(path.join(__dirname, 'public')));
-
-// body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-  res.render('contact');
-});
-
-app.post('/send', (req, res) => {
-  console.log(req.body);
+// eslint-disable-next-line no-unused-vars
+router.post('/send', (req, res) => {
   const output = `
    <p>You have a new request for a recipe</p>
    <h3>Recipe details</h3>
@@ -97,9 +76,10 @@ app.post('/send', (req, res) => {
     <li>Name: ${req.body.name}</li>
     <li>Email: ${req.body.email}</li>
    </ul>
-   <h3>Message</h3>
-   <p>${req.body.message}</p>
-  `;
+    <h3>Message</h3>
+    <p>Though you might like this recipe</p>
+    <a href=${req.body.recipe}>${req.body.recipe}</a>
+   `;
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.mailtrap.io',
@@ -122,11 +102,11 @@ app.post('/send', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
+      res.json({ err: error, success: false });
     }
     console.log('Message sent: %s', info.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-    res.render('contact', { msg: 'Email has been sent' });
+    res.json({ result: info, success: true });
   });
 });
 

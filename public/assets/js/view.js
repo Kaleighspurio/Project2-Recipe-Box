@@ -150,6 +150,7 @@ $(document).ready(() => {
         specialNotes,
         favCountEl,
         recipeURL,
+
       );
 
       // prepend the recipeDiv so it will go above the buttons
@@ -225,8 +226,37 @@ $(document).ready(() => {
   });
 
   // click event to close email modal
-
   document.querySelector('.close').addEventListener('click', () => {
     document.querySelector('.bg-modal').style.display = 'none';
   });
+});
+
+let url;
+$('.email-submit').on('click', (e) => {
+  e.preventDefault();
+  const name = $('#name').val();
+  const email = $('#email').val();
+  url = window.location.href;
+  console.log(url);
+  const emailInfo = {
+    name,
+    email,
+    recipe: url,
+  };
+  console.log(name, email);
+  $.ajax({
+    method: 'POST',
+    url: '/api/view/send',
+    data: emailInfo,
+  }).then((res) => {
+    if (res.success) {
+      $('#email-form').css('display', 'none');
+      $('#email-result').text('Success!');
+    }
+    console.log('Email Send', res);
+    // document.querySelector('.bg-modal').style.display = 'none';
+    // alert('success')
+  });
+  // eslint-disable-next-line no-restricted-globals
+  // location.reload();
 });

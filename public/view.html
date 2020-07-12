@@ -14,9 +14,11 @@
   <link rel="icon" href="./assets/images/icon.png" />
   <title>Recipe</title>
 
+
   <!—- ShareThis BEGIN -—>
-    <script async
-      src="https://platform-api.sharethis.com/js/sharethis.js#property=5f09d18bb9410d0019e80a92&product=sticky-share-buttons"></script>
+    <script type='text/javascript'
+      src='https://platform-api.sharethis.com/js/sharethis.js#property=5f09d18bb9410d0019e80a92&product=sticky-share-buttons&cms=website'
+      async='async'></script>
     <!—- ShareThis END -—>
 
 
@@ -55,19 +57,15 @@
     </div>
   </div>
 
-    <div class="container recipe">
-      <div class="button-div">
-        <button class="btn btn-outline-secondary like-btn">
-          <i class="fa fa-thumbs-up"></i>
-        </button>
-        <button
-          class="btn btn-outline-secondary email-btn"
-          type="button"
-          id="email-btn"
-        >
-          Email Recipe
-        </button>
-      </div>
+  <div class="container recipe">
+    <div class="button-div">
+      <button class="btn btn-outline-secondary like-btn">
+        <i class="fa fa-thumbs-up"></i>
+      </button>
+      <button class="btn btn-outline-secondary email-btn" type="button" id="email-btn">
+        Email Recipe
+      </button>
+    </div>
 
 
     <div class="comment-div">
@@ -84,18 +82,15 @@
     <div class="bg-modal">
       <div class="modal-content">
         <div class="close">+</div>
-        <img
-          class="email-icon"
-          src="./assets/images/recipe-card.png"
-          alt="recipe card image"
-        />
-        <form method="POST" action="send">
-          <input class="email-input" type="text" placeholder="Name" />
-          <input class="email-input" type="text" placeholder="Email" />
+        <img class="email-icon" src="./assets/images/recipe-card.png" alt="recipe card image" />
+        <form id="email-form">
+          <input id="name" class="email-input" type="text" placeholder="Name" />
+          <input id="email" class="email-input" type="text" placeholder="Email" name="email" />
           <button class="btn btn-outline-secondary email-submit" type="submit">
             Submit
           </button>
         </form>
+        <div id="email-result"></div>
       </div>
     </div>
   </div>
