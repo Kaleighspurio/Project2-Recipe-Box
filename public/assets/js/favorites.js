@@ -29,7 +29,7 @@ $(document).ready(() => {
 
         // creats a div for the like button
         const likeDiv = $('<div>', {
-          class: 'like-div col-lg-3 col-md-3 col-sm-3',
+          class: 'like-div col-lg-3 col-md-3 col-sm-3 col-xs-12',
         });
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
@@ -49,7 +49,7 @@ $(document).ready(() => {
 
         // creates a div and an image for each of the recipes
         const imageDiv = $('<div>', {
-          class: 'image-div center col-lg-3 col-md-3 col-sm-3',
+          class: 'image-div center col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-sm-down',
         });
         const recipeImgElement = $('<img>', {
           src: imageFilePath,
@@ -77,7 +77,7 @@ $(document).ready(() => {
         }).text(`Author: ${recipeAuthor}`);
         // creats a div
         const titleNameDiv = $('<div>', {
-          class: 'title-name-div col-lg-6 col-md-6 col-sm-6 left',
+          class: 'title-name-div col-lg-6 col-md-6 col-sm-6 col-xs-12 left',
         });
         // appends the recipe name, author and favorite count to the div
         titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
