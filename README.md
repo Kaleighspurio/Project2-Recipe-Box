@@ -33,7 +33,13 @@ DB_NAME="recipe_box"
 ```
 
 ## Usage
-<!-- add some screenshots here? -->
+#### Home screen
+![Search for a recipe](public/assets/images/Screen%20Shot%202020-07-12%20at%208.40.20%20PM.png)
+#### View a recipe
+![View a recipe](public/assets/images/Screen%20Shot%202020-07-12%20at%208.40.42%20PM.png)
+#### Create/Add a recipe
+![Create a recipe](public/assets/images/Screen%20Shot%202020-07-12%20at%208.40.59%20PM.png)
+
 
 ## Credits
 
