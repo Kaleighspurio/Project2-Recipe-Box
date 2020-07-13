@@ -21,12 +21,12 @@ router.post('/', async (req, res) => {
   let dbPath;
   if (req.files) {
     const saveAndMoveImg = () => {
-      // eslint-disable-next-line prefer-destructuring
       const file = req.files.image;
       const filename = file.name;
+      //   save the relative file path in the database
       dbPath = `/assets/images/uploads/${filename}`;
-      console.log(filename);
       const filepath = path.join(__dirname, '..', 'public', 'assets', 'images', 'uploads', filename);
+      //   move the image to the uploads folder
       file.mv(filepath, (err) => {
         if (err) {
           console.log(err);
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
     image: dbPath,
     url_source: req.body.url_source,
   });
-  // eslint-disable-next-line no-unused-vars
+
   await ingredientArray.forEach((ingredient) => {
     db.Ingredient.create({
       RecipeId: recipeCreate.id,

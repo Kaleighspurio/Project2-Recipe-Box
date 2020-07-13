@@ -4,10 +4,7 @@ const nodemailer = require('nodemailer');
 const db = require('../models');
 require('dotenv').config();
 
-// View will have a create/POST to comment,
-// it will also have a get to view recipe and comments,
-// it will also have a PUT/update to edit the special notes
-
+// Get the recipe from the database by its id
 // /api/view/:id
 router.get('/:id', (req, res) => {
   db.Recipe.findOne({
@@ -18,11 +15,11 @@ router.get('/:id', (req, res) => {
       { model: db.Author, as: 'Author' },
     ],
   }).then((data) => {
-    console.log(data);
     res.json(data);
   });
 });
 
+// Post a comment to the comment table for that recipe
 // /api/view/comment
 router.post('/comment/:id', (req, res) => {
   db.Comment.create({
@@ -35,6 +32,7 @@ router.post('/comment/:id', (req, res) => {
   });
 });
 
+// Update the special notes
 // /api/view/id
 router.put('/:id', (req, res) => {
   db.Recipe.updateOne(
@@ -49,8 +47,8 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// PUT to update the favorites count
 
+// Update the number of favorites (likes) that a recipe has
 router.put('/favorites/:id', (req, res) => {
   // const newFavoriteCount = parseInt(req.body.favorites) + 1;
   db.Recipe.update(
@@ -67,7 +65,6 @@ router.put('/favorites/:id', (req, res) => {
 
 // To be able to send emails on request we're using nodemailer
 
-// eslint-disable-next-line no-unused-vars
 router.post('/send', (req, res) => {
   const output = `
    <p>You have a new request for a recipe</p>
