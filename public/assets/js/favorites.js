@@ -29,7 +29,9 @@ $(document).ready(() => {
 
         // creats a div for the like button
         const likeDiv = $('<div>', {
+
           class: 'like-div col-lg-3 col-md-3 col-sm-3 col-xs-12',
+
         });
         // creates a like button for each of the recipes
         const likeButton = $('<button>', {
@@ -78,6 +80,7 @@ $(document).ready(() => {
         // creats a div
         const titleNameDiv = $('<div>', {
           class: 'title-name-div col-lg-6 col-md-6 col-sm-6 col-xs-12 left',
+
         });
         // appends the recipe name, author and favorite count to the div
         titleNameDiv.append(recipeNameLabel, recipeAuthorLabel, favCountLabel);
