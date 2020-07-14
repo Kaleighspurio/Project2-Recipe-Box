@@ -22,7 +22,7 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       // redirect the user to the views page to see their recipe
-      // window.location.href = `/recipe?id=${response.id}`;
+      window.location.href = `/recipe?id=${response.id}`;
     });
   };
 
