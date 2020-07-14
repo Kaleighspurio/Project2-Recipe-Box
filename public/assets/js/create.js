@@ -69,7 +69,9 @@ $(document).ready(() => {
     if (filetype !== 'jpg' && filetype !== 'png' && filetype !== 'jpeg') {
       console.log('That is not an acceptable file type');
       //  Make some sort of message pop up
-      alert('File must be png, jpg, or jpeg');
+      $('.toast-body').text('File must be jpg, png, or jpeg');
+      $('.toast-top').removeClass('toast-no-height');
+      $('.toast').toast('show');
       return;
     }
 
