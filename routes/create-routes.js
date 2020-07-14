@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
+const fs = require('fs');
 const db = require('../models');
 
 router.post('/', async (req, res) => {
@@ -20,12 +21,45 @@ router.post('/', async (req, res) => {
   //   *** this will handle the image:
   let dbPath;
   if (req.files) {
-    const saveAndMoveImg = () => {
+    const saveAndMoveImg = async () => {
       const file = req.files.image;
       const filename = file.name;
+      console.log(file, 'LOOK HERE !!!!!!!!');
+      const num = Math.floor(Math.random() * 1000000000000);
+      console.log(num, 'Also look here~!!!!!!');
+      let newName;
+      if (file.mimetype === 'image/jpeg') {
+        newName = `${num}.jpg`;
+        await fs.rename(filename, newName, (error) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('file renamed');
+          }
+        });
+      }
+      if (file.mimetype === 'image/jpeg') {
+        newName = `${num}.jpg`;
+        await fs.rename(filename, newName, (error) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('file renamed');
+          }
+        });
+      }
+
       //   save the relative file path in the database
-      dbPath = `/assets/images/uploads/${filename}`;
-      const filepath = path.join(__dirname, '..', 'public', 'assets', 'images', 'uploads', filename);
+      dbPath = `/assets/images/uploads/${newName}`;
+      const filepath = path.join(
+        __dirname,
+        '..',
+        'public',
+        'assets',
+        'images',
+        'uploads',
+        newName,
+      );
       //   move the image to the uploads folder
       file.mv(filepath, (err) => {
         if (err) {

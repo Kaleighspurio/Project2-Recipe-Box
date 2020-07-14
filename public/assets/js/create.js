@@ -61,12 +61,14 @@ $(document).ready(() => {
     // append the special notes onto the FormData
     data.append('special_notes', specialNotes.val().trim());
 
+    console.log(files[0].files);
     // Take the name of the uploaded file and split it at the period to check what type it is
+    // eslint-disable-next-line no-unused-vars
     const filename = files[0].files[0].name;
-    const filetype = filename.split('.')[1];
+    const filetype = files[0].files[0].type;
     console.log(filetype);
     // if it is not jpg, png, or jpeg, do not allow submission/POST
-    if (filetype !== 'jpg' && filetype !== 'png' && filetype !== 'jpeg') {
+    if (filetype !== 'image/jpg' && filetype !== 'image/png' && filetype !== 'image/jpeg') {
       console.log('That is not an acceptable file type');
       //  Make some sort of message pop up
       $('.toast-body').text('File must be jpg, png, or jpeg');
