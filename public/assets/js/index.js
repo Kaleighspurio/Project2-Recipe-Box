@@ -306,8 +306,6 @@ $(document).ready(() => {
       data: favObj,
     }).then(() => {
       console.log('fav count updated');
-      // reload page to show changes
-      window.location.reload();
     });
   });
 
