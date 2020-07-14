@@ -22,7 +22,7 @@ $(document).ready(() => {
     }).then((response) => {
       console.log(response);
       // redirect the user to the views page to see their recipe
-      window.location.href = `/recipe?id=${response.id}`;
+      // window.location.href = `/recipe?id=${response.id}`;
     });
   };
 
@@ -60,6 +60,18 @@ $(document).ready(() => {
     data.append('name', author.val().trim());
     // append the special notes onto the FormData
     data.append('special_notes', specialNotes.val().trim());
+
+    // Take the name of the uploaded file and split it at the period to check what type it is
+    const filename = files[0].files[0].name;
+    const filetype = filename.split('.')[1];
+    console.log(filetype);
+    // if it is not jpg, png, or jpeg, do not allow submission/POST
+    if (filetype !== 'jpg' && filetype !== 'png' && filetype !== 'jpeg') {
+      console.log('That is not an acceptable file type');
+      //  Make some sort of message pop up
+      alert('File must be png, jpg, or jpeg');
+      return;
+    }
 
     // creates an object of the values to be used to check for the required fields
     createObject = {
