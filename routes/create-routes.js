@@ -26,8 +26,8 @@ router.post('/', async (req, res) => {
       const filename = file.name;
       console.log(file, 'LOOK HERE !!!!!!!!');
       const num = Math.floor(Math.random() * 1000000000000);
-      console.log(num, 'Also look here~!!!!!!');
       let newName;
+      // if the type of file is jpeg rename it to be the random number.jpg
       if (file.mimetype === 'image/jpeg') {
         newName = `${num}.jpg`;
         await fs.rename(filename, newName, (error) => {
@@ -38,8 +38,9 @@ router.post('/', async (req, res) => {
           }
         });
       }
-      if (file.mimetype === 'image/jpeg') {
-        newName = `${num}.jpg`;
+      // if the type of file is png rename it to be the random number.png
+      if (file.mimetype === 'image/png') {
+        newName = `${num}.png`;
         await fs.rename(filename, newName, (error) => {
           if (error) {
             console.log(error);
