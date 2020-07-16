@@ -561,6 +561,636 @@ module.exports = {
     createdAt: new Date(),
     updatedAt: new Date(),
     RecipeId: 15,
+  }, {
+    ingredient_name: '1 pound plain pizza dough',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '1-8 ounce can tomato sauce',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '3 ounces fontina cheese',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '6 ounces red potatoes cooked and sliced',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '4 ounces cremini mushroom',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '3 cloves garlic chopped',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '2 ounces spinach shredded',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '1 bunch rosemary',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '1/4 cup grated parmesan cheese',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '1/4 teaspoon crushed red pepper flakes',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '2 tablespoons flour',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 16,
+  }, {
+    ingredient_name: '2 cans tuna drained',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 17,
+  }, {
+    ingredient_name: '6 pieces bread',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 17,
+  }, {
+    ingredient_name: '3 tablespoons milk',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 17,
+  }, {
+    ingredient_name: '1 egg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 17,
+  }, {
+    ingredient_name: '2 tablespoons oil',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 17,
+  }, {
+    ingredient_name: '6 tablespoons butter',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '2/3 cup sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '1/2 teaspoon salt',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '1 1/2 teaspoons baking powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '2-3 teaspoons vanilla extract',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '1/4 teaspoon almond extract (optional)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '2 large eggs',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '2 cups all-purpose flour',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 18,
+  }, {
+    ingredient_name: '1 tbsp. vegetable oil',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '2 celery stalks',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '2 carrots',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: 'salt and pepper',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '2 lbs lamb shoulder roast cubed into 1 inch pieces',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1 chopped onion',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '3 cloves minced garlic',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1/4 cup tomato paste',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1 teaspoon ground cumin',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1 teaspoon smoked paprika',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '6 cups beef broth',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1 cup red wine',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1 tablespoon Worcestershire sauce',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '3 sprigs rosemary',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '2 bay leaves',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '2 lbs baby potatoes cut in half',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1/4 cup fresh chopped parsley',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 19,
+  }, {
+    ingredient_name: '1 1/2 cups all purpose flour',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '1 teaspoon baking powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '1/4 teaspoon salt',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '1 cup sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '6 tablespoons of butter softened',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '2 eggs',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '2 teaspoons of lemon zest',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '1/2 cup milk',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '1 1/2 cups blueberries',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '1/3 cup sugar (for the glaze)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '3 tablespoons lemon juice (for the glaze)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 20,
+  }, {
+    ingredient_name: '2 lbs of wings',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 21,
+  }, {
+    ingredient_name: 'Pixie Dust Seasoning',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 21,
+  }, {
+    ingredient_name: 'Oil',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 21,
+  }, {
+    ingredient_name: '1 head fresh cauliflower florets (trimmed rinsed and dried)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/2 cup Franks Red Hot Sauce (NOT buffalo wing sauce)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '8 TBS melted butter',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/2 cup panko bread crumbs',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/2 cup regular bread crumbs',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/2 tsp onion powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/2 tsp garlic powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/2 tsp paprika',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '1/8 tsp black pepper',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: 'dressing to dip',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 22,
+  }, {
+    ingredient_name: '2 tbsp (30 ml) olive oil',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '2 1/4 cups (530 ml) warm water',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '1 tbsp sugar (12 gl) sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '1 tsp (3 gl) active dry yeast',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '1 tbsp (18 gl) kosher salt',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '5 cups (600g) bread flour plus more for working the dough',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: 'additional oil for greasing the dough',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: 'Cornmeal or semolina flour or coarse-ground whole wheat flour for dusting',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '1 28 oz (828 ml) can crushed tomatoes (I like Pastene Kitchen Ready',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '2-4 tbsp (30-60 ml) olive oil',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '1 tsp (4g) sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '2 tsp dried oregano',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '24-32 oz (680-910 g) freshly grated whole-milk low-moisture mozzarella (6-8 oz / 170-225 g per pizza)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: 'grated Parmesan for dusting (maybe 10 g per pizza?)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 23,
+  }, {
+    ingredient_name: '1/2 cup of lukewarm milk',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '3 ripe bananas (mashed)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '2 cups of flour',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '2 eggs',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '3 Tbsp of vegetable oil',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '3/4 cup of sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '1 tsp of baking powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '1/2 tsp of baking soda',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '2 Tbsp of poppy seeds (or as desired)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 24,
+  }, {
+    ingredient_name: '½ cup packed all-purpose flour',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '¼ teaspoon fine salt',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '¼ teaspoon pure vanilla extract',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '3 large eggs at room temp.',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '⅔ cup milk at room temp.',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '3 tablespoons clarified melted butter',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '⅓ cup fresh blueberries (or more to taste)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '1 tablespoon melted unsalted butter',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '½ Meyer lemon juiced',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '2 tablespoons powdered sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '2 tablespoons maple syrup (or to taste)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 25,
+  }, {
+    ingredient_name: '1/2 cup of butter',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1 tsp pure vanilla extract',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1 cup of sugar',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '2 eggs',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1/3 cup of unsweetened cocoa powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1/4 tsp salt',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1/2 cup flour',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1/4 tsp baking powder',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 26,
+  }, {
+    ingredient_name: '1 pound tri-colored spiral pasta',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '6 tablespoons salad seasoning mix',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '1 red bell pepper - diced',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '1 (16 ounce) bottle Italian-style salad dressing',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '2 cups cherry tomatoes - diced',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '1 green bell pepper - chopped',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '½ yellow bell pepper - chopped',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '1 (2.25 ounce) can chopped black olives',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 27,
+  }, {
+    ingredient_name: '1 (16 ounce) container baby spinach leaves - rinsed and drained',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '1 small shallot sliced very thin',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '½ cup crumbled feta',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '½ cup walnut pieces',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '1 pomegranate- peeled and seeds separated',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '4 tablespoons balsamic vinaigrette',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '2 Tbsp sesame seeds toasted - optional',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 28,
+  }, {
+    ingredient_name: '1 quart Vegetable Oil (for frying)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 29,
+  }, {
+    ingredient_name: '1 (10.25 ounce) can Beef Gravy',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 29,
+  }, {
+    ingredient_name: '5 Medium Potatoes (cut into fries)',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 29,
+  }, {
+    ingredient_name: '2 cups Cheese Curds',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    RecipeId: 29,
   }], {}),
 
 

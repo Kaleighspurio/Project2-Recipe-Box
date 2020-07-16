@@ -283,6 +283,7 @@ $(document).ready(() => {
   });
 
   // when the like button is clicked
+  // eslint-disable-next-line func-names
   $(document).on('click', '.like-btn-index', function (event) {
     event.preventDefault();
     $(this).removeClass('btn-outline-secondary');

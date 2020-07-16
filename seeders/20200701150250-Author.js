@@ -21,6 +21,14 @@ module.exports = {
     name: 'Lynn',
     createdAt: new Date(),
     updatedAt: new Date(),
+  }, {
+    name: 'Larry',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }, {
+    name: 'Elias',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   }], {}),
 
 
